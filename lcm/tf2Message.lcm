@@ -1,0 +1,7 @@
+package ark;
+
+struct tf2Message
+{
+  int32_t ntransforms;
+  TransformStamped transforms[ntransforms];
+}
