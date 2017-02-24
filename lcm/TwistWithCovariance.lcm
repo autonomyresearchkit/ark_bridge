@@ -1,0 +1,7 @@
+package ark;
+
+struct TwistWithCovariance
+{
+  Twist twist;
+  double covariance[36];
+}

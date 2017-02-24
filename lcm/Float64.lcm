@@ -1,0 +1,6 @@
+package ark;
+
+struct Float64
+{
+  double data;
+}

@@ -1,0 +1,6 @@
+package ark;
+
+struct String
+{
+  string data;
+}

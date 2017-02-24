@@ -1,0 +1,8 @@
+package ark;
+
+struct ControlSelectionState
+{
+  ControlState core;
+  ControlState autonomy;
+  Mode mode;
+}

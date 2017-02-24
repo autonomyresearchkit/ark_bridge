@@ -1,0 +1,10 @@
+package ark;
+
+struct MapMetaData
+{
+  time map_load_time;
+  float resolution;
+  int64_t width;
+  int64_t height;
+  Pose origin;
+}

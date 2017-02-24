@@ -1,0 +1,8 @@
+package ark;
+
+struct GeometryArray
+{
+  Header header;
+  int32_t nfeatures;
+  GeometryFeature features[nfeatures];
+}

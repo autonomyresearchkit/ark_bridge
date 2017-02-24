@@ -1,0 +1,8 @@
+package ark;
+
+struct PoseArray
+{
+  Header header;
+  int32_t nposes;
+  Pose poses[nposes];
+}

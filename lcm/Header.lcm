@@ -1,0 +1,8 @@
+package ark;
+
+struct Header
+{
+    int64_t seq;
+    time stamp;
+    string frame_id;
+}

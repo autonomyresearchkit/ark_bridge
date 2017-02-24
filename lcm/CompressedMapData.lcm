@@ -1,0 +1,7 @@
+package ark;
+
+struct CompressedMapData
+{
+  int32_t ndata;
+  int8_t data[ndata];
+}

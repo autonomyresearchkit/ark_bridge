@@ -1,0 +1,7 @@
+package ark;
+
+struct time
+{
+    int32_t secs;
+    int32_t nsecs;
+}

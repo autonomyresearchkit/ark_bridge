@@ -1,0 +1,9 @@
+package ark;
+
+struct PauseStatus
+{
+  int16_t status;
+  string job_id;
+  int32_t nsources;
+  string sources[nsources];
+}

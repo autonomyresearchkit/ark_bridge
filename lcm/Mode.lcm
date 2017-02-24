@@ -1,0 +1,6 @@
+package ark;
+
+struct Mode
+{
+  int8_t mode;
+}

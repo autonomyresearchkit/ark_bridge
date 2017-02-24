@@ -1,0 +1,9 @@
+package ark;
+
+struct OccupancyGrid
+{
+  Header header;
+  MapMetaData info;
+  int32_t ndata;
+  int8_t data[ndata];
+}

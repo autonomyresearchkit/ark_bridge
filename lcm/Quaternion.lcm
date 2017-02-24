@@ -1,0 +1,9 @@
+package ark;
+
+struct Quaternion
+{   
+    double x;
+    double y;
+    double z;
+    double w;
+}

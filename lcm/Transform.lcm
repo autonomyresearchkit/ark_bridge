@@ -1,0 +1,8 @@
+package ark;
+
+struct Transform
+{   
+    Header header;
+    Vector3 translation;
+    Quaternion rotation;
+}

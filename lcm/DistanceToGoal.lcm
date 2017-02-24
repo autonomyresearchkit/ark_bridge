@@ -1,0 +1,7 @@
+package ark;
+
+struct DistanceToGoal
+{
+  string job_id;
+  float distance_to_goal;
+}

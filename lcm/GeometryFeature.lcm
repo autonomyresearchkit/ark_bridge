@@ -1,0 +1,14 @@
+package ark;
+
+struct GeometryFeature
+{
+  string id;
+  int16_t type;
+  int32_t npoints;
+  int32_t nattributes;
+  int32_t ndata;
+  Point points[npoints];
+  Attribute attributes[nattributes];
+  int16_t data[ndata];
+}
+

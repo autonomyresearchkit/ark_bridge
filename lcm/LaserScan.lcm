@@ -1,0 +1,17 @@
+package ark;
+
+struct LaserScan
+{
+  Header header;
+  float angle_min;
+  float angle_max;
+  float angle_increment;
+  float time_increment;
+  float scan_time;
+  float range_min;
+  float range_max;
+  int32_t nranges;
+  int32_t nintensities;
+  float ranges[nranges];
+  float intensities[nintensities];
+}

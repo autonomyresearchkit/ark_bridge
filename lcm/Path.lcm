@@ -1,0 +1,8 @@
+package ark;
+
+struct Path
+{
+  Header header;
+  int32_t nposes;
+  PoseStamped poses[nposes];
+}
