@@ -3,6 +3,7 @@ package ark;
 struct TransformStamped
 {   
     string child_frame_id;
+    Header header;
     Transform transform;
 }
 

@@ -1,7 +1,8 @@
 package ark;
 
 struct tfMessage
-{   
-    TransformStamped transforms[9];
+{
+    int32_t ntransforms;
+    TransformStamped transforms[ntransforms];
 }
 
