@@ -76,7 +76,7 @@ void lcmCallback(const lcm_to_ros::Odometry::ConstPtr& msg)
 }
 
 int main(int argc, char **argv) {
-  ros::init(argc, argv, "tf_remapper");
+  ros::init(argc, argv, "odom_remapper");
   ros::NodeHandle nh("~");
   ros::Subscriber sub;
 
@@ -106,4 +106,3 @@ int main(int argc, char **argv) {
   return 0;
 
 }
-

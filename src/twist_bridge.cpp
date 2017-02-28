@@ -38,7 +38,7 @@ void lcmCallback(const lcm_to_ros::Twist::ConstPtr& msg)
 }
 
 int main(int argc, char **argv) {
-  ros::init(argc, argv, "tf_remapper");
+  ros::init(argc, argv, "twist_remapper");
   ros::NodeHandle nh("~");
   ros::Subscriber sub;
 
@@ -68,4 +68,3 @@ int main(int argc, char **argv) {
   return 0;
 
 }
-
