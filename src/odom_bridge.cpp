@@ -81,15 +81,20 @@ int main(int argc, char **argv) {
   ros::Subscriber sub;
 
   if(nh.getParam("ros_topic", ros_topic) && nh.getParam("lcm_topic", lcm_topic) && nh.getParam("direction", direction)){
-    ROS_INFO("LCM: %s ROS: %s DIRECTION: %s", lcm_topic.c_str(), ros_topic.c_str(), direction.c_str());
+     if(!direction.compare("ros2lcm")){
+       ROS_INFO("(%s) LCM <-- ROS (%s)", lcm_topic.c_str(), ros_topic.c_str());
+    }
+    else{
+      ROS_INFO("(%s) LCM --> ROS (%s)", lcm_topic.c_str(), ros_topic.c_str());
+    }
 
     if(!direction.compare("ros2lcm")){
       pub = nh.advertise<lcm_to_ros::Odometry>(lcm_topic, 10);
       sub = nh.subscribe(ros_topic, 10, rosCallback);
     }
     else{
-      pub = nh.advertise<nav_msgs::Odometry>(lcm_topic, 10);
-      sub = nh.subscribe(ros_topic, 10, lcmCallback);
+      pub = nh.advertise<nav_msgs::Odometry>(ros_topic, 10);
+      sub = nh.subscribe(lcm_topic, 10, lcmCallback);
     }
 
     ros::spin();

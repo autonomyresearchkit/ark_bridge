@@ -1,0 +1,29 @@
+<launch>
+  <include file="$(find lcm_to_ros)/launch/ark_server_republishers.launch" />
+
+  <node name="tf_bridge" pkg="lcm_to_ros" type="tf_bridge" output="screen">
+    <param name="lcm_topic" value="/lcm_to_ros/tf"/>
+    <param name="ros_topic" value="/tf"/>
+    <param name="direction" value="lcm2ros"/>
+  </node>
+  <node name="tf_static_bridge" pkg="lcm_to_ros" type="tf_bridge" output="screen">
+    <param name="lcm_topic" value="/lcm_to_ros/tf_static"/>
+    <param name="ros_topic" value="/tf_static"/>
+    <param name="direction" value="lcm2ros"/>
+  </node>
+  <node name="odom_bridge_1" pkg="lcm_to_ros" type="odom_bridge" output="screen">
+    <param name="lcm_topic" value="/lcm_to_ros/platform_control_odom"/>
+    <param name="ros_topic" value="/platform_control/odom"/>
+    <param name="direction" value="lcm2ros"/>
+  </node>
+  <node name="odom_bridge_2" pkg="lcm_to_ros" type="odom_bridge" output="screen">
+    <param name="lcm_topic" value="/lcm_to_ros/platform_odometry"/>
+    <param name="ros_topic" value="/platform_odometry"/>
+    <param name="direction" value="lcm2ros"/>
+  </node>
+  <node name="twist_bridge" pkg="lcm_to_ros" type="twist_bridge" output="screen">
+    <param name="lcm_topic" value="/lcm_to_ros/platform_control_cmd_vel"/>
+    <param name="ros_topic" value="/platform_control/cmd_vel"/>
+    <param name="direction" value="ros2lcm"/>
+  </node>
+</launch>
