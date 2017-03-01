@@ -20,16 +20,16 @@ void rosCallback(const nav_msgs::OccupancyGrid::ConstPtr& msg)
   bridge_message.info.width = msg->info.width;
   bridge_message.info.height = msg->info.height;
 
-  bridge_message.origin.position.x = msg->origin.position.x;
-  bridge_message.origin.position.y = msg->origin.position.y;
-  bridge_message.origin.position.z = msg->origin.position.z;
+  bridge_message.info.origin.position.x = msg->info.origin.position.x;
+  bridge_message.info.origin.position.y = msg->info.origin.position.y;
+  bridge_message.info.origin.position.z = msg->info.origin.position.z;
 
-  bridge_message.origin.orientation.x = msg->origin.orientation.x;
-  bridge_message.origin.orientation.y = msg->origin.orientation.y;
-  bridge_message.origin.orientation.z = msg->origin.orientation.z;
-  bridge_message.origin.orientation.w = msg->origin.orientation.w;
+  bridge_message.info.origin.orientation.x = msg->info.origin.orientation.x;
+  bridge_message.info.origin.orientation.y = msg->info.origin.orientation.y;
+  bridge_message.info.origin.orientation.z = msg->info.origin.orientation.z;
+  bridge_message.info.origin.orientation.w = msg->info.origin.orientation.w;
 
-  bridge_message.ndata = msg->data.size()
+  bridge_message.ndata = msg->data.size();
 
   for(int i = 0; i < msg->data.size(); i++){
     bridge_message.data.push_back(msg->data[i]);
@@ -42,32 +42,27 @@ void lcmCallback(const lcm_to_ros::OccupancyGrid::ConstPtr& msg)
 {
   nav_msgs::OccupancyGrid bridge_message;
 
-  for(int i = 0; i < msg->transforms.size(); i++){
-    geometry_msgs::TransformStamped tform;
+  bridge_message.header.seq = msg->header.seq;
+  bridge_message.header.frame_id = msg->header.frame_id;
+  bridge_message.header.stamp = msg->header.stamp;
 
-    bridge_message.header.seq = msg->header.seq;
-    bridge_message.header.frame_id = msg->header.frame_id;
-    bridge_message.header.stamp = msg->header.stamp;
+  bridge_message.info.map_load_time = msg->info.map_load_time;
+  bridge_message.info.resolution = msg->info.resolution;
+  bridge_message.info.width = msg->info.width;
+  bridge_message.info.height = msg->info.height;
 
-    bridge_message.info.map_load_time = msg->info.map_load_time;
-    bridge_message.info.resolution = msg->info.resolution;
-    bridge_message.info.width = msg->info.width;
-    bridge_message.info.height = msg->info.height;
+  bridge_message.info.origin.position.x = msg->info.origin.position.x;
+  bridge_message.info.origin.position.y = msg->info.origin.position.y;
+  bridge_message.info.origin.position.z = msg->info.origin.position.z;
 
-    bridge_message.origin.position.x = msg->origin.position.x;
-    bridge_message.origin.position.y = msg->origin.position.y;
-    bridge_message.origin.position.z = msg->origin.position.z;
+  bridge_message.info.origin.orientation.x = msg->info.origin.orientation.x;
+  bridge_message.info.origin.orientation.y = msg->info.origin.orientation.y;
+  bridge_message.info.origin.orientation.z = msg->info.origin.orientation.z;
+  bridge_message.info.origin.orientation.w = msg->info.origin.orientation.w;
 
-    bridge_message.origin.orientation.x = msg->origin.orientation.x;
-    bridge_message.origin.orientation.y = msg->origin.orientation.y;
-    bridge_message.origin.orientation.z = msg->origin.orientation.z;
-    bridge_message.origin.orientation.w = msg->origin.orientation.w;
-
-    bridge_message.ndata = msg->data.size()
-
-    for(int i = 0; i < msg->data.size(); i++){
-      bridge_message.data.push_back(msg->data[i]);
-    }
+  for(int i = 0; i < msg->data.size(); i++){
+    bridge_message.data.push_back(msg->data[i]);
+  }
 
   pub.publish(bridge_message);
 }

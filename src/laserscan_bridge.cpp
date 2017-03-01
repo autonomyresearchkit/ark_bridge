@@ -26,12 +26,12 @@ void rosCallback(const sensor_msgs::LaserScan::ConstPtr& msg)
   bridge_message.nranges = msg->ranges.size();
   bridge_message.nintensities = msg->intensities.size();
 
-  for(int i = 0; i < msg->ranges.size(); i++){
-    bridge_message.ranges.push_back(msg->ranges[i]);
+  for(int j = 0; j < msg->ranges.size(); j++){
+    bridge_message.ranges.push_back(msg->ranges[j]);
   }
 
-  for(int i = 0; i < msg->intensities.size(); i++){
-    bridge_message.intensities.push_back(msg->intensities[i]);
+  for(int j = 0; j < msg->intensities.size(); j++){
+    bridge_message.intensities.push_back(msg->intensities[j]);
   }
 
   pub.publish(bridge_message);
@@ -41,31 +41,25 @@ void lcmCallback(const lcm_to_ros::LaserScan::ConstPtr& msg)
 {
   sensor_msgs::LaserScan bridge_message;
 
-  for(int i = 0; i < msg->transforms.size(); i++){
-    geometry_msgs::TransformStamped tform;
+  bridge_message.header.seq = msg->header.seq;
+  bridge_message.header.frame_id = msg->header.frame_id;
+  bridge_message.header.stamp = msg->header.stamp;
 
-    bridge_message.header.seq = msg->header.seq;
-    bridge_message.header.frame_id = msg->header.frame_id;
-    bridge_message.header.stamp = msg->header.stamp;
+  bridge_message.angle_min = msg->angle_min;
+  bridge_message.angle_max = msg->angle_max;
+  bridge_message.angle_increment = msg->angle_increment;
+  bridge_message.time_increment = msg->time_increment;
+  bridge_message.scan_time = msg->scan_time;
+  bridge_message.range_min = msg->range_min;
+  bridge_message.range_max = msg->range_max;
 
-    bridge_message.angle_min = msg->angle_min;
-    bridge_message.angle_max = msg->angle_max;
-    bridge_message.angle_increment = msg->angle_increment;
-    bridge_message.time_increment = msg->time_increment;
-    bridge_message.scan_time = msg->scan_time;
-    bridge_message.range_min = msg->range_min;
-    bridge_message.range_max = msg->range_max;
+  for(int j = 0; j < msg->ranges.size(); j++){
+    bridge_message.ranges.push_back(msg->ranges[j]);
+  }
 
-    bridge_message.nranges = msg->ranges.size();
-    bridge_message.nintensities = msg->intensities.size();
-
-    for(int i = 0; i < msg->ranges.size(); i++){
-      bridge_message.ranges.push_back(msg->ranges[i]);
-    }
-
-    for(int i = 0; i < msg->intensities.size(); i++){
-      bridge_message.intensities.push_back(msg->intensities[i]);
-    }
+  for(int j = 0; j < msg->intensities.size(); j++){
+    bridge_message.intensities.push_back(msg->intensities[j]);
+  }
 
   pub.publish(bridge_message);
 }

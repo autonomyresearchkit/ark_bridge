@@ -11,18 +11,18 @@ void rosCallback(const geometry_msgs::PoseStamped::ConstPtr& msg)
 {
   lcm_to_ros::PoseStamped bridge_message;
 
-  bridge_message.seq = msg->seq;
-  bridge_message.stamp = msg->stamp;
-  bridge_message.frame_id = msg->frame_id;
+  bridge_message.header.seq = msg->header.seq;
+  bridge_message.header.stamp = msg->header.stamp;
+  bridge_message.header.frame_id = msg->header.frame_id;
 
-  bridge_message.pose.posotion.x = msg->.pose.posotion.x;
-  bridge_message.pose.posotion.y = msg->.pose.posotion.y;
-  bridge_message.pose.posotion.z = msg->.pose.posotion.z;
+  bridge_message.pose.position.x = msg->pose.position.x;
+  bridge_message.pose.position.y = msg->pose.position.y;
+  bridge_message.pose.position.z = msg->pose.position.z;
 
-  bridge_message.pose.orientation.x = msg->.pose.orientation.x;
-  bridge_message.pose.orientation.y = msg->.pose.orientation.y;
-  bridge_message.pose.orientation.z = msg->.pose.orientation.z;
-  bridge_message.pose.orientation.w = msg->.pose.orientation.w;
+  bridge_message.pose.orientation.x = msg->pose.orientation.x;
+  bridge_message.pose.orientation.y = msg->pose.orientation.y;
+  bridge_message.pose.orientation.z = msg->pose.orientation.z;
+  bridge_message.pose.orientation.w = msg->pose.orientation.w;
 
   pub.publish(bridge_message);
 }
@@ -31,18 +31,18 @@ void lcmCallback(const lcm_to_ros::PoseStamped::ConstPtr& msg)
 {
   geometry_msgs::PoseStamped bridge_message;
 
-  bridge_message.seq = msg->seq;
-  bridge_message.stamp = msg->stamp;
-  bridge_message.frame_id = msg->frame_id;
+  bridge_message.header.seq = msg->header.seq;
+  bridge_message.header.stamp = msg->header.stamp;
+  bridge_message.header.frame_id = msg->header.frame_id;
 
-  bridge_message.pose.posotion.x = msg->.pose.posotion.x;
-  bridge_message.pose.posotion.y = msg->.pose.posotion.y;
-  bridge_message.pose.posotion.z = msg->.pose.posotion.z;
+  bridge_message.pose.position.x = msg->pose.position.x;
+  bridge_message.pose.position.y = msg->pose.position.y;
+  bridge_message.pose.position.z = msg->pose.position.z;
 
-  bridge_message.pose.orientation.x = msg->.pose.orientation.x;
-  bridge_message.pose.orientation.y = msg->.pose.orientation.y;
-  bridge_message.pose.orientation.z = msg->.pose.orientation.z;
-  bridge_message.pose.orientation.w = msg->.pose.orientation.w;
+  bridge_message.pose.orientation.x = msg->pose.orientation.x;
+  bridge_message.pose.orientation.y = msg->pose.orientation.y;
+  bridge_message.pose.orientation.z = msg->pose.orientation.z;
+  bridge_message.pose.orientation.w = msg->pose.orientation.w;
 
   pub.publish(bridge_message);
 }

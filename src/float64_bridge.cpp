@@ -5,7 +5,7 @@
 #include <stdlib.h>
 
 ros::Publisher pub;
-std::Float64 lcm_topic, ros_topic, direction;
+std::string lcm_topic, ros_topic, direction;
 
 void rosCallback(const std_msgs::Float64::ConstPtr& msg)
 {

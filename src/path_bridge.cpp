@@ -3,7 +3,7 @@
 #include <lcm_to_ros/Path.h>
 #include <nav_msgs/Path.h>
 #include <lcm_to_ros/PoseStamped.h>
-#include <nav_msgs/PoseStamped.h>
+#include <geometry_msgs/PoseStamped.h>
 #include <stdlib.h>
 
 ros::Publisher pub;
@@ -22,9 +22,9 @@ void rosCallback(const nav_msgs::Path::ConstPtr& msg)
   for(int i = 0; i < msg->poses.size(); i++){
     lcm_to_ros::PoseStamped pstamp;
 
-    pstamp.header.seq = msg->transforms[i].header.seq;
-    pstamp.header.frame_id = msg->transforms[i].header.frame_id;
-    pstamp.header.stamp = msg->transforms[i].header.stamp;
+    pstamp.header.seq = msg->poses[i].header.seq;
+    pstamp.header.frame_id = msg->poses[i].header.frame_id;
+    pstamp.header.stamp = msg->poses[i].header.stamp;
 
     pstamp.pose.position.x = msg->poses[i].pose.position.x;
     pstamp.pose.position.y = msg->poses[i].pose.position.y;
@@ -45,31 +45,28 @@ void lcmCallback(const lcm_to_ros::Path::ConstPtr& msg)
 {
   nav_msgs::Path bridge_message;
 
-  for(int i = 0; i < msg->transforms.size(); i++){
-    geometry_msgs::TransformStamped tform;
+  bridge_message.header.seq = msg->header.seq;
+  bridge_message.header.frame_id = msg->header.frame_id;
+  bridge_message.header.stamp = msg->header.stamp;
 
-    bridge_message.header.seq = msg->header.seq;
-    bridge_message.header.frame_id = msg->header.frame_id;
-    bridge_message.header.stamp = msg->header.stamp;
+  for(int i = 0; i < msg->poses.size(); i++){
+    geometry_msgs::PoseStamped pstamp;
 
-    for(int i = 0; i < msg->poses.size(); i++){
-      lcm_to_ros::PoseStamped pstamp;
+    pstamp.header.seq = msg->poses[i].header.seq;
+    pstamp.header.frame_id = msg->poses[i].header.frame_id;
+    pstamp.header.stamp = msg->poses[i].header.stamp;
 
-      pstamp.header.seq = msg->transforms[i].header.seq;
-      pstamp.header.frame_id = msg->transforms[i].header.frame_id;
-      pstamp.header.stamp = msg->transforms[i].header.stamp;
+    pstamp.pose.position.x = msg->poses[i].pose.position.x;
+    pstamp.pose.position.y = msg->poses[i].pose.position.y;
+    pstamp.pose.position.z = msg->poses[i].pose.position.z;
 
-      pstamp.pose.position.x = msg->poses[i].pose.position.x;
-      pstamp.pose.position.y = msg->poses[i].pose.position.y;
-      pstamp.pose.position.z = msg->poses[i].pose.position.z;
+    pstamp.pose.orientation.x = msg->poses[i].pose.orientation.x;
+    pstamp.pose.orientation.y = msg->poses[i].pose.orientation.y;
+    pstamp.pose.orientation.z = msg->poses[i].pose.orientation.z;
+    pstamp.pose.orientation.w = msg->poses[i].pose.orientation.w;
 
-      pstamp.pose.orientation.x = msg->poses[i].pose.orientation.x;
-      pstamp.pose.orientation.y = msg->poses[i].pose.orientation.y;
-      pstamp.pose.orientation.z = msg->poses[i].pose.orientation.z;
-      pstamp.pose.orientation.w = msg->poses[i].pose.orientation.w;
-
-      bridge_message.poses.push_back(pstamp);
-    }
+    bridge_message.poses.push_back(pstamp);
+  }
 
   pub.publish(bridge_message);
 }

@@ -16,7 +16,7 @@ void rosCallback(const strategy_management_msgs::PauseStatus::ConstPtr& msg)
   bridge_message.nsources = msg->sources.size();
 
   for(int i = 0; i < msg->sources.size(); i++){
-    bridge_message.transforms.push_back(msg->sources[i]);
+    bridge_message.sources.push_back(msg->sources[i]);
   }
 
   pub.publish(bridge_message);
@@ -26,17 +26,11 @@ void lcmCallback(const lcm_to_ros::PauseStatus::ConstPtr& msg)
 {
   strategy_management_msgs::PauseStatus bridge_message;
 
-  for(int i = 0; i < msg->transforms.size(); i++){
-    geometry_msgs::TransformStamped tform;
+  bridge_message.status = msg->status;
+  bridge_message.job_id = msg->job_id;
 
-    bridge_message.status = msg->status;
-    bridge_message.job_id = msg->job_id;
-
-    for(int i = 0; i < msg->sources.size(); i++){
-      bridge_message.transforms.push_back(msg->sources[i]);
-    }
-
-    bridge_message.transforms.push_back(tform);
+  for(int i = 0; i < msg->sources.size(); i++){
+    bridge_message.sources.push_back(msg->sources[i]);
   }
 
   pub.publish(bridge_message);

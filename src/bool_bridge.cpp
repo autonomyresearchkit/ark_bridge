@@ -5,7 +5,7 @@
 #include <stdlib.h>
 
 ros::Publisher pub;
-std::Bool lcm_topic, ros_topic, direction;
+std::string lcm_topic, ros_topic, direction;
 
 void rosCallback(const std_msgs::Bool::ConstPtr& msg)
 {
@@ -16,7 +16,7 @@ void rosCallback(const std_msgs::Bool::ConstPtr& msg)
   pub.publish(bridge_message);
 }
 
-void lcmCallback(const lcm_to_ros::tfMessage::ConstPtr& msg)
+void lcmCallback(const lcm_to_ros::Bool::ConstPtr& msg)
 {
   std_msgs::Bool bridge_message;
 

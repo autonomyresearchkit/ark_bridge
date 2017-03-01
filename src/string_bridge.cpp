@@ -16,7 +16,7 @@ void rosCallback(const std_msgs::String::ConstPtr& msg)
   pub.publish(bridge_message);
 }
 
-void lcmCallback(const lcm_to_ros::tfMessage::ConstPtr& msg)
+void lcmCallback(const lcm_to_ros::String::ConstPtr& msg)
 {
   std_msgs::String bridge_message;
 

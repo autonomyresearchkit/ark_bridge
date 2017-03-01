@@ -11,7 +11,7 @@ void rosCallback(const map_data_msgs::CompressedMapData::ConstPtr& msg)
 {
   lcm_to_ros::CompressedMapData bridge_message;
 
-  bridge_message.ndata = msg->data.size()
+  bridge_message.ndata = msg->data.size();
 
   for(int i = 0; i < msg->data.size(); i++){
     bridge_message.data.push_back(msg->data[i]);
@@ -24,14 +24,9 @@ void lcmCallback(const lcm_to_ros::CompressedMapData::ConstPtr& msg)
 {
   map_data_msgs::CompressedMapData bridge_message;
 
-  for(int i = 0; i < msg->transforms.size(); i++){
-    geometry_msgs::TransformStamped tform;
-
-    bridge_message.ndata = msg->data.size()
-
-    for(int i = 0; i < msg->data.size(); i++){
-      bridge_message.data.push_back(msg->data[i]);
-    }
+  for(int i = 0; i < msg->data.size(); i++){
+    bridge_message.data.push_back(msg->data[i]);
+  }
 
   pub.publish(bridge_message);
 }

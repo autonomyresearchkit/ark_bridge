@@ -20,27 +20,7 @@ void rosCallback(const strategy_management_msgs::DistanceToGoal::ConstPtr& msg)
 void lcmCallback(const lcm_to_ros::DistanceToGoal::ConstPtr& msg)
 {
   strategy_management_msgs::DistanceToGoal bridge_message;
-
-  for(int i = 0; i < msg->transforms.size(); i++){
-    geometry_msgs::TransformStamped tform;
-
-    tform.child_frame_id = msg->transforms[i].child_frame_id;
-
-    tform.header.seq = msg->transforms[i].header.seq;
-    tform.header.frame_id = msg->transforms[i].header.frame_id;
-    tform.header.stamp = msg->transforms[i].header.stamp;
-
-    tform.transform.translation.x = msg->transforms[i].transform.translation.x;
-    tform.transform.translation.y = msg->transforms[i].transform.translation.y;
-    tform.transform.translation.z = msg->transforms[i].transform.translation.z;
-
-    tform.transform.rotation.x = msg->transforms[i].transform.rotation.x;
-    tform.transform.rotation.y = msg->transforms[i].transform.rotation.y;
-    tform.transform.rotation.z = msg->transforms[i].transform.rotation.z;
-    tform.transform.rotation.w = msg->transforms[i].transform.rotation.w;
-
-    bridge_message.transforms.push_back(tform);
-  }
+  bridge_message.distance_to_goal = msg->distance_to_goal;
 
   pub.publish(bridge_message);
 }

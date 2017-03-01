@@ -3,7 +3,7 @@
 #include <lcm_to_ros/PoseArray.h>
 #include <geometry_msgs/PoseArray.h>
 #include <lcm_to_ros/PoseStamped.h>
-#include <nav_msgs/PoseStamped.h>
+#include <geometry_msgs/PoseStamped.h>
 #include <stdlib.h>
 
 ros::Publisher pub;
@@ -22,14 +22,14 @@ void rosCallback(const geometry_msgs::PoseArray::ConstPtr& msg)
   for(int i = 0; i < msg->poses.size(); i++){
     lcm_to_ros::Pose pstamp;
 
-    pstamp.pose.position.x = msg->poses[i].pose.position.x;
-    pstamp.pose.position.y = msg->poses[i].pose.position.y;
-    pstamp.pose.position.z = msg->poses[i].pose.position.z;
+    pstamp.position.x = msg->poses[i].position.x;
+    pstamp.position.y = msg->poses[i].position.y;
+    pstamp.position.z = msg->poses[i].position.z;
 
-    pstamp.pose.orientation.x = msg->poses[i].pose.orientation.x;
-    pstamp.pose.orientation.y = msg->poses[i].pose.orientation.y;
-    pstamp.pose.orientation.z = msg->poses[i].pose.orientation.z;
-    pstamp.pose.orientation.w = msg->poses[i].pose.orientation.w;
+    pstamp.orientation.x = msg->poses[i].orientation.x;
+    pstamp.orientation.y = msg->poses[i].orientation.y;
+    pstamp.orientation.z = msg->poses[i].orientation.z;
+    pstamp.orientation.w = msg->poses[i].orientation.w;
 
     bridge_message.poses.push_back(pstamp);
   }
@@ -45,19 +45,17 @@ void lcmCallback(const lcm_to_ros::PoseArray::ConstPtr& msg)
   bridge_message.header.frame_id = msg->header.frame_id;
   bridge_message.header.stamp = msg->header.stamp;
 
-  bridge_message.nposes = msg->poses.size();
-
   for(int i = 0; i < msg->poses.size(); i++){
-    lcm_to_ros::Pose pstamp;
+    geometry_msgs::Pose pstamp;
 
-    pstamp.pose.position.x = msg->poses[i].pose.position.x;
-    pstamp.pose.position.y = msg->poses[i].pose.position.y;
-    pstamp.pose.position.z = msg->poses[i].pose.position.z;
+    pstamp.position.x = msg->poses[i].position.x;
+    pstamp.position.y = msg->poses[i].position.y;
+    pstamp.position.z = msg->poses[i].position.z;
 
-    pstamp.pose.orientation.x = msg->poses[i].pose.orientation.x;
-    pstamp.pose.orientation.y = msg->poses[i].pose.orientation.y;
-    pstamp.pose.orientation.z = msg->poses[i].pose.orientation.z;
-    pstamp.pose.orientation.w = msg->poses[i].pose.orientation.w;
+    pstamp.orientation.x = msg->poses[i].orientation.x;
+    pstamp.orientation.y = msg->poses[i].orientation.y;
+    pstamp.orientation.z = msg->poses[i].orientation.z;
+    pstamp.orientation.w = msg->poses[i].orientation.w;
 
     bridge_message.poses.push_back(pstamp);
   }

@@ -4,16 +4,16 @@
 #include <lcm_to_ros/Point.h>
 #include <lcm_to_ros/Attribute.h>
 #include <lcm_to_ros/GeometryFeature.h>
-#include <cpr_msgs/GeometryArray.h>
+#include <autonomy_msgs/GeometryArray.h>
 #include <geometry_msgs/Point.h>
 #include <autonomy_msgs/Attribute.h>
-#include <cpr_msgs/GeometryFeature.h>
+#include <autonomy_msgs/GeometryFeature.h>
 #include <stdlib.h>
 
 ros::Publisher pub;
 std::string lcm_topic, ros_topic, direction;
 
-void rosCallback(const cpr_msgs::GeometryArray::ConstPtr& msg)
+void rosCallback(const autonomy_msgs::GeometryArray::ConstPtr& msg)
 {
   lcm_to_ros::GeometryArray bridge_message;
 
@@ -21,10 +21,10 @@ void rosCallback(const cpr_msgs::GeometryArray::ConstPtr& msg)
   bridge_message.header.frame_id = msg->header.frame_id;
   bridge_message.header.stamp = msg->header.stamp;
 
-  bridge_message.nfeatures = msg->features.size()
+  bridge_message.nfeatures = msg->features.size();
 
   for(int f = 0; f < msg->features.size(); f++){
-    lcm_to_ros::GeometryFeature gf;
+      lcm_to_ros::GeometryFeature gf;
 
       gf.id = msg->features[f].id;
       gf.type = msg->features[f].type;
@@ -33,7 +33,7 @@ void rosCallback(const cpr_msgs::GeometryArray::ConstPtr& msg)
       gf.ndata = msg->features[f].data.size();
 
       for(int p = 0; p < msg->features[f].points.size(); p++){
-        lcm_to_ros::Point[] pp;
+        lcm_to_ros::Point pp;
         pp.x = msg->features[f].points[p].x;
         pp.y = msg->features[f].points[p].y;
         pp.z = msg->features[f].points[p].z;
@@ -42,7 +42,7 @@ void rosCallback(const cpr_msgs::GeometryArray::ConstPtr& msg)
       }
 
       for(int a = 0; a < msg->features[f].attributes.size(); a++){
-        lcm_to_ros::Attribute[] aa;
+        lcm_to_ros::Attribute aa;
         aa.name = msg->features[f].attributes[a].name;
         aa.offset = msg->features[f].attributes[a].offset;
         aa.datatype = msg->features[f].attributes[a].datatype;
@@ -63,25 +63,20 @@ void rosCallback(const cpr_msgs::GeometryArray::ConstPtr& msg)
 
 void lcmCallback(const lcm_to_ros::GeometryArray::ConstPtr& msg)
 {
-  cpr_msgs::GeometryArray bridge_message;
+  autonomy_msgs::GeometryArray bridge_message;
 
   bridge_message.header.seq = msg->header.seq;
   bridge_message.header.frame_id = msg->header.frame_id;
   bridge_message.header.stamp = msg->header.stamp;
 
-  bridge_message.nfeatures = msg->features.size()
-
   for(int f = 0; f < msg->features.size(); f++){
-    cpr_msgs::GeometryFeature gf;
+      autonomy_msgs::GeometryFeature gf;
 
       gf.id = msg->features[f].id;
       gf.type = msg->features[f].type;
-      gf.npoints = msg->features[f].points.size();
-      gf.nattributes = msg->features[f].attributes.size();
-      gf.ndata = msg->features[f].data.size();
 
       for(int p = 0; p < msg->features[f].points.size(); p++){
-        geometry_msgs::Point[] pp;
+        geometry_msgs::Point pp;
         pp.x = msg->features[f].points[p].x;
         pp.y = msg->features[f].points[p].y;
         pp.z = msg->features[f].points[p].z;
@@ -90,7 +85,7 @@ void lcmCallback(const lcm_to_ros::GeometryArray::ConstPtr& msg)
       }
 
       for(int a = 0; a < msg->features[f].attributes.size(); a++){
-        autonomy_msgs::Attribute[] aa;
+        autonomy_msgs::Attribute aa;
         aa.name = msg->features[f].attributes[a].name;
         aa.offset = msg->features[f].attributes[a].offset;
         aa.datatype = msg->features[f].attributes[a].datatype;
@@ -127,7 +122,7 @@ int main(int argc, char **argv) {
       sub = nh.subscribe(ros_topic, 10, rosCallback);
     }
     else{
-      pub = nh.advertise<cpr_msgs::GeometryArray>(ros_topic, 10);
+      pub = nh.advertise<autonomy_msgs::GeometryArray>(ros_topic, 10);
       sub = nh.subscribe(lcm_topic, 10, lcmCallback);
     }
 
