@@ -4,7 +4,7 @@
 
 #include <lcm/lcm-cpp.hpp>
 
-#include "lcm_to_ros/@MESSAGE_TYPE@.h"
+#include "ark_bridge/@MESSAGE_TYPE@.h"
 #include "@PACKAGE_NAME@/@MESSAGE_TYPE@.hpp"
 
 class ROSToLCMRepublisher
@@ -12,7 +12,7 @@ class ROSToLCMRepublisher
     public:
         ROSToLCMRepublisher(ros::NodeHandle& n, lcm::LCM* lh);
         ~ROSToLCMRepublisher();
-        void rosCallback(const lcm_to_ros::@MESSAGE_TYPE@::ConstPtr& msg);
+        void rosCallback(const ark_bridge::@MESSAGE_TYPE@::ConstPtr& msg);
         
     private:        
         lcm::LCM* lcm_handle;
@@ -26,7 +26,7 @@ ROSToLCMRepublisher::ROSToLCMRepublisher(ros::NodeHandle& n, lcm::LCM* lh)
     lcm_handle = lh;
    
     // Subscribers
-    ros_sub = nh.subscribe<lcm_to_ros::@MESSAGE_TYPE@>("@TOPIC_NAME@", 10, &ROSToLCMRepublisher::rosCallback, this);
+    ros_sub = nh.subscribe<ark_bridge::@MESSAGE_TYPE@>("@TOPIC_NAME@", 10, &ROSToLCMRepublisher::rosCallback, this);
 };
 
 ROSToLCMRepublisher::~ROSToLCMRepublisher() 
@@ -34,7 +34,7 @@ ROSToLCMRepublisher::~ROSToLCMRepublisher()
     ROS_INFO("@TOPIC_NAME@ ROSToLCMRepublisher destructor.");
 }
 
-void ROSToLCMRepublisher::rosCallback(const lcm_to_ros::@MESSAGE_TYPE@::ConstPtr& ros_msg)
+void ROSToLCMRepublisher::rosCallback(const ark_bridge::@MESSAGE_TYPE@::ConstPtr& ros_msg)
 {
     const @PACKAGE_NAME@::@MESSAGE_TYPE@* lcm_msg = reinterpret_cast<const @PACKAGE_NAME@::@MESSAGE_TYPE@*>( ros_msg.get() );
     lcm_handle->publish("@TOPIC_NAME@", lcm_msg);

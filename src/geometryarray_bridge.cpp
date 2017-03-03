@@ -1,9 +1,9 @@
 #include <ros/ros.h>
 #include <ros/console.h>
-#include <lcm_to_ros/GeometryArray.h>
-#include <lcm_to_ros/Point.h>
-#include <lcm_to_ros/Attribute.h>
-#include <lcm_to_ros/GeometryFeature.h>
+#include <ark_bridge/GeometryArray.h>
+#include <ark_bridge/Point.h>
+#include <ark_bridge/Attribute.h>
+#include <ark_bridge/GeometryFeature.h>
 #include <autonomy_msgs/GeometryArray.h>
 #include <geometry_msgs/Point.h>
 #include <autonomy_msgs/Attribute.h>
@@ -15,7 +15,7 @@ std::string lcm_topic, ros_topic, direction;
 
 void rosCallback(const autonomy_msgs::GeometryArray::ConstPtr& msg)
 {
-  lcm_to_ros::GeometryArray bridge_message;
+  ark_bridge::GeometryArray bridge_message;
 
   bridge_message.header.seq = msg->header.seq;
   bridge_message.header.frame_id = msg->header.frame_id;
@@ -24,7 +24,7 @@ void rosCallback(const autonomy_msgs::GeometryArray::ConstPtr& msg)
   bridge_message.nfeatures = msg->features.size();
 
   for(int f = 0; f < msg->features.size(); f++){
-      lcm_to_ros::GeometryFeature gf;
+      ark_bridge::GeometryFeature gf;
 
       gf.id = msg->features[f].id;
       gf.type = msg->features[f].type;
@@ -33,7 +33,7 @@ void rosCallback(const autonomy_msgs::GeometryArray::ConstPtr& msg)
       gf.ndata = msg->features[f].data.size();
 
       for(int p = 0; p < msg->features[f].points.size(); p++){
-        lcm_to_ros::Point pp;
+        ark_bridge::Point pp;
         pp.x = msg->features[f].points[p].x;
         pp.y = msg->features[f].points[p].y;
         pp.z = msg->features[f].points[p].z;
@@ -42,7 +42,7 @@ void rosCallback(const autonomy_msgs::GeometryArray::ConstPtr& msg)
       }
 
       for(int a = 0; a < msg->features[f].attributes.size(); a++){
-        lcm_to_ros::Attribute aa;
+        ark_bridge::Attribute aa;
         aa.name = msg->features[f].attributes[a].name;
         aa.offset = msg->features[f].attributes[a].offset;
         aa.datatype = msg->features[f].attributes[a].datatype;
@@ -61,7 +61,7 @@ void rosCallback(const autonomy_msgs::GeometryArray::ConstPtr& msg)
   pub.publish(bridge_message);
 }
 
-void lcmCallback(const lcm_to_ros::GeometryArray::ConstPtr& msg)
+void lcmCallback(const ark_bridge::GeometryArray::ConstPtr& msg)
 {
   autonomy_msgs::GeometryArray bridge_message;
 
@@ -118,7 +118,7 @@ int main(int argc, char **argv) {
     }
 
     if(!direction.compare("ros2lcm")){
-      pub = nh.advertise<lcm_to_ros::GeometryArray>(lcm_topic, 10);
+      pub = nh.advertise<ark_bridge::GeometryArray>(lcm_topic, 10);
       sub = nh.subscribe(ros_topic, 10, rosCallback);
     }
     else{

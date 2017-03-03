@@ -1,6 +1,6 @@
 #include <ros/ros.h>
 #include <ros/console.h>
-#include <lcm_to_ros/DistanceToGoal.h>
+#include <ark_bridge/DistanceToGoal.h>
 #include <strategy_management_msgs/DistanceToGoal.h>
 #include <stdlib.h>
 
@@ -9,7 +9,7 @@ std::string lcm_topic, ros_topic, direction;
 
 void rosCallback(const strategy_management_msgs::DistanceToGoal::ConstPtr& msg)
 {
-  lcm_to_ros::DistanceToGoal bridge_message;
+  ark_bridge::DistanceToGoal bridge_message;
 
   bridge_message.job_id = msg->job_id;
   bridge_message.distance_to_goal = msg->distance_to_goal;
@@ -17,7 +17,7 @@ void rosCallback(const strategy_management_msgs::DistanceToGoal::ConstPtr& msg)
   pub.publish(bridge_message);
 }
 
-void lcmCallback(const lcm_to_ros::DistanceToGoal::ConstPtr& msg)
+void lcmCallback(const ark_bridge::DistanceToGoal::ConstPtr& msg)
 {
   strategy_management_msgs::DistanceToGoal bridge_message;
   bridge_message.distance_to_goal = msg->distance_to_goal;
@@ -39,7 +39,7 @@ int main(int argc, char **argv) {
     }
 
     if(!direction.compare("ros2lcm")){
-      pub = nh.advertise<lcm_to_ros::DistanceToGoal>(lcm_topic, 10);
+      pub = nh.advertise<ark_bridge::DistanceToGoal>(lcm_topic, 10);
       sub = nh.subscribe(ros_topic, 10, rosCallback);
     }
     else{

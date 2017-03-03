@@ -1,6 +1,6 @@
 #include <ros/ros.h>
 #include <ros/console.h>
-#include <lcm_to_ros/PoseStamped.h>
+#include <ark_bridge/PoseStamped.h>
 #include <geometry_msgs/PoseStamped.h>
 #include <stdlib.h>
 
@@ -9,7 +9,7 @@ std::string lcm_topic, ros_topic, direction;
 
 void rosCallback(const geometry_msgs::PoseStamped::ConstPtr& msg)
 {
-  lcm_to_ros::PoseStamped bridge_message;
+  ark_bridge::PoseStamped bridge_message;
 
   bridge_message.header.seq = msg->header.seq;
   bridge_message.header.stamp = msg->header.stamp;
@@ -27,7 +27,7 @@ void rosCallback(const geometry_msgs::PoseStamped::ConstPtr& msg)
   pub.publish(bridge_message);
 }
 
-void lcmCallback(const lcm_to_ros::PoseStamped::ConstPtr& msg)
+void lcmCallback(const ark_bridge::PoseStamped::ConstPtr& msg)
 {
   geometry_msgs::PoseStamped bridge_message;
 
@@ -61,7 +61,7 @@ int main(int argc, char **argv) {
     }
 
     if(!direction.compare("ros2lcm")){
-      pub = nh.advertise<lcm_to_ros::PoseStamped>(lcm_topic, 10);
+      pub = nh.advertise<ark_bridge::PoseStamped>(lcm_topic, 10);
       sub = nh.subscribe(ros_topic, 10, rosCallback);
     }
     else{

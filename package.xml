@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <package>
-  <name>lcm_to_ros</name>
+  <name>ark_bridge</name>
   <version>0.0.0</version>
-  <description>The lcm_to_ros package</description>
+  <description>The ark_bridge package</description>
 
   <maintainer email="nicholas.lawrance@oregonstate.edu">nick</maintainer>
 

@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8.3)
-project(lcm_to_ros)
+project(ark_bridge)
 
 find_package(catkin REQUIRED COMPONENTS
   roscpp
@@ -37,7 +37,7 @@ generate_messages(
 ###################################
 catkin_package(
 #  INCLUDE_DIRS ${CMAKE_SOURCE_DIR}/${PROJECT_NAME}
-#  LIBRARIES lcm_to_ros
+#  LIBRARIES ark_bridge
   CATKIN_DEPENDS roscpp std_msgs message_runtime
 #  DEPENDS system_lib
 )
@@ -53,8 +53,8 @@ include_directories(
 )
 
 ## Declare a C++ library
-# add_library(lcm_to_ros
-#   src/${PROJECT_NAME}/lcm_to_ros.cpp
+# add_library(ark_bridge
+#   src/${PROJECT_NAME}/ark_bridge.cpp
 # )
 
 add_subdirectory(src)

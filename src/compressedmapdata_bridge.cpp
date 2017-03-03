@@ -1,6 +1,6 @@
 #include <ros/ros.h>
 #include <ros/console.h>
-#include <lcm_to_ros/CompressedMapData.h>
+#include <ark_bridge/CompressedMapData.h>
 #include <map_data_msgs/CompressedMapData.h>
 #include <stdlib.h>
 
@@ -9,7 +9,7 @@ std::string lcm_topic, ros_topic, direction;
 
 void rosCallback(const map_data_msgs::CompressedMapData::ConstPtr& msg)
 {
-  lcm_to_ros::CompressedMapData bridge_message;
+  ark_bridge::CompressedMapData bridge_message;
 
   bridge_message.ndata = msg->data.size();
 
@@ -20,7 +20,7 @@ void rosCallback(const map_data_msgs::CompressedMapData::ConstPtr& msg)
   pub.publish(bridge_message);
 }
 
-void lcmCallback(const lcm_to_ros::CompressedMapData::ConstPtr& msg)
+void lcmCallback(const ark_bridge::CompressedMapData::ConstPtr& msg)
 {
   map_data_msgs::CompressedMapData bridge_message;
 
@@ -45,7 +45,7 @@ int main(int argc, char **argv) {
     }
 
     if(!direction.compare("ros2lcm")){
-      pub = nh.advertise<lcm_to_ros::CompressedMapData>(lcm_topic, 10);
+      pub = nh.advertise<ark_bridge::CompressedMapData>(lcm_topic, 10);
       sub = nh.subscribe(ros_topic, 10, rosCallback);
     }
     else{

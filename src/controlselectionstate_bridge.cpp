@@ -1,6 +1,6 @@
 #include <ros/ros.h>
 #include <ros/console.h>
-#include <lcm_to_ros/ControlSelectionState.h>
+#include <ark_bridge/ControlSelectionState.h>
 #include <autonomy_msgs/ControlSelectionState.h>
 #include <stdlib.h>
 
@@ -9,7 +9,7 @@ std::string lcm_topic, ros_topic, direction;
 
 void rosCallback(const autonomy_msgs::ControlSelectionState::ConstPtr& msg)
 {
-  lcm_to_ros::ControlSelectionState bridge_message;
+  ark_bridge::ControlSelectionState bridge_message;
 
   bridge_message.core.enabled = msg->core.enabled;
   bridge_message.core.paused = msg->core.paused;
@@ -20,7 +20,7 @@ void rosCallback(const autonomy_msgs::ControlSelectionState::ConstPtr& msg)
   pub.publish(bridge_message);
 }
 
-void lcmCallback(const lcm_to_ros::ControlSelectionState::ConstPtr& msg)
+void lcmCallback(const ark_bridge::ControlSelectionState::ConstPtr& msg)
 {
   autonomy_msgs::ControlSelectionState bridge_message;
 
@@ -47,7 +47,7 @@ int main(int argc, char **argv) {
     }
 
     if(!direction.compare("ros2lcm")){
-      pub = nh.advertise<lcm_to_ros::ControlSelectionState>(lcm_topic, 10);
+      pub = nh.advertise<ark_bridge::ControlSelectionState>(lcm_topic, 10);
       sub = nh.subscribe(ros_topic, 10, rosCallback);
     }
     else{

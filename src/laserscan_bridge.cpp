@@ -1,6 +1,6 @@
 #include <ros/ros.h>
 #include <ros/console.h>
-#include <lcm_to_ros/LaserScan.h>
+#include <ark_bridge/LaserScan.h>
 #include <sensor_msgs/LaserScan.h>
 #include <stdlib.h>
 
@@ -9,7 +9,7 @@ std::string lcm_topic, ros_topic, direction;
 
 void rosCallback(const sensor_msgs::LaserScan::ConstPtr& msg)
 {
-  lcm_to_ros::LaserScan bridge_message;
+  ark_bridge::LaserScan bridge_message;
 
   bridge_message.header.seq = msg->header.seq;
   bridge_message.header.frame_id = msg->header.frame_id;
@@ -37,7 +37,7 @@ void rosCallback(const sensor_msgs::LaserScan::ConstPtr& msg)
   pub.publish(bridge_message);
 }
 
-void lcmCallback(const lcm_to_ros::LaserScan::ConstPtr& msg)
+void lcmCallback(const ark_bridge::LaserScan::ConstPtr& msg)
 {
   sensor_msgs::LaserScan bridge_message;
 
@@ -78,7 +78,7 @@ int main(int argc, char **argv) {
     }
 
     if(!direction.compare("ros2lcm")){
-      pub = nh.advertise<lcm_to_ros::LaserScan>(lcm_topic, 10);
+      pub = nh.advertise<ark_bridge::LaserScan>(lcm_topic, 10);
       sub = nh.subscribe(ros_topic, 10, rosCallback);
     }
     else{

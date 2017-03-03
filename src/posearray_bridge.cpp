@@ -1,8 +1,8 @@
 #include <ros/ros.h>
 #include <ros/console.h>
-#include <lcm_to_ros/PoseArray.h>
+#include <ark_bridge/PoseArray.h>
 #include <geometry_msgs/PoseArray.h>
-#include <lcm_to_ros/PoseStamped.h>
+#include <ark_bridge/PoseStamped.h>
 #include <geometry_msgs/PoseStamped.h>
 #include <stdlib.h>
 
@@ -11,7 +11,7 @@ std::string lcm_topic, ros_topic, direction;
 
 void rosCallback(const geometry_msgs::PoseArray::ConstPtr& msg)
 {
-  lcm_to_ros::PoseArray bridge_message;
+  ark_bridge::PoseArray bridge_message;
 
   bridge_message.header.seq = msg->header.seq;
   bridge_message.header.frame_id = msg->header.frame_id;
@@ -20,7 +20,7 @@ void rosCallback(const geometry_msgs::PoseArray::ConstPtr& msg)
   bridge_message.nposes = msg->poses.size();
 
   for(int i = 0; i < msg->poses.size(); i++){
-    lcm_to_ros::Pose pstamp;
+    ark_bridge::Pose pstamp;
 
     pstamp.position.x = msg->poses[i].position.x;
     pstamp.position.y = msg->poses[i].position.y;
@@ -37,7 +37,7 @@ void rosCallback(const geometry_msgs::PoseArray::ConstPtr& msg)
   pub.publish(bridge_message);
 }
 
-void lcmCallback(const lcm_to_ros::PoseArray::ConstPtr& msg)
+void lcmCallback(const ark_bridge::PoseArray::ConstPtr& msg)
 {
   geometry_msgs::PoseArray bridge_message;
 
@@ -77,7 +77,7 @@ int main(int argc, char **argv) {
     }
 
     if(!direction.compare("ros2lcm")){
-      pub = nh.advertise<lcm_to_ros::PoseArray>(lcm_topic, 10);
+      pub = nh.advertise<ark_bridge::PoseArray>(lcm_topic, 10);
       sub = nh.subscribe(ros_topic, 10, rosCallback);
     }
     else{

@@ -4,7 +4,7 @@
 
 #include <lcm/lcm-cpp.hpp>
 
-#include "lcm_to_ros/@MESSAGE_TYPE@.h"
+#include "ark_bridge/@MESSAGE_TYPE@.h"
 #include "@PACKAGE_NAME@/@MESSAGE_TYPE@.hpp"
 
 class LCMToROSRepublisher
@@ -26,7 +26,7 @@ LCMToROSRepublisher::LCMToROSRepublisher(ros::NodeHandle& n)
     nh = n;
    
     // Publisher/s
-    ros_pub = nh.advertise<lcm_to_ros::@MESSAGE_TYPE@>("@TOPIC_NAME@", 10);
+    ros_pub = nh.advertise<ark_bridge::@MESSAGE_TYPE@>("@TOPIC_NAME@", 10);
     ROS_DEBUG("@TOPIC_NAME@ publisher created");
 };
 
@@ -41,7 +41,7 @@ void LCMToROSRepublisher::lcmCallback(const lcm::ReceiveBuffer* rbuf,
 {
     ROS_DEBUG("Received message on channel \"%s\"", channel_name.c_str());
     
-    const lcm_to_ros::@MESSAGE_TYPE@ * new_ros_msg = reinterpret_cast<const lcm_to_ros::@MESSAGE_TYPE@ *>(msg);
+    const ark_bridge::@MESSAGE_TYPE@ * new_ros_msg = reinterpret_cast<const ark_bridge::@MESSAGE_TYPE@ *>(msg);
     ros_pub.publish(*new_ros_msg);
 };
         

@@ -1,119 +1,119 @@
 <launch>
-  <include file="$(find lcm_to_ros)/launch/ark_server_republishers.launch" />
+  <include file="$(find ark_bridge)/launch/ark_server_republishers.launch" />
 
-  <node name="tf_bridge" pkg="lcm_to_ros" type="tf_bridge" output="screen">
-    <param name="lcm_topic" value="/lcm_to_ros/tf"/>
+  <node name="tf_bridge" pkg="ark_bridge" type="tf_bridge" output="screen">
+    <param name="lcm_topic" value="/ark_bridge/tf"/>
     <param name="ros_topic" value="/tf"/>
     <param name="direction" value="lcm2ros"/>
   </node>
-  <node name="tf_static_bridge" pkg="lcm_to_ros" type="tf_bridge" output="screen">
-    <param name="lcm_topic" value="/lcm_to_ros/tf_static"/>
+  <node name="tf_static_bridge" pkg="ark_bridge" type="tf_bridge" output="screen">
+    <param name="lcm_topic" value="/ark_bridge/tf_static"/>
     <param name="ros_topic" value="/tf_static"/>
     <param name="direction" value="lcm2ros"/>
   </node>
-  <node name="odom_bridge_1" pkg="lcm_to_ros" type="odom_bridge" output="screen">
-    <param name="lcm_topic" value="/lcm_to_ros/platform_control_odom"/>
+  <node name="odom_bridge_1" pkg="ark_bridge" type="odom_bridge" output="screen">
+    <param name="lcm_topic" value="/ark_bridge/platform_control_odom"/>
     <param name="ros_topic" value="/platform_control/odom"/>
     <param name="direction" value="lcm2ros"/>
   </node>
-  <node name="odom_bridge_2" pkg="lcm_to_ros" type="odom_bridge" output="screen">
-    <param name="lcm_topic" value="/lcm_to_ros/platform_odometry"/>
+  <node name="odom_bridge_2" pkg="ark_bridge" type="odom_bridge" output="screen">
+    <param name="lcm_topic" value="/ark_bridge/platform_odometry"/>
     <param name="ros_topic" value="/platform_odometry"/>
     <param name="direction" value="lcm2ros"/>
   </node>
-  <node name="twist_bridge" pkg="lcm_to_ros" type="twist_bridge" output="screen">
-    <param name="lcm_topic" value="/lcm_to_ros/platform_control_cmd_vel"/>
+  <node name="twist_bridge" pkg="ark_bridge" type="twist_bridge" output="screen">
+    <param name="lcm_topic" value="/ark_bridge/platform_control_cmd_vel"/>
     <param name="ros_topic" value="/platform_control/cmd_vel"/>
     <param name="direction" value="ros2lcm"/>
   </node>
 
-  <node name="control_state_bridge" pkg="lcm_to_ros" type="controlselectionstate_bridge" output="screen">
-    <param name="lcm_topic" value="/lcm_to_ros/control_selection_control_state"/>
+  <node name="control_state_bridge" pkg="ark_bridge" type="controlselectionstate_bridge" output="screen">
+    <param name="lcm_topic" value="/ark_bridge/control_selection_control_state"/>
     <param name="ros_topic" value="/control_selection/control_state"/>
     <param name="direction" value="ros2lcm"/>
   </node>
-  <node name="e_stop_bridge" pkg="lcm_to_ros" type="bool_bridge" output="screen">
-    <param name="lcm_topic" value="/lcm_to_ros/e_stop"/>
+  <node name="e_stop_bridge" pkg="ark_bridge" type="bool_bridge" output="screen">
+    <param name="lcm_topic" value="/ark_bridge/e_stop"/>
     <param name="ros_topic" value="/e_stop"/>
     <param name="direction" value="ros2lcm"/>
   </node>
-  <node name="front_scan_bridge" pkg="lcm_to_ros" type="laserscan_bridge" output="screen">
-    <param name="lcm_topic" value="/lcm_to_ros/front_scan"/>
+  <node name="front_scan_bridge" pkg="ark_bridge" type="laserscan_bridge" output="screen">
+    <param name="lcm_topic" value="/ark_bridge/front_scan"/>
     <param name="ros_topic" value="/front/scan"/>
     <param name="direction" value="ros2lcm"/>
   </node>
-  <node name="map_data_features_markers_waypoint_bridge" pkg="lcm_to_ros" type="geometryarray_bridge" output="screen">
-    <param name="lcm_topic" value="/lcm_to_ros/map_data_features_markers_waypoint"/>
+  <node name="map_data_features_markers_waypoint_bridge" pkg="ark_bridge" type="geometryarray_bridge" output="screen">
+    <param name="lcm_topic" value="/ark_bridge/map_data_features_markers_waypoint"/>
     <param name="ros_topic" value="/map_data/features/markers/waypoint"/>
     <param name="direction" value="ros2lcm"/>
   </node>
-  <node name="map_data_features_zones_exclusion_bridge" pkg="lcm_to_ros" type="geometryarray_bridge" output="screen">
-    <param name="lcm_topic" value="/lcm_to_ros/map_data_features_zones_exclusion"/>
+  <node name="map_data_features_zones_exclusion_bridge" pkg="ark_bridge" type="geometryarray_bridge" output="screen">
+    <param name="lcm_topic" value="/ark_bridge/map_data_features_zones_exclusion"/>
     <param name="ros_topic" value="/map_data/features/zones/exclusion"/>
     <param name="direction" value="ros2lcm"/>
   </node>
-  <node name="map_data_loaded_map_filename_bridge" pkg="lcm_to_ros" type="string_bridge" output="screen">
-    <param name="lcm_topic" value="/lcm_to_ros/map_data_loaded_map_filename"/>
+  <node name="map_data_loaded_map_filename_bridge" pkg="ark_bridge" type="string_bridge" output="screen">
+    <param name="lcm_topic" value="/ark_bridge/map_data_loaded_map_filename"/>
     <param name="ros_topic" value="/map_data/loaded_map_filename"/>
     <param name="direction" value="ros2lcm"/>
   </node>
-  <node name="map_data_map_bridge" pkg="lcm_to_ros" type="occupancygrid_bridge" output="screen">
-    <param name="lcm_topic" value="/lcm_to_ros/map_data_map"/>
+  <node name="map_data_map_bridge" pkg="ark_bridge" type="occupancygrid_bridge" output="screen">
+    <param name="lcm_topic" value="/ark_bridge/map_data_map"/>
     <param name="ros_topic" value="/map_data/map"/>
     <param name="direction" value="ros2lcm"/>
   </node>
-  <node name="map_data_md5sum_bridge" pkg="lcm_to_ros" type="string_bridge" output="screen">
-    <param name="lcm_topic" value="/lcm_to_ros/map_data_md5sum"/>
+  <node name="map_data_md5sum_bridge" pkg="ark_bridge" type="string_bridge" output="screen">
+    <param name="lcm_topic" value="/ark_bridge/map_data_md5sum"/>
     <param name="ros_topic" value="/map_data/md5sum"/>
     <param name="direction" value="ros2lcm"/>
   </node>
-  <node name="map_data_saved_map_data_bridge" pkg="lcm_to_ros" type="compressedmapdata_bridge" output="screen">
-    <param name="lcm_topic" value="/lcm_to_ros/map_data_saved_map_data"/>
+  <node name="map_data_saved_map_data_bridge" pkg="ark_bridge" type="compressedmapdata_bridge" output="screen">
+    <param name="lcm_topic" value="/ark_bridge/map_data_saved_map_data"/>
     <param name="ros_topic" value="/map_data/saved_map_data"/>
     <param name="direction" value="ros2lcm"/>
   </node>
-  <node name="path_bridge" pkg="lcm_to_ros" type="posearray_bridge" output="screen">
-    <param name="lcm_topic" value="/lcm_to_ros/path"/>
+  <node name="path_bridge" pkg="ark_bridge" type="posearray_bridge" output="screen">
+    <param name="lcm_topic" value="/ark_bridge/path"/>
     <param name="ros_topic" value="/path"/>
     <param name="direction" value="ros2lcm"/>
   </node>
-  <node name="rear_scan_bridge" pkg="lcm_to_ros" type="laserscan_bridge" output="screen">
-    <param name="lcm_topic" value="/lcm_to_ros/rear_scan"/>
+  <node name="rear_scan_bridge" pkg="ark_bridge" type="laserscan_bridge" output="screen">
+    <param name="lcm_topic" value="/ark_bridge/rear_scan"/>
     <param name="ros_topic" value="/rear/scan"/>
     <param name="direction" value="ros2lcm"/>
   </node>
-  <node name="slam_map_bridge" pkg="lcm_to_ros" type="occupancygrid_bridge" output="screen">
-    <param name="lcm_topic" value="/lcm_to_ros/slam_map"/>
+  <node name="slam_map_bridge" pkg="ark_bridge" type="occupancygrid_bridge" output="screen">
+    <param name="lcm_topic" value="/ark_bridge/slam_map"/>
     <param name="ros_topic" value="/slam/map"/>
     <param name="direction" value="ros2lcm"/>
   </node>
-  <node name="slam_pose_bridge" pkg="lcm_to_ros" type="odom_bridge" output="screen">
-    <param name="lcm_topic" value="/lcm_to_ros/slam_pose"/>
+  <node name="slam_pose_bridge" pkg="ark_bridge" type="odom_bridge" output="screen">
+    <param name="lcm_topic" value="/ark_bridge/slam_pose"/>
     <param name="ros_topic" value="/slam/pose"/>
     <param name="direction" value="ros2lcm"/>
   </node>
-  <node name="strategy_manager_distance_to_goal_bridge" pkg="lcm_to_ros" type="distancetogoal_bridge" output="screen">
-    <param name="lcm_topic" value="/lcm_to_ros/strategy_manager_distance_to_goal"/>
+  <node name="strategy_manager_distance_to_goal_bridge" pkg="ark_bridge" type="distancetogoal_bridge" output="screen">
+    <param name="lcm_topic" value="/ark_bridge/strategy_manager_distance_to_goal"/>
     <param name="ros_topic" value="/strategy_manager/distance_to_goal"/>
     <param name="direction" value="ros2lcm"/>
   </node>
-  <node name="strategy_manager_path_complete_bridge" pkg="lcm_to_ros" type="bool_bridge" output="screen">
-    <param name="lcm_topic" value="/lcm_to_ros/strategy_manager_path_complete"/>
+  <node name="strategy_manager_path_complete_bridge" pkg="ark_bridge" type="bool_bridge" output="screen">
+    <param name="lcm_topic" value="/ark_bridge/strategy_manager_path_complete"/>
     <param name="ros_topic" value="/strategy_manager/path_complete"/>
     <param name="direction" value="ros2lcm"/>
   </node>
-  <node name="strategy_manager_pause_status_bridge" pkg="lcm_to_ros" type="pausestatus_bridge" output="screen">
-    <param name="lcm_topic" value="/lcm_to_ros/strategy_manager_pause_status"/>
+  <node name="strategy_manager_pause_status_bridge" pkg="ark_bridge" type="pausestatus_bridge" output="screen">
+    <param name="lcm_topic" value="/ark_bridge/strategy_manager_pause_status"/>
     <param name="ros_topic" value="/strategy_manager/pause_status"/>
     <param name="direction" value="ros2lcm"/>
   </node>
-  <node name="strategy_manager_simple_goal_bridge" pkg="lcm_to_ros" type="posestamped_bridge" output="screen">
-    <param name="lcm_topic" value="/lcm_to_ros/strategy_manager_simple_goal"/>
+  <node name="strategy_manager_simple_goal_bridge" pkg="ark_bridge" type="posestamped_bridge" output="screen">
+    <param name="lcm_topic" value="/ark_bridge/strategy_manager_simple_goal"/>
     <param name="ros_topic" value="/strategy_manager/simple_goal"/>
     <param name="direction" value="ros2lcm"/>
   </node>
-  <node name="strategy_manager_simple_path_bridge" pkg="lcm_to_ros" type="path_bridge" output="screen">
-    <param name="lcm_topic" value="/lcm_to_ros/strategy_manager_simple_path"/>
+  <node name="strategy_manager_simple_path_bridge" pkg="ark_bridge" type="path_bridge" output="screen">
+    <param name="lcm_topic" value="/ark_bridge/strategy_manager_simple_path"/>
     <param name="ros_topic" value="/strategy_manager/simple_path"/>
     <param name="direction" value="ros2lcm"/>
   </node>

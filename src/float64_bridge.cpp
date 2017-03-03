@@ -1,6 +1,6 @@
 #include <ros/ros.h>
 #include <ros/console.h>
-#include <lcm_to_ros/Float64.h>
+#include <ark_bridge/Float64.h>
 #include <std_msgs/Float64.h>
 #include <stdlib.h>
 
@@ -9,14 +9,14 @@ std::string lcm_topic, ros_topic, direction;
 
 void rosCallback(const std_msgs::Float64::ConstPtr& msg)
 {
-  lcm_to_ros::Float64 bridge_message;
+  ark_bridge::Float64 bridge_message;
 
   bridge_message.data = msg->data;
 
   pub.publish(bridge_message);
 }
 
-void lcmCallback(const lcm_to_ros::Float64::ConstPtr& msg)
+void lcmCallback(const ark_bridge::Float64::ConstPtr& msg)
 {
   std_msgs::Float64 bridge_message;
 
@@ -39,7 +39,7 @@ int main(int argc, char **argv) {
     }
 
     if(!direction.compare("ros2lcm")){
-      pub = nh.advertise<lcm_to_ros::Float64>(lcm_topic, 10);
+      pub = nh.advertise<ark_bridge::Float64>(lcm_topic, 10);
       sub = nh.subscribe(ros_topic, 10, rosCallback);
     }
     else{

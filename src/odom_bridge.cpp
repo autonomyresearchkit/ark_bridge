@@ -1,6 +1,6 @@
 #include <ros/ros.h>
 #include <ros/console.h>
-#include <lcm_to_ros/Odometry.h>
+#include <ark_bridge/Odometry.h>
 #include <nav_msgs/Odometry.h>
 #include <stdlib.h>
 
@@ -9,7 +9,7 @@ std::string lcm_topic, ros_topic, direction;
 
 void rosCallback(const nav_msgs::Odometry::ConstPtr& msg)
 {
-  lcm_to_ros::Odometry bridge_message;
+  ark_bridge::Odometry bridge_message;
 
   bridge_message.child_frame_id = msg->child_frame_id;
 
@@ -41,7 +41,7 @@ void rosCallback(const nav_msgs::Odometry::ConstPtr& msg)
   pub.publish(bridge_message);
 }
 
-void lcmCallback(const lcm_to_ros::Odometry::ConstPtr& msg)
+void lcmCallback(const ark_bridge::Odometry::ConstPtr& msg)
 {
   nav_msgs::Odometry bridge_message;
 
@@ -89,7 +89,7 @@ int main(int argc, char **argv) {
     }
 
     if(!direction.compare("ros2lcm")){
-      pub = nh.advertise<lcm_to_ros::Odometry>(lcm_topic, 10);
+      pub = nh.advertise<ark_bridge::Odometry>(lcm_topic, 10);
       sub = nh.subscribe(ros_topic, 10, rosCallback);
     }
     else{

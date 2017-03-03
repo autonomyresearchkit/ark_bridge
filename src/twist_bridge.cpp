@@ -1,6 +1,6 @@
 #include <ros/ros.h>
 #include <ros/console.h>
-#include <lcm_to_ros/Twist.h>
+#include <ark_bridge/Twist.h>
 #include <geometry_msgs/Twist.h>
 #include <stdlib.h>
 
@@ -9,7 +9,7 @@ std::string lcm_topic, ros_topic, direction;
 
 void rosCallback(const geometry_msgs::Twist::ConstPtr& msg)
 {
-  lcm_to_ros::Twist bridge_message;
+  ark_bridge::Twist bridge_message;
 
   bridge_message.linear.x = msg->linear.x;
   bridge_message.linear.y = msg->linear.y;
@@ -22,7 +22,7 @@ void rosCallback(const geometry_msgs::Twist::ConstPtr& msg)
   pub.publish(bridge_message);
 }
 
-void lcmCallback(const lcm_to_ros::Twist::ConstPtr& msg)
+void lcmCallback(const ark_bridge::Twist::ConstPtr& msg)
 {
   geometry_msgs::Twist bridge_message;
 
@@ -51,7 +51,7 @@ int main(int argc, char **argv) {
     }
 
     if(!direction.compare("ros2lcm")){
-      pub = nh.advertise<lcm_to_ros::Twist>(lcm_topic, 10);
+      pub = nh.advertise<ark_bridge::Twist>(lcm_topic, 10);
       sub = nh.subscribe(ros_topic, 10, rosCallback);
     }
     else{

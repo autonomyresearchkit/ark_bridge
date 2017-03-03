@@ -1,6 +1,6 @@
 #include <ros/ros.h>
 #include <ros/console.h>
-#include <lcm_to_ros/String.h>
+#include <ark_bridge/String.h>
 #include <std_msgs/String.h>
 #include <stdlib.h>
 
@@ -9,14 +9,14 @@ std::string lcm_topic, ros_topic, direction;
 
 void rosCallback(const std_msgs::String::ConstPtr& msg)
 {
-  lcm_to_ros::String bridge_message;
+  ark_bridge::String bridge_message;
 
   bridge_message.data = msg->data;
 
   pub.publish(bridge_message);
 }
 
-void lcmCallback(const lcm_to_ros::String::ConstPtr& msg)
+void lcmCallback(const ark_bridge::String::ConstPtr& msg)
 {
   std_msgs::String bridge_message;
 
@@ -39,7 +39,7 @@ int main(int argc, char **argv) {
     }
 
     if(!direction.compare("ros2lcm")){
-      pub = nh.advertise<lcm_to_ros::String>(lcm_topic, 10);
+      pub = nh.advertise<ark_bridge::String>(lcm_topic, 10);
       sub = nh.subscribe(ros_topic, 10, rosCallback);
     }
     else{
