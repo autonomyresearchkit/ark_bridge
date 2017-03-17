@@ -1,0 +1,8 @@
+package ark;
+
+struct GoalStatus
+{
+  GoalID goal_id;
+  int16_t status;
+  string text;
+}

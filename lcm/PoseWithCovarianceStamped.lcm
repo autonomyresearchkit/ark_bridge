@@ -1,0 +1,7 @@
+package ark;
+
+struct PoseWithCovarianceStamped
+{
+  Header header;
+  PoseWithCovariance pose;
+}

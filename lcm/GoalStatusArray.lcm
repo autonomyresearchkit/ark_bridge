@@ -1,0 +1,8 @@
+package ark;
+
+struct GoalStatusArray
+{
+  Header header;
+  int32_t nstatus_list;
+  GoalStatus status_list[nstatus_list];
+}
