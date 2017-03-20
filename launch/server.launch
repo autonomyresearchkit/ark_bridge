@@ -40,7 +40,7 @@
   <node name="front_scan_bridge" pkg="ark_bridge" type="laserscan_bridge" output="screen">
     <param name="lcm_topic" value="/ark_bridge/front_scan"/>
     <param name="ros_topic" value="/front/scan"/>
-    <param name="direction" value="ros2lcm"/>
+    <param name="direction" value="lcm2ros"/>
   </node>
   <node name="map_data_features_markers_waypoint_bridge" pkg="ark_bridge" type="geometryarray_bridge" output="screen">
     <param name="lcm_topic" value="/ark_bridge/map_data_features_markers_waypoint"/>
@@ -80,16 +80,11 @@
   <node name="rear_scan_bridge" pkg="ark_bridge" type="laserscan_bridge" output="screen">
     <param name="lcm_topic" value="/ark_bridge/rear_scan"/>
     <param name="ros_topic" value="/rear/scan"/>
-    <param name="direction" value="ros2lcm"/>
+    <param name="direction" value="lcm2ros"/>
   </node>
-  <node name="slam_map_bridge" pkg="ark_bridge" type="occupancygrid_bridge" output="screen">
-    <param name="lcm_topic" value="/ark_bridge/slam_map"/>
-    <param name="ros_topic" value="/slam/map"/>
-    <param name="direction" value="ros2lcm"/>
-  </node>
-  <node name="slam_pose_bridge" pkg="ark_bridge" type="odom_bridge" output="screen">
-    <param name="lcm_topic" value="/ark_bridge/slam_pose"/>
-    <param name="ros_topic" value="/slam/pose"/>
+  <node name="slam_localization_score_bridge" pkg="ark_bridge" type="float64_bridge" output="screen">
+    <param name="lcm_topic" value="/ark_bridge/slam_localization_score"/>
+    <param name="ros_topic" value="/slam/localization_score"/>
     <param name="direction" value="ros2lcm"/>
   </node>
   <node name="strategy_manager_distance_to_goal_bridge" pkg="ark_bridge" type="distancetogoal_bridge" output="screen">
