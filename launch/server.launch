@@ -1,5 +1,4 @@
 <launch>
-  <include file="$(find ark_bridge)/launch/ark_server_republishers.launch" />
 
   <node name="tf_bridge" pkg="ark_bridge" type="tf_bridge" output="screen">
     <param name="lcm_topic" value="/ark_bridge/tf"/>
@@ -72,6 +71,11 @@
     <param name="ros_topic" value="/map_data/saved_map_data"/>
     <param name="direction" value="ros2lcm"/>
   </node>
+  <node name="move_base_status_bridge" pkg="ark_bridge" type="goalstatusarray_bridge" output="screen">
+    <param name="lcm_topic" value="/ark_bridge/move_base_status"/>
+    <param name="ros_topic" value="/move_base/status"/>
+    <param name="direction" value="ros2lcm"/>
+  </node>
   <node name="path_bridge" pkg="ark_bridge" type="posearray_bridge" output="screen">
     <param name="lcm_topic" value="/ark_bridge/path"/>
     <param name="ros_topic" value="/path"/>
@@ -105,6 +109,11 @@
   <node name="strategy_manager_simple_goal_bridge" pkg="ark_bridge" type="posestamped_bridge" output="screen">
     <param name="lcm_topic" value="/ark_bridge/strategy_manager_simple_goal"/>
     <param name="ros_topic" value="/strategy_manager/simple_goal"/>
+    <param name="direction" value="ros2lcm"/>
+  </node>
+  <node name="slam_estimated_pose_bridge" pkg="ark_bridge" type="posewithcovariancestamped_bridge" output="screen">
+    <param name="lcm_topic" value="/ark_bridge/slam_estimated_pose"/>
+    <param name="ros_topic" value="/slam/estimated_pose"/>
     <param name="direction" value="ros2lcm"/>
   </node>
   <node name="strategy_manager_simple_path_bridge" pkg="ark_bridge" type="path_bridge" output="screen">

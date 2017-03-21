@@ -186,6 +186,17 @@ add_dependencies(posestamped_bridge
 )
 
 ###########################################################################
+add_executable(posewithcovariancestamped_bridge posewithcovariancestamped_bridge.cpp)
+target_link_libraries( posewithcovariancestamped_bridge
+   ${LCM_LIBRARY}
+   ${catkin_LIBRARIES}
+)
+add_dependencies(posewithcovariancestamped_bridge
+   ${${PROJECT_NAME}_EXPORTED_TARGETS}
+   ${catkin_EXPORTED_TARGETS}
+)
+
+###########################################################################
 add_executable(string_bridge string_bridge.cpp)
 target_link_libraries( string_bridge
    ${LCM_LIBRARY}
