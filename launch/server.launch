@@ -1,4 +1,5 @@
 <launch>
+  <include file="$(find ark_bridge)/launch/ark_server_republishers.launch" />
 
   <node name="tf_bridge" pkg="ark_bridge" type="tf_bridge" output="screen">
     <param name="lcm_topic" value="/ark_bridge/tf"/>

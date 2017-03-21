@@ -1,0 +1,7 @@
+package ark;
+
+struct Status
+{
+  int64_t status;
+}
+

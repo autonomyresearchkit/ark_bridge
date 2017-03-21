@@ -1,0 +1,9 @@
+package ark;
+
+struct PauseControlResponse
+{
+  PauseStatus status;
+  int16_t result;
+  string result_text;
+}
+

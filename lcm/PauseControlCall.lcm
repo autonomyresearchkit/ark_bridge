@@ -1,0 +1,8 @@
+package ark;
+
+struct PauseControlCall
+{
+  string job_id;
+  string source;
+}
+

@@ -1,0 +1,7 @@
+package ark;
+
+struct StringArray
+{
+  int32_t nstrings;
+  string data[nstrings];
+}

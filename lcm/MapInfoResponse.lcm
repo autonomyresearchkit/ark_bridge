@@ -1,0 +1,9 @@
+package ark;
+
+struct MapInfoResponse
+{
+  string name;
+  string md5sum;
+  int32_t size;
+}
+
