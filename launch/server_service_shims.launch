@@ -1,0 +1,7 @@
+<launch>
+  <node name="listmaps_service" pkg="ark_bridge" type="listmaps_service" output="screen">
+    <param name="call_topic" value="/ark_bridge/listmaps_call"/>
+    <param name="response_topic" value="/listmaps_response"/>
+    <param name="service_name" value="/map_data/list_maps"/>
+  </node>
+</launch>

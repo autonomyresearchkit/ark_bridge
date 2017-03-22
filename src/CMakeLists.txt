@@ -195,3 +195,116 @@ add_dependencies(string_bridge
    ${${PROJECT_NAME}_EXPORTED_TARGETS}
    ${catkin_EXPORTED_TARGETS}
 )
+
+##########################################################################
+##########################################################################
+##########################################################################
+###########################################################################
+add_executable(empty_service empty_service.cpp)
+target_link_libraries( empty_service
+    ${LCM_LIBRARY}
+    ${catkin_LIBRARIES}
+)
+add_dependencies(empty_service
+    ${${PROJECT_NAME}_EXPORTED_TARGETS}
+    ${catkin_EXPORTED_TARGETS}
+)
+
+###########################################################################
+add_executable(string_service string_service.cpp)
+target_link_libraries( string_service
+    ${LCM_LIBRARY}
+    ${catkin_LIBRARIES}
+)
+add_dependencies(string_service
+    ${${PROJECT_NAME}_EXPORTED_TARGETS}
+    ${catkin_EXPORTED_TARGETS}
+)
+
+###########################################################################
+add_executable(setcontrolmode_service setcontrolmode_service.cpp)
+target_link_libraries( setcontrolmode_service
+    ${LCM_LIBRARY}
+    ${catkin_LIBRARIES}
+)
+add_dependencies(setcontrolmode_service
+    ${${PROJECT_NAME}_EXPORTED_TARGETS}
+    ${catkin_EXPORTED_TARGETS}
+)
+
+###########################################################################
+add_executable(setslammode_service setslammode_service.cpp)
+target_link_libraries( setslammode_service
+    ${LCM_LIBRARY}
+    ${catkin_LIBRARIES}
+)
+add_dependencies(setslammode_service
+    ${${PROJECT_NAME}_EXPORTED_TARGETS}
+    ${catkin_EXPORTED_TARGETS}
+)
+
+###########################################################################
+add_executable(loadmapfromdisk_service loadmapfromdisk_service.cpp)
+target_link_libraries( loadmapfromdisk_service
+    ${LCM_LIBRARY}
+    ${catkin_LIBRARIES}
+)
+add_dependencies(loadmapfromdisk_service
+    ${${PROJECT_NAME}_EXPORTED_TARGETS}
+    ${catkin_EXPORTED_TARGETS}
+)
+
+###########################################################################
+add_executable(deletemap_service deletemap_service.cpp)
+target_link_libraries( deletemap_service
+    ${LCM_LIBRARY}
+    ${catkin_LIBRARIES}
+)
+add_dependencies(deletemap_service
+    ${${PROJECT_NAME}_EXPORTED_TARGETS}
+    ${catkin_EXPORTED_TARGETS}
+)
+
+###########################################################################
+add_executable(savemaptodisk_service savemaptodisk_service.cpp)
+target_link_libraries( savemaptodisk_service
+    ${LCM_LIBRARY}
+    ${catkin_LIBRARIES}
+)
+add_dependencies(savemaptodisk_service
+    ${${PROJECT_NAME}_EXPORTED_TARGETS}
+    ${catkin_EXPORTED_TARGETS}
+)
+
+###########################################################################
+add_executable(listmaps_service listmaps_service.cpp)
+target_link_libraries( listmaps_service
+    ${LCM_LIBRARY}
+    ${catkin_LIBRARIES}
+)
+add_dependencies(listmaps_service
+    ${${PROJECT_NAME}_EXPORTED_TARGETS}
+    ${catkin_EXPORTED_TARGETS}
+)
+
+###########################################################################
+add_executable(mapinfo_service mapinfo_service.cpp)
+target_link_libraries( mapinfo_service
+    ${LCM_LIBRARY}
+    ${catkin_LIBRARIES}
+)
+add_dependencies(mapinfo_service
+    ${${PROJECT_NAME}_EXPORTED_TARGETS}
+    ${catkin_EXPORTED_TARGETS}
+)
+
+###########################################################################
+add_executable(pausecontrol_service pausecontrol_service.cpp)
+target_link_libraries( pausecontrol_service
+    ${LCM_LIBRARY}
+    ${catkin_LIBRARIES}
+)
+add_dependencies(pausecontrol_service
+    ${${PROJECT_NAME}_EXPORTED_TARGETS}
+    ${catkin_EXPORTED_TARGETS}
+)

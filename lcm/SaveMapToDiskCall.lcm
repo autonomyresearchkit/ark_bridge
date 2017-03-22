@@ -3,7 +3,7 @@ package ark;
 struct SaveMapToDiskCall
 {
   string map_topic;
-  time timeout;
+  duration timeout;
   string filename;
 }
 

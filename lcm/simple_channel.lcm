@@ -1,7 +1,0 @@
-package exlcm;
-
-struct simple_channel
-{
-    string name;
-    double value;
-}
