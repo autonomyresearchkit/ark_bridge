@@ -2,6 +2,6 @@ package ark;
 
 struct ArkConfigSettingsResponse
 {
-	bool result;	
+	boolean result;	
 	string information;
 }
