@@ -308,3 +308,14 @@ add_dependencies(pausecontrol_service
     ${${PROJECT_NAME}_EXPORTED_TARGETS}
     ${catkin_EXPORTED_TARGETS}
 )
+
+###########################################################################
+add_executable(arkconfigsettings_service arkconfigsettings_service.cpp)
+target_link_libraries( arkconfigsettings_service
+    ${LCM_LIBRARY}
+    ${catkin_LIBRARIES}
+)
+add_dependencies(arkconfigsettings_service
+    ${${PROJECT_NAME}_EXPORTED_TARGETS}
+    ${catkin_EXPORTED_TARGETS}
+)
