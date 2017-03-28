@@ -1,132 +1,132 @@
 <launch>
   <node name="autonomy_clear_all_disabled_servicer" pkg="ark_bridge" type="empty_service" output="screen">
-    <param name="call_topic" value="control_selection_autonomy_clear_all_disabled_call"/>
-    <param name="response_topic" value="control_selection_autonomy_clear_all_disabled_response"/>
+    <param name="call_topic" value="/ark_bridge/control_selection_autonomy_clear_all_disabled_call"/>
+    <param name="response_topic" value="/ark_bridge/control_selection_autonomy_clear_all_disabled_response"/>
     <param name="service_name" value="/control_selection/autonomy/clear_all_disabled"/>
   </node>
   <node name="autonomy_clear_all_paused_servicer" pkg="ark_bridge" type="empty_service" output="screen">
-    <param name="call_topic" value="control_selection_autonomy_clear_all_paused_call"/>
-    <param name="response_topic" value="control_selection_autonomy_clear_all_paused_response"/>
+    <param name="call_topic" value="/ark_bridge/control_selection_autonomy_clear_all_paused_call"/>
+    <param name="response_topic" value="/ark_bridge/control_selection_autonomy_clear_all_paused_response"/>
     <param name="service_name" value="/control_selection/autonomy/clear_all_paused"/>
   </node>
   <node name="autonomy_disable_servicer" pkg="ark_bridge" type="string_service" output="screen">
-    <param name="call_topic" value="control_selection_autonomy_disable_call"/>
-    <param name="response_topic" value="control_selection_autonomy_disable_response"/>
+    <param name="call_topic" value="/ark_bridge/control_selection_autonomy_disable_call"/>
+    <param name="response_topic" value="/ark_bridge/control_selection_autonomy_disable_response"/>
     <param name="service_name" value="/control_selection/autonomy/disable"/>
   </node>
   <node name="autonomy_enable_servicer" pkg="ark_bridge" type="string_service" output="screen">
-    <param name="call_topic" value="control_selection_autonomy_enable_call"/>
-    <param name="response_topic" value="control_selection_autonomy_enable_response"/>
+    <param name="call_topic" value="/ark_bridge/control_selection_autonomy_enable_call"/>
+    <param name="response_topic" value="/ark_bridge/control_selection_autonomy_enable_response"/>
     <param name="service_name" value="/control_selection/autonomy/enable"/>
   </node>
   <node name="autonomy_pause_servicer" pkg="ark_bridge" type="string_service" output="screen">
-    <param name="call_topic" value="control_selection_autonomy_pause_call"/>
-    <param name="response_topic" value="control_selection_autonomy_pause_response"/>
+    <param name="call_topic" value="/ark_bridge/control_selection_autonomy_pause_call"/>
+    <param name="response_topic" value="/ark_bridge/control_selection_autonomy_pause_response"/>
     <param name="service_name" value="/control_selection/autonomy/pause"/>
   </node>
   <node name="autonomy_resume_servicer" pkg="ark_bridge" type="string_service" output="screen">
-    <param name="call_topic" value="control_selection_autonomy_resume_call"/>
-    <param name="response_topic" value="control_selection_autonomy_resume_response"/>
+    <param name="call_topic" value="/ark_bridge/control_selection_autonomy_resume_call"/>
+    <param name="response_topic" value="/ark_bridge/control_selection_autonomy_resume_response"/>
     <param name="service_name" value="/control_selection/autonomy/resume"/>
   </node>
   <node name="core_clear_all_disabled_servicer" pkg="ark_bridge" type="empty_service" output="screen">
-    <param name="call_topic" value="control_selection_core_clear_all_disabled_call"/>
-    <param name="response_topic" value="control_selection_core_clear_all_disabled_response"/>
+    <param name="call_topic" value="/ark_bridge/control_selection_core_clear_all_disabled_call"/>
+    <param name="response_topic" value="/ark_bridge/control_selection_core_clear_all_disabled_response"/>
     <param name="service_name" value="/control_selection/core/clear_all_disabled"/>
   </node>
   <node name="core_clear_all_paused_servicer" pkg="ark_bridge" type="empty_service" output="screen">
-    <param name="call_topic" value="control_selection_core_clear_all_paused_call"/>
-    <param name="response_topic" value="control_selection_core_clear_all_paused_response"/>
+    <param name="call_topic" value="/ark_bridge/control_selection_core_clear_all_paused_call"/>
+    <param name="response_topic" value="/ark_bridge/control_selection_core_clear_all_paused_response"/>
     <param name="service_name" value="/control_selection/core/clear_all_paused"/>
   </node>
   <node name="core_disable_servicer" pkg="ark_bridge" type="string_service" output="screen">
-    <param name="call_topic" value="control_selection_core_disable_call"/>
-    <param name="response_topic" value="control_selection_core_disable_response"/>
+    <param name="call_topic" value="/ark_bridge/control_selection_core_disable_call"/>
+    <param name="response_topic" value="/ark_bridge/control_selection_core_disable_response"/>
     <param name="service_name" value="/control_selection/core/disable"/>
   </node>
   <node name="core_enable_servicer" pkg="ark_bridge" type="string_service" output="screen">
-    <param name="call_topic" value="control_selection_core_enable_call"/>
-    <param name="response_topic" value="control_selection_core_enable_response"/>
+    <param name="call_topic" value="/ark_bridge/control_selection_core_enable_call"/>
+    <param name="response_topic" value="/ark_bridge/control_selection_core_enable_response"/>
     <param name="service_name" value="/control_selection/core/enable"/>
   </node>
   <node name="core_pause_servicer" pkg="ark_bridge" type="string_service" output="screen">
-    <param name="call_topic" value="control_selection_core_pause_call"/>
-    <param name="response_topic" value="control_selection_core_pause_response"/>
+    <param name="call_topic" value="/ark_bridge/control_selection_core_pause_call"/>
+    <param name="response_topic" value="/ark_bridge/control_selection_core_pause_response"/>
     <param name="service_name" value="/control_selection/core/pause"/>
   </node>
   <node name="core_resume_servicer" pkg="ark_bridge" type="string_service" output="screen">
-    <param name="call_topic" value="control_selection_core_resume_call"/>
-    <param name="response_topic" value="control_selection_core_resume_response"/>
+    <param name="call_topic" value="/ark_bridge/control_selection_core_resume_call"/>
+    <param name="response_topic" value="/ark_bridge/control_selection_core_resume_response"/>
     <param name="service_name" value="/control_selection/core/resume"/>
   </node>
   <node name="control_selection_set_mode_servicer" pkg="ark_bridge" type="setcontrolmode_service" output="screen">
-    <param name="call_topic" value="control_selection_set_mode_call"/>
-    <param name="response_topic" value="control_selection_set_mode_response"/>
+    <param name="call_topic" value="/ark_bridge/control_selection_set_mode_call"/>
+    <param name="response_topic" value="/ark_bridge/control_selection_set_mode_response"/>
     <param name="service_name" value="/control_selection/set_mode"/>
   </node>
   <node name="map_data_clear_servicer" pkg="ark_bridge" type="empty_service" output="screen">
-    <param name="call_topic" value="map_data_clear_call"/>
-    <param name="response_topic" value="map_data_clear_response"/>
+    <param name="call_topic" value="/ark_bridge/map_data_clear_call"/>
+    <param name="response_topic" value="/ark_bridge/map_data_clear_response"/>
     <param name="service_name" value="/map_data/clear"/>
   </node>
   <node name="map_data_delete_map_servicer" pkg="ark_bridge" type="deletemap_service" output="screen">
-    <param name="call_topic" value="map_data_delete_map_call"/>
-    <param name="response_topic" value="map_data_delete_map_response"/>
+    <param name="call_topic" value="/ark_bridge/map_data_delete_map_call"/>
+    <param name="response_topic" value="/ark_bridge/map_data_delete_map_response"/>
     <param name="service_name" value="/map_data/delete_map"/>
   </node>
   <node name="map_data_get_current_map_servicer" pkg="ark_bridge" type="getcurrentmap_service" output="screen">
-    <param name="call_topic" value="map_data_get_current_map_call"/>
-    <param name="response_topic" value="map_data_get_current_map_response"/>
+    <param name="call_topic" value="/ark_bridge/map_data_get_current_map_call"/>
+    <param name="response_topic" value="/ark_bridge/map_data_get_current_map_response"/>
     <param name="service_name" value="/map_data/get_current_map"/>
   </node>
   <node name="map_data_get_map_info_servicer" pkg="ark_bridge" type="mapinfo_service" output="screen">
-    <param name="call_topic" value="map_data_get_map_info_call"/>
-    <param name="response_topic" value="map_data_get_map_info_response"/>
+    <param name="call_topic" value="/ark_bridge/map_data_get_map_info_call"/>
+    <param name="response_topic" value="/ark_bridge/map_data_get_map_info_response"/>
     <param name="service_name" value="/map_data/get_map_info"/>
   </node>
   <node name="map_data_list_maps_servicer" pkg="ark_bridge" type="listmaps_service" output="screen">
-    <param name="call_topic" value="map_data_list_maps_call"/>
-    <param name="response_topic" value="map_data_list_maps_response"/>
+    <param name="call_topic" value="/ark_bridge/map_data_list_maps_call"/>
+    <param name="response_topic" value="/ark_bridge/map_data_list_maps_response"/>
     <param name="service_name" value="/map_data/list_maps"/>
   </node>
   <node name="map_data_load_map_from_disk_servicer" pkg="ark_bridge" type="loadmapfromdisk_service" output="screen">
-    <param name="call_topic" value="map_data_load_map_from_disk_call"/>
-    <param name="response_topic" value="map_data_load_map_from_disk_response"/>
+    <param name="call_topic" value="/ark_bridge/map_data_load_map_from_disk_call"/>
+    <param name="response_topic" value="/ark_bridge/map_data_load_map_from_disk_response"/>
     <param name="service_name" value="/map_data/load_map_from_disk"/>
   </node>
   <node name="map_data_save_map_to_disk_servicer" pkg="ark_bridge" type="savemaptodisk_service" output="screen">
-    <param name="call_topic" value="map_data_save_map_to_disk_call"/>
-    <param name="response_topic" value="map_data_save_map_to_disk_response"/>
+    <param name="call_topic" value="/ark_bridge/map_data_save_map_to_disk_call"/>
+    <param name="response_topic" value="/ark_bridge/map_data_save_map_to_disk_response"/>
     <param name="service_name" value="/map_data/save_map_to_disk"/>
   </node>
   <node name="mode_manager_set_mode_servicer" pkg="ark_bridge" type="setslammode_service" output="screen">
-    <param name="call_topic" value="mode_manager_set_mode_call"/>
-    <param name="response_topic" value="mode_manager_set_mode_response"/>
+    <param name="call_topic" value="/ark_bridge/mode_manager_set_mode_call"/>
+    <param name="response_topic" value="/ark_bridge/mode_manager_set_mode_response"/>
     <param name="service_name" value="/mode_manager/set_mode"/>
   </node>
   <node name="slam_set_initial_pose_servicer" pkg="ark_bridge" type="setpose_service" output="screen">
-    <param name="call_topic" value="slam_set_initial_pose_call"/>
-    <param name="response_topic" value="slam_set_initial_pose_response"/>
+    <param name="call_topic" value="/ark_bridge/slam_set_initial_pose_call"/>
+    <param name="response_topic" value="/ark_bridge/slam_set_initial_pose_response"/>
     <param name="service_name" value="/slam/set_initial_pose"/>
   </node>
   <node name="strategy_manager_abort_path_servicer" pkg="ark_bridge" type="empty_service" output="screen">
-    <param name="call_topic" value="strategy_manager_abort_path_call"/>
-    <param name="response_topic" value="strategy_manager_abort_path_response"/>
+    <param name="call_topic" value="/ark_bridge/strategy_manager_abort_path_call"/>
+    <param name="response_topic" value="/ark_bridge/strategy_manager_abort_path_response"/>
     <param name="service_name" value="/strategy_manager/abort_path"/>
   </node>
   <node name="strategy_manager_pause_servicer" pkg="ark_bridge" type="pausecontrol_service" output="screen">
-    <param name="call_topic" value="strategy_manager_pause_call"/>
-    <param name="response_topic" value="strategy_manager_pause_response"/>
+    <param name="call_topic" value="/ark_bridge/strategy_manager_pause_call"/>
+    <param name="response_topic" value="/ark_bridge/strategy_manager_pause_response"/>
     <param name="service_name" value="/strategy_manager/pause"/>
   </node>
   <node name="strategy_manager_resume_servicer" pkg="ark_bridge" type="pausecontrol_service" output="screen">
-    <param name="call_topic" value="strategy_manager_resume_call"/>
-    <param name="response_topic" value="strategy_manager_resume_response"/>
+    <param name="call_topic" value="/ark_bridge/strategy_manager_resume_call"/>
+    <param name="response_topic" value="/ark_bridge/strategy_manager_resume_response"/>
     <param name="service_name" value="/strategy_manager/resume"/>
   </node>
   <node name="configure_ark_servicer" pkg="ark_bridge" type="arkconfigsettings_service" output="screen">
-    <param name="call_topic" value="ark_config_settings_call"/>
-    <param name="response_topic" value="ark_config_settings_response"/>
+    <param name="call_topic" value="/ark_bridge/ark_config_settings_call"/>
+    <param name="response_topic" value="/ark_bridge/ark_config_settings_response"/>
     <param name="service_name" value="/configure_ark"/>
   </node>
 </launch>
