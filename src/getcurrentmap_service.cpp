@@ -15,8 +15,8 @@ void rosCallback(const ark_bridge::Empty::ConstPtr& msg)
 
   if(serv.call(srv)){
     ark_bridge::GetCurrentMapResponse response_message;
-    response_message.data = srv.response.data;
-    response_message.ndata = srv.response.data.size()
+    response_message.map.data = srv.response.map.data;
+    response_message.map.ndata = srv.response.map.data.size();
 
     pub.publish(response_message);
   }
