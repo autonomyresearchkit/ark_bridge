@@ -108,7 +108,7 @@
   <node name="strategy_manager_simple_goal_bridge" pkg="ark_bridge" type="posestamped_bridge" output="screen">
     <param name="lcm_topic" value="/ark_bridge/strategy_manager_simple_goal"/>
     <param name="ros_topic" value="/strategy_manager/simple_goal"/>
-    <param name="direction" value="ros2lcm"/>
+    <param name="direction" value="lcm2ros"/>
   </node>
   <node name="slam_estimated_pose_bridge" pkg="ark_bridge" type="posewithcovariancestamped_bridge" output="screen">
     <param name="lcm_topic" value="/ark_bridge/slam_estimated_pose"/>
