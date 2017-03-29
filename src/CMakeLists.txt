@@ -319,3 +319,25 @@ add_dependencies(arkconfigsettings_service
     ${${PROJECT_NAME}_EXPORTED_TARGETS}
     ${catkin_EXPORTED_TARGETS}
 )
+
+###########################################################################
+add_executable(setpose_service setpose_service.cpp)
+target_link_libraries( setpose_service
+    ${LCM_LIBRARY}
+    ${catkin_LIBRARIES}
+)
+add_dependencies(setpose_service
+    ${${PROJECT_NAME}_EXPORTED_TARGETS}
+    ${catkin_EXPORTED_TARGETS}
+)
+
+###########################################################################
+add_executable(getcurrentmap_service getcurrentmap_service.cpp)
+target_link_libraries( getcurrentmap_service
+    ${LCM_LIBRARY}
+    ${catkin_LIBRARIES}
+)
+add_dependencies(getcurrentmap_service
+    ${${PROJECT_NAME}_EXPORTED_TARGETS}
+    ${catkin_EXPORTED_TARGETS}
+)
