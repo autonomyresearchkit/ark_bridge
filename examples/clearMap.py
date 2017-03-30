@@ -15,7 +15,7 @@ def map_clearer():
   print "Starting..."
 
   rospy.init_node("map_clearer")
-  rospy.Subscriber("/ark_bridge/map_data_clear_call", Empty, response_callback)
+  rospy.Subscriber("/ark_bridge/map_data_clear_response", Empty, response_callback)
   time.sleep(0.3)
   started = True
 
