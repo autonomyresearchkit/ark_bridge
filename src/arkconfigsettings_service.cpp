@@ -2,7 +2,7 @@
 #include <ros/console.h>
 #include <ark_bridge/ArkConfigSettingsCall.h>
 #include <ark_bridge/ArkConfigSettingsResponse.h>
-#include <ark_robot_configurations/ArkConfigSettings.h>
+#include <ark_configurator/ArkConfigSettings.h>
 #include <stdlib.h>
 
 ros::Publisher pub;
@@ -11,7 +11,7 @@ std::string call_topic, response_topic, service_name;
 
 void rosCallback(const ark_bridge::ArkConfigSettingsCall::ConstPtr& msg)
 {
-  ark_robot_configurations::ArkConfigSettings srv;
+  ark_configurator::ArkConfigSettings srv;
 
   srv.request.max_fwd_velocity = msg->max_fwd_velocity;
   srv.request.max_rev_velocity = msg->max_rev_velocity;
@@ -58,7 +58,7 @@ int main(int argc, char **argv) {
 
     pub = nh.advertise<ark_bridge::ArkConfigSettingsResponse>(response_topic, 1, true);
     sub = nh.subscribe(call_topic, 10, rosCallback);
-    serv = nh.serviceClient<ark_robot_configurations::ArkConfigSettings>(service_name);
+    serv = nh.serviceClient<ark_configurator::ArkConfigSettings>(service_name);
     ros::spin();
   }
   else{
