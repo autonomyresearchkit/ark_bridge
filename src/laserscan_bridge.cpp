@@ -9,49 +9,49 @@ std::string lcm_topic, ros_topic, direction;
 
 void rosCallback(const sensor_msgs::LaserScan::ConstPtr& msg)
 {
-  //ark_bridge::LaserScan bridge_message;
+  ark_bridge::LaserScan bridge_message;
 
-  //bridge_message.header.seq = msg->header.seq;
-  //bridge_message.header.frame_id = msg->header.frame_id;
-  //bridge_message.header.stamp = msg->header.stamp;
+  bridge_message.header.seq = msg->header.seq;
+  bridge_message.header.frame_id = msg->header.frame_id;
+  bridge_message.header.stamp = msg->header.stamp;
 
-  //bridge_message.angle_min = msg->angle_min;
-  //bridge_message.angle_max = msg->angle_max;
-  //bridge_message.angle_increment = msg->angle_increment;
-  //bridge_message.time_increment = msg->time_increment;
-  //bridge_message.scan_time = msg->scan_time;
-  //bridge_message.range_min = msg->range_min;
-  //bridge_message.range_max = msg->range_max;
+  bridge_message.angle_min = msg->angle_min;
+  bridge_message.angle_max = msg->angle_max;
+  bridge_message.angle_increment = msg->angle_increment;
+  bridge_message.time_increment = msg->time_increment;
+  bridge_message.scan_time = msg->scan_time;
+  bridge_message.range_min = msg->range_min;
+  bridge_message.range_max = msg->range_max;
 
-  //bridge_message.nranges = msg->ranges.size();
-  //bridge_message.nintensities = msg->intensities.size();
+  bridge_message.nranges = msg->ranges.size();
+  bridge_message.nintensities = msg->intensities.size();
 
-  //bridge_message.ranges = msg->ranges;
-  //bridge_message.intensities = msg->intensities;
+  bridge_message.ranges = msg->ranges;
+  bridge_message.intensities = msg->intensities;
 
-  //pub.publish(bridge_message);
+  pub.publish(bridge_message);
 }
 
 void lcmCallback(const ark_bridge::LaserScan::ConstPtr& msg)
 {
-  //sensor_msgs::LaserScan bridge_message;
+  sensor_msgs::LaserScan bridge_message;
 
-  //bridge_message.header.seq = msg->header.seq;
-  //bridge_message.header.frame_id = msg->header.frame_id;
-  //bridge_message.header.stamp = msg->header.stamp;
+  bridge_message.header.seq = msg->header.seq;
+  bridge_message.header.frame_id = msg->header.frame_id;
+  bridge_message.header.stamp = msg->header.stamp;
 
-  //bridge_message.angle_min = msg->angle_min;
-  //bridge_message.angle_max = msg->angle_max;
-  //bridge_message.angle_increment = msg->angle_increment;
-  //bridge_message.time_increment = msg->time_increment;
-  //bridge_message.scan_time = msg->scan_time;
-  //bridge_message.range_min = msg->range_min;
-  //bridge_message.range_max = msg->range_max;
+  bridge_message.angle_min = msg->angle_min;
+  bridge_message.angle_max = msg->angle_max;
+  bridge_message.angle_increment = msg->angle_increment;
+  bridge_message.time_increment = msg->time_increment;
+  bridge_message.scan_time = msg->scan_time;
+  bridge_message.range_min = msg->range_min;
+  bridge_message.range_max = msg->range_max;
 
-  //bridge_message.ranges = msg->ranges;
-  //bridge_message.intensities = msg->intensities;
+  bridge_message.ranges = msg->ranges;
+  bridge_message.intensities = msg->intensities;
 
-  //pub.publish(bridge_message);
+  pub.publish(bridge_message);
 }
 
 int main(int argc, char **argv) {
