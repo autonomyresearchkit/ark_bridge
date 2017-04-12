@@ -1,0 +1,13 @@
+<launch>
+  <node name="front_scan_bridge" pkg="ark_bridge" type="laserscan_bridge" output="screen">
+    <param name="lcm_topic" value="/ark_bridge/front_scan"/>
+    <param name="ros_topic" value="/front/scan"/>
+    <param name="direction" value="ros2lcm"/>
+  </node>
+  <node name="rear_scan_bridge" pkg="ark_bridge" type="laserscan_bridge" output="screen">
+    <param name="lcm_topic" value="/ark_bridge/rear_scan"/>
+    <param name="ros_topic" value="/rear/scan"/>
+    <param name="direction" value="ros2lcm"/>
+  </node>
+</launch>
+

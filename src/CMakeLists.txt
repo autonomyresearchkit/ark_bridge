@@ -43,6 +43,17 @@ add_dependencies(bool_bridge
 )
 
 ###########################################################################
+add_executable(clock_bridge clock_bridge.cpp)
+target_link_libraries( clock_bridge
+   ${LCM_LIBRARY}
+   ${catkin_LIBRARIES}
+)
+add_dependencies(clock_bridge
+   ${${PROJECT_NAME}_EXPORTED_TARGETS}
+   ${catkin_EXPORTED_TARGETS}
+)
+
+###########################################################################
 add_executable(compressedmapdata_bridge compressedmapdata_bridge.cpp)
 target_link_libraries( compressedmapdata_bridge
    ${LCM_LIBRARY}
