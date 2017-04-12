@@ -1,4 +1,32 @@
 <launch>
+  <arg name="use_sim_time" default="true" />
+
+  <node name="tf_bridge" pkg="ark_bridge" type="tf_bridge" output="screen">
+    <param name="lcm_topic" value="/ark_bridge/tf"/>
+    <param name="ros_topic" value="/tf"/>
+    <param name="direction" value="ros2lcm"/>
+  </node>
+  <node name="tf_static_bridge" pkg="ark_bridge" type="tf_bridge" output="screen">
+    <param name="lcm_topic" value="/ark_bridge/tf_static"/>
+    <param name="ros_topic" value="/tf_static"/>
+    <param name="direction" value="ros2lcm"/>
+  </node>
+  <node name="odom_bridge_1" pkg="ark_bridge" type="odom_bridge" output="screen">
+    <param name="lcm_topic" value="/ark_bridge/platform_control_odom"/>
+    <param name="ros_topic" value="/ridgeback_velocity_controller/odom"/>
+    <param name="direction" value="ros2lcm"/>
+  </node>
+  <node name="odom_bridge_2" pkg="ark_bridge" type="odom_bridge" output="screen">
+    <param name="lcm_topic" value="/ark_bridge/platform_odometry"/>
+    <param name="ros_topic" value="/ridgeback_velocity_controller/odom"/>
+    <param name="direction" value="ros2lcm"/>
+  </node>
+  <node name="twist_bridge" pkg="ark_bridge" type="twist_bridge" output="screen">
+    <param name="lcm_topic" value="/ark_bridge/platform_control_cmd_vel"/>
+    <param name="ros_topic" value="/ridgeback_velocity_controller/cmd_vel"/>
+    <param name="direction" value="lcm2ros"/>
+  </node>
+
   <node name="front_scan_bridge" pkg="ark_bridge" type="laserscan_bridge" output="screen">
     <param name="lcm_topic" value="/ark_bridge/front_scan"/>
     <param name="ros_topic" value="/front/scan"/>
@@ -9,5 +37,12 @@
     <param name="ros_topic" value="/rear/scan"/>
     <param name="direction" value="ros2lcm"/>
   </node>
+
+  <node name="clock_bridge" pkg="ark_bridge" type="clock_bridge" output="screen" if="$(arg use_sim_time)">
+    <param name="lcm_topic" value="/ark_bridge/clock"/>
+    <param name="ros_topic" value="/clock"/>
+    <param name="direction" value="ros2lcm"/>
+  </node>
+
 </launch>
 
