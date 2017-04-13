@@ -26,13 +26,8 @@ void rosCallback(const sensor_msgs::LaserScan::ConstPtr& msg)
   bridge_message.nranges = msg->ranges.size();
   bridge_message.nintensities = msg->intensities.size();
 
-  for(int j = 0; j < msg->ranges.size(); j++){
-    bridge_message.ranges.push_back(msg->ranges[j]);
-  }
-
-  for(int j = 0; j < msg->intensities.size(); j++){
-    bridge_message.intensities.push_back(msg->intensities[j]);
-  }
+  bridge_message.ranges = msg->ranges;
+  bridge_message.intensities = msg->intensities;
 
   pub.publish(bridge_message);
 }
@@ -53,13 +48,8 @@ void lcmCallback(const ark_bridge::LaserScan::ConstPtr& msg)
   bridge_message.range_min = msg->range_min;
   bridge_message.range_max = msg->range_max;
 
-  for(int j = 0; j < msg->ranges.size(); j++){
-    bridge_message.ranges.push_back(msg->ranges[j]);
-  }
-
-  for(int j = 0; j < msg->intensities.size(); j++){
-    bridge_message.intensities.push_back(msg->intensities[j]);
-  }
+  bridge_message.ranges = msg->ranges;
+  bridge_message.intensities = msg->intensities;
 
   pub.publish(bridge_message);
 }

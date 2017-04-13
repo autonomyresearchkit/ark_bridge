@@ -1,0 +1,6 @@
+package ark;
+
+struct Clock
+{
+    time clock;
+}

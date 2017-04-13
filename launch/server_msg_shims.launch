@@ -1,4 +1,6 @@
 <launch>
+  <node name="health_throttler" type="throttle" pkg="topic_tools" args="messages /ark_bridge/clock 1 /ark_bridge/clock_echo" />
+
   <node name="tf_bridge" pkg="ark_bridge" type="tf_bridge" output="screen">
     <param name="lcm_topic" value="/ark_bridge/tf"/>
     <param name="ros_topic" value="/tf"/>
@@ -23,6 +25,11 @@
     <param name="lcm_topic" value="/ark_bridge/platform_control_cmd_vel"/>
     <param name="ros_topic" value="/platform_control/cmd_vel"/>
     <param name="direction" value="ros2lcm"/>
+  </node>
+  <node name="clock_bridge" pkg="ark_bridge" type="clock_bridge" output="screen">
+    <param name="lcm_topic" value="/ark_bridge/clock"/>
+    <param name="ros_topic" value="/clock"/>
+    <param name="direction" value="lcm2ros"/>
   </node>
 
   <node name="control_state_bridge" pkg="ark_bridge" type="controlselectionstate_bridge" output="screen">

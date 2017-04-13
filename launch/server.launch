@@ -1,4 +1,5 @@
 <launch>
+  <param name="use_sim_time" value="true" />
   <include file="$(find ark_bridge)/launch/ark_server_republishers.launch" />
   <include file="$(find ark_bridge)/launch/server_msg_shims.launch" />
   <include file="$(find ark_bridge)/launch/server_service_shims.launch" />
