@@ -102,7 +102,7 @@ while IFS=", " read TOPIC_NAME PACKAGE_NAME MESSAGE_TYPE DIRECTION JUNK ; do
     if ! grep -q "type=\"${TOPIC_NAME}_republisher" $LAUNCH_FILE ; then
         echo -n -e "\tAdding entry to $LAUNCH_FILE ..." >&2
         head -n-2 $LAUNCH_FILE > tmp
-        echo -e "\t\t<node pkg=\"ark_bridge\" type=\"${TOPIC_NAME}_republisher\" respawn=\"false\" name=\"${TOPIC_NAME}_republisher\" output=\"screen\" respawn=\"true\"/>" >> tmp
+        echo -e "\t\t<node pkg=\"ark_bridge\" type=\"${TOPIC_NAME}_republisher\" respawn=\"true\" name=\"${TOPIC_NAME}_republisher\" output=\"screen\" />" >> tmp
         tail -n2 $LAUNCH_FILE >> tmp
         mv tmp $LAUNCH_FILE
         echo " done." >&2
