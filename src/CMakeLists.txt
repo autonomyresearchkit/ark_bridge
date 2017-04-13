@@ -1,4 +1,15 @@
 ###########################################################################
+add_executable(publish_clock publish_clock.cpp)
+target_link_libraries( publish_clock
+    ${LCM_LIBRARY}
+    ${catkin_LIBRARIES}
+)
+add_dependencies(publish_clock
+    ${${PROJECT_NAME}_EXPORTED_TARGETS}
+    ${catkin_EXPORTED_TARGETS}
+)
+
+###########################################################################
 add_executable(tf_bridge tf_bridge.cpp)
 target_link_libraries( tf_bridge
     ${LCM_LIBRARY}
