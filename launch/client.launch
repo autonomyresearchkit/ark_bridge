@@ -1,5 +1,6 @@
 <launch>
   <include file="$(find ark_bridge)/launch/ark_client_republishers.launch" />
   <include file="$(find ark_bridge)/launch/client_msg_shims.launch" />
+  <node name="health_check" pkg="ark_bridge" type="bridge_health.py" output="screen" respawn="true" />
 </launch>
 
