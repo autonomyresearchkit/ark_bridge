@@ -7,7 +7,7 @@ from ark_bridge.msg import Clock
 
 def echo_callback(data):
   now = rospy.get_rostime()
-  delta = math.fabs((now - data.clock).to_sec() / 1000.0)
+  delta = math.fabs((now - data.clock).to_sec() * 1000.0)
 
   if delta < 15:  
     rospy.loginfo("GOOD (" + str(delta) + " ms)")
