@@ -1,4 +1,5 @@
 <launch>
+  <!-- Changing the line below may affect ARK performance. DO NOT CHANGE -->
   <node name="clock_throttler" type="throttle" pkg="topic_tools" args="messages /ark_bridge/clock_un_throttled 100 /ark_bridge/clock" />
 
   <node name="tf_bridge" pkg="ark_bridge" type="tf_bridge" output="screen" respawn="true">
