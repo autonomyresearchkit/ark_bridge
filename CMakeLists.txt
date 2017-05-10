@@ -27,11 +27,6 @@ FOREACH(rosMsg ${rosMsgFiles})
     add_message_files( FILES ${rosMsg})
 ENDFOREACH(rosMsg)
 
-add_custom_command(OUTPUT build_server.txt
-WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
-COMMAND ./build_server.sh
-)
-
 generate_messages(
   DEPENDENCIES
   std_msgs
