@@ -175,6 +175,17 @@ add_dependencies(pausestatus_bridge
 )
 
 ###########################################################################
+add_executable(pointcloud2_bridge pointcloud2_bridge.cpp)
+target_link_libraries( pointcloud2_bridge    
+   ${LCM_LIBRARY}
+   ${catkin_LIBRARIES}
+)
+add_dependencies(pointcloud2_bridge
+   ${${PROJECT_NAME}_EXPORTED_TARGETS}
+   ${catkin_EXPORTED_TARGETS}
+)
+
+###########################################################################
 add_executable(posearray_bridge posearray_bridge.cpp)
 target_link_libraries( posearray_bridge
    ${LCM_LIBRARY}

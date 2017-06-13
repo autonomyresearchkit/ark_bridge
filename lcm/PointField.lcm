@@ -1,0 +1,10 @@
+package ark;
+
+struct PointField
+{
+  string name;
+  int64_t offset;
+  int16_t datatype;
+  int64_t count;
+
+}

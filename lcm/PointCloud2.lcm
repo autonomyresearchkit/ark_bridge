@@ -1,0 +1,16 @@
+package ark;
+
+struct PointCloud2
+{
+  Header header;
+  int64_t height;
+  int64_t width;
+  int32_t nfields;
+  PointField fields[nfields];
+  boolean is_bigendian;
+  int64_t point_step;
+  int64_t row_step;
+  int32_t ndata;
+  int16_t data[ndata];
+  boolean is_dense;
+}

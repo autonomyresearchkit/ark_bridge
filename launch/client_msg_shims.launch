@@ -44,4 +44,9 @@
     <param name="direction" value="ros2lcm"/>
   </node>
 
+  <node name="stereo_bridge" pkg="ark_bridge" type="pointcloud2_bridge" output="screen" respawn="true">
+    <param name="lcm_topic" value="/ark_bridge/stereo_camera_0"/>
+    <param name="ros_topic" value="/p100_driver/tof_camera/point_cloud_xyz"/>
+    <param name="direction" value="ros2lcm"/>
+  </node>
 </launch>
