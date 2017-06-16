@@ -14,7 +14,7 @@
   </node>
   <node name="odom_bridge_1" pkg="ark_bridge" type="odom_bridge" output="screen" respawn="true">
     <param name="lcm_topic" value="/ark_bridge/platform_control_odom"/>
-    <param name="ros_topic" value="/ridgeback_velocity_controller/odom"/>
+    <param name="ros_topic" value="/odometry/filtered"/>
     <param name="direction" value="ros2lcm"/>
   </node>
   <node name="odom_bridge_2" pkg="ark_bridge" type="odom_bridge" output="screen" respawn="true">
