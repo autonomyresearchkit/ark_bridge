@@ -10,7 +10,7 @@ int main(int argc, char **argv)
   ros::NodeHandle n;
   ros::Publisher clock_pub = n.advertise<rosgraph_msgs::Clock>("clock", 5);
 
-  ros::Rate loop_rate(50);
+  ros::Rate loop_rate(150);
 
   while (ros::ok())
   {

@@ -4,6 +4,7 @@
   <arg name="front_laser" default="/front/scan" />
   <arg name="rear_laser" default="/rear/scan" />
   <arg name="stereo_camera" default="/stereo_camera" />
+  <arg name="diagnostics" default="/diagnostics" />
 
   <!-- Changing the line below may affect ARK performance. DO NOT CHANGE -->
   <node name="clock_throttler" type="throttle" pkg="topic_tools" args="messages /ark_bridge/clock_un_throttled 100 /ark_bridge/clock" />
@@ -58,7 +59,7 @@
 
   <node name="diagnostics_bridge" pkg="ark_bridge" type="diagnosticarray_bridge" output="screen" respawn="true">
     <param name="lcm_topic" value="/ark_bridge/ark_diagnostics"/>
-    <param name="ros_topic" value="/diagnostics_agg"/>
+    <param name="ros_topic" value="$(arg diagnostics)"/>
     <param name="direction" value="lcm2ros"/>
   </node>
 </launch>
