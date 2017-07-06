@@ -1,6 +1,20 @@
 <launch>
-  <include file="$(find ark_bridge)/launch/ark_client_republishers.launch" />
-  <include file="$(find ark_bridge)/launch/client_msg_shims.launch" />
-  <node name="health_check" pkg="ark_bridge" type="bridge_health.py" output="screen" respawn="true" />
-</launch>
+  <arg name="platform_control_odom" default="/platform_control/odom" />
+  <arg name="platform_odom" default="/platform_odometry" />
+  <arg name="front_laser" default="/front/scan" />
+  <arg name="rear_laser" default="/rear/scan" />
+  <arg name="stereo_camera" default="/stereo_camera" />
+  <arg name="is_sim" default="false" />
 
+  <include file="$(find ark_bridge)/launch/ark_client_republishers.launch" />
+  <include file="$(find ark_bridge)/launch/client_msg_shims.launch" >
+    <arg name="platform_control_odom" value="$(arg platform_control_odom)" />
+    <arg name="platform_odom" value="$(arg platform_odom)" />
+    <arg name="front_laser" value="$(arg front_laser)" />
+    <arg name="rear_laser" value="$(arg rear_laser)" />
+    <arg name="stereo_camera" value="$(arg stereo_camera)" />
+  </include>
+  <node name="health_check" pkg="ark_bridge" type="bridge_health.py" output="screen" respawn="true" />
+
+  <node name="robot_clock" type="publish_clock" pkg="ark_bridge" unless="$(arg is_sim)"/>
+</launch>

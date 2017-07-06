@@ -1,4 +1,10 @@
 <launch>
+  <arg name="platform_control_odom" default="/platform_control/odom" />
+  <arg name="platform_odom" default="/platform_odometry" />
+  <arg name="front_laser" default="/front/scan" />
+  <arg name="rear_laser" default="/rear/scan" />
+  <arg name="stereo_camera" default="/stereo_camera" />
+
   <!-- Changing the line below may affect ARK performance. DO NOT CHANGE -->
   <node name="clock_throttler" type="throttle" pkg="topic_tools" args="messages /ark_bridge/clock_un_throttled 100 /ark_bridge/clock" />
 
@@ -14,12 +20,12 @@
   </node>
   <node name="odom_bridge_1" pkg="ark_bridge" type="odom_bridge" output="screen" respawn="true">
     <param name="lcm_topic" value="/ark_bridge/platform_control_odom"/>
-    <param name="ros_topic" value="/odometry/filtered"/>
+    <param name="ros_topic" value="$(arg platform_control_odom)"/>
     <param name="direction" value="ros2lcm"/>
   </node>
   <node name="odom_bridge_2" pkg="ark_bridge" type="odom_bridge" output="screen" respawn="true">
     <param name="lcm_topic" value="/ark_bridge/platform_odometry"/>
-    <param name="ros_topic" value="/odometry/filtered"/>
+    <param name="ros_topic" value="$(arg platform_odom)"/>
     <param name="direction" value="ros2lcm"/>
   </node>
   <node name="twist_bridge" pkg="ark_bridge" type="twist_bridge" output="screen" respawn="true">
@@ -35,18 +41,18 @@
 
   <node name="front_scan_bridge" pkg="ark_bridge" type="laserscan_bridge" output="screen" respawn="true">
     <param name="lcm_topic" value="/ark_bridge/front_scan"/>
-    <param name="ros_topic" value="/front/scan"/>
+    <param name="ros_topic" value="$(arg front_laser)"/>
     <param name="direction" value="ros2lcm"/>
   </node>
   <node name="rear_scan_bridge" pkg="ark_bridge" type="laserscan_bridge" output="screen" respawn="true">
     <param name="lcm_topic" value="/ark_bridge/rear_scan"/>
-    <param name="ros_topic" value="/rear/scan"/>
+    <param name="ros_topic" value="$(arg rear_laser)"/>
     <param name="direction" value="ros2lcm"/>
   </node>
 
   <node name="stereo_bridge" pkg="ark_bridge" type="pointcloud2_bridge" output="screen" respawn="true">
     <param name="lcm_topic" value="/ark_bridge/stereo_camera_0"/>
-    <param name="ros_topic" value="/stereo_camera_0"/>
+    <param name="ros_topic" value="$(arg stereo_camera)"/>
     <param name="direction" value="ros2lcm"/>
   </node>
 
