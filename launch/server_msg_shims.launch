@@ -133,4 +133,11 @@
     <param name="ros_topic" value="/strategy_manager/simple_path"/>
     <param name="direction" value="ros2lcm"/>
   </node>
+
+  <node name="diagnostics_bridge" pkg="ark_bridge" type="diagnosticarray_bridge" output="screen" respawn="true">
+    <param name="lcm_topic" value="/ark_bridge/ark_diagnostics"/>
+    <param name="ros_topic" value="/ark_diagnostics"/>
+    <param name="direction" value="ros2lcm"/>
+  </node>
 </launch>
+

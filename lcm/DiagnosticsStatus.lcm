@@ -1,0 +1,12 @@
+package ark;
+
+struct DiagnosticStatus
+{
+  byte level;
+  string name;
+  string message;
+  string hardware_id;
+  int32_t nvalues;
+  KeyValue values[nvalues];
+}
+

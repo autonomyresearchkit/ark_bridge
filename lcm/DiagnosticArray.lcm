@@ -1,0 +1,9 @@
+package ark;
+
+struct DiagnosticArray
+{
+  Header header;
+  int32_t nstatus;
+  DiagnosticStatus status[nstatus];
+}
+

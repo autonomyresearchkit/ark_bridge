@@ -5,6 +5,12 @@
     <param name="response_topic" value="/ark_bridge/ark_start_response"/>
     <param name="service_name" value="/start_autonomy"/>
   </node>
+  <node name="ark_stop_servicer" pkg="ark_bridge" type="empty_service" output="screen" respawn="true">
+    <param name="call_topic" value="/ark_bridge/ark_stop_call"/>
+    <param name="response_topic" value="/ark_bridge/ark_stop_response"/>
+    <param name="service_name" value="/stop_autonomy"/>
+  </node>
+
   <node name="autonomy_clear_all_disabled_servicer" pkg="ark_bridge" type="empty_service" output="screen" respawn="true">
     <param name="call_topic" value="/ark_bridge/control_selection_autonomy_clear_all_disabled_call"/>
     <param name="response_topic" value="/ark_bridge/control_selection_autonomy_clear_all_disabled_response"/>

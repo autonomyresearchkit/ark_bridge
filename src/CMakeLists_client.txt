@@ -72,3 +72,14 @@ add_dependencies(pointcloud2_bridge
    ${${PROJECT_NAME}_EXPORTED_TARGETS}
    ${catkin_EXPORTED_TARGETS}
 )
+
+###########################################################################
+add_executable(diagnosticarray_bridge diagnosticarray_bridge.cpp)
+target_link_libraries( diagnosticarray_bridge
+   ${LCM_LIBRARY}
+   ${catkin_LIBRARIES}
+)
+add_dependencies(diagnosticarray_bridge
+   ${${PROJECT_NAME}_EXPORTED_TARGETS}
+   ${catkin_EXPORTED_TARGETS}
+)

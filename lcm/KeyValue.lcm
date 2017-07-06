@@ -1,0 +1,8 @@
+package ark;
+
+struct KeyValue
+{
+  string key;
+  string value;
+}
+
