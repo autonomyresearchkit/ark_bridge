@@ -13,30 +13,22 @@ void rosCallback(const ark_bridge::ArkConfigSettingsCall::ConstPtr& msg)
 {
   ark_configurator::ArkConfigSettings srv;
 
-  srv.request.max_fwd_velocity = msg->max_fwd_velocity;
-  srv.request.max_rev_velocity = msg->max_rev_velocity;
-  srv.request.min_fwd_velocity = msg->min_fwd_velocity;
-  srv.request.max_accel = msg->max_accel;
-  srv.request.max_decel = msg->max_decel;
-  srv.request.max_ang_velocity = msg->max_ang_velocity;
-  srv.request.max_ang_accel = msg->max_ang_accel;
-  srv.request.max_lateral_accel = msg->max_lateral_accel;
-  srv.request.vehicle_length = msg->vehicle_length;
-  srv.request.vehicle_width = msg->vehicle_width;
-  srv.request.stopping_distance_1M = msg->stopping_distance_1M;
-  srv.request.lidar_spacing = msg->lidar_spacing;
-  srv.request.laser_fov = msg->laser_fov;
-  srv.request.vehicle_gear = msg->vehicle_gear;
-  srv.request.curve_type = msg->curve_type;
-  srv.request.goal_threshold = msg->goal_threshold;
-  srv.request.orientation_corr_threshold = msg->orientation_corr_threshold;
-  srv.request.mpc_horizon = msg->mpc_horizon;
-  srv.request.min_lookahead = msg->min_lookahead;
-  srv.request.max_lookahead = msg->max_lookahead;
-  srv.request.horizon_percent_change = msg->horizon_percent_change;
-  srv.request.lookahead_smoother = msg->lookahead_smoother;
-  srv.request.lookahead_factor = msg->lookahead_factor;
-  srv.request.curvature_slowdown = msg->curvature_slowdown;
+  srv.request.max_fwd_linear_speed = msg->max_fwd_linear_speed;
+	srv.request.max_rev_linear_speed = msg->max_rev_linear_speed;
+	srv.request.min_linear_speed = msg->min_linear_speed;
+	srv.request.max_linear_acceleration = msg->max_linear_acceleration;
+	srv.request.max_linear_deceleration = msg->max_linear_deceleration;
+	srv.request.max_ang_speed = msg->max_ang_speed;
+	srv.request.max_ang_accel = msg->max_ang_accel;
+	srv.request.max_lateral_accel = msg->max_lateral_accel;
+	srv.request.vehicle_length = msg->vehicle_length;
+	srv.request.vehicle_width = msg->vehicle_width;
+	srv.request.stopping_distance_1M = msg->stopping_distance_1M;
+	srv.request.lidar_spacing = msg->lidar_spacing;
+	srv.request.laser_fov = msg->laser_fov;
+	srv.request.goal_tolerance_xy = msg->goal_tolerance_xy;
+	srv.request.goal_tolerance_yaw = msg->goal_tolerance_yaw;
+	srv.request.drive_direction = msg->drive_direction;
 
   if(serv.call(srv)){
     ark_bridge::ArkConfigSettingsResponse response_message;
