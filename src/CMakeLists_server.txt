@@ -142,6 +142,17 @@ add_dependencies(laserscan_bridge
 )
 
 ###########################################################################
+add_executable(mode_bridge mode_bridge.cpp)
+target_link_libraries( mode_bridge
+   ${LCM_LIBRARY}
+   ${catkin_LIBRARIES}
+)
+add_dependencies(mode_bridge
+   ${${PROJECT_NAME}_EXPORTED_TARGETS}
+   ${catkin_EXPORTED_TARGETS}
+)
+
+###########################################################################
 add_executable(occupancygrid_bridge occupancygrid_bridge.cpp)
 target_link_libraries( occupancygrid_bridge
    ${LCM_LIBRARY}
