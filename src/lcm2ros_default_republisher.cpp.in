@@ -26,7 +26,7 @@ LCMToROSRepublisher::LCMToROSRepublisher(ros::NodeHandle& n)
     nh = n;
    
     // Publisher/s
-    ros_pub = nh.advertise<ark_bridge::@MESSAGE_TYPE@>("@TOPIC_NAME@", 10);
+    ros_pub = nh.advertise<ark_bridge::@MESSAGE_TYPE@>("@TOPIC_NAME@", 10, true);
     ROS_DEBUG("@TOPIC_NAME@ publisher created");
 };
 

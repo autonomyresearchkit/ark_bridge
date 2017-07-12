@@ -17,5 +17,6 @@ struct ArkConfigSettingsCall
 	double laser_fov;
 	double goal_tolerance_xy;
 	double goal_tolerance_yaw;
+	double camera_3d_memory;
 	int8_t drive_direction;
 }

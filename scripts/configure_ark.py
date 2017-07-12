@@ -54,6 +54,7 @@ def configure_ark(yaml_file):
         settingsMsg.laser_fov = yaml_lib["ark_config"]["laser_fov"]
         settingsMsg.goal_tolerance_xy = yaml_lib["ark_config"]["goal_tolerance_xy"]
         settingsMsg.goal_tolerance_yaw = yaml_lib["ark_config"]["goal_tolerance_yaw"]
+        settingsMsg.camera_3d_memory = yaml_lib["ark_config"]["camera_3d_memory"]
         settingsMsg.drive_direction = yaml_lib["ark_config"]["drive_direction"]
 
         pub.publish(settingsMsg)
