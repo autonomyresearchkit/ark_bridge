@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 # Software License Agreement (BSD) 
 #
 # @author    Dave Niewinski <dniewinski@clearpathrobotics.com>
@@ -20,7 +21,6 @@
 # HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
 # NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 # POSSIBILITY OF SUCH DAMAGE.
-#!/usr/bin/env python
 
 from ark_bridge.msg import ArkConfigSettingsResponse, ArkConfigSettingsCall
 import time
