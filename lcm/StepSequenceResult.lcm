@@ -1,0 +1,9 @@
+package ark;
+
+struct StepSequenceResult
+{
+  int32_t nfinished_steps;
+  int32_t nunfinished_steps;
+  Step finished_steps[nfinished_steps];
+  Step unfinished_steps[nunfinished_steps];
+}

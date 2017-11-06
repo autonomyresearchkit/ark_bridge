@@ -1,0 +1,6 @@
+package ark;
+
+struct LocalizationStatus
+{
+  int16_t status;
+}

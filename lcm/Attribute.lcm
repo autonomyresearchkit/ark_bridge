@@ -4,6 +4,6 @@ struct Attribute
 {
   string name;
   int64_t offset;
-  int16_t  datatype;
+  int16_t datatype;
   int64_t length;
 }

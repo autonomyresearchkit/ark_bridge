@@ -1,0 +1,8 @@
+package ark;
+
+struct Pose2DArray
+{
+  int32_t nposes;
+  Header header;
+  Pose2D poses[nposes];
+}

@@ -1,0 +1,12 @@
+package ark;
+
+struct Step
+{
+  string id;
+  string type;
+  boolean interruptible;
+  int32_t nattributes;
+  int32_t ndata;
+  Attribute attributes[nattributes];
+  int16_t data[ndata];
+}

@@ -1,0 +1,12 @@
+package ark;
+
+struct StepSequenceFeedback
+{
+  int32_t nfinished_steps;
+  int32_t nremaining_steps;
+  Step finished_steps[nfinished_steps];
+  Step current_step;
+  Step remaining_steps[nremaining_steps];
+  float current_step_progress;
+  float total_progress;
+}

@@ -1,0 +1,8 @@
+package ark;
+
+struct TwistWithCovariance
+{
+  Header header;
+  GoalStatus status;
+  StepSequenceFeedback feedback;
+}

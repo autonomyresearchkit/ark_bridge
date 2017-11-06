@@ -1,0 +1,6 @@
+package ark;
+
+struct RobotState
+{
+  int64_t state;
+}

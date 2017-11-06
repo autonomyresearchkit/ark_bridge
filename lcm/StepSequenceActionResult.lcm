@@ -1,0 +1,8 @@
+package ark;
+
+struct StepSequenceActionResult
+{
+  Header header;
+  GoalStatus status;
+  StepSequenceResult result;
+}
