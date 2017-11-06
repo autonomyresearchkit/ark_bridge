@@ -115,7 +115,7 @@ for INFILE in $INFILES ; do
             else
                 x=$1"[]"
         };
-        printf "%-20s%s\n", x, $2}' >>$MSGFILE
+        printf "%-30s%s\n", x, $2}' >>$MSGFILE
     rm tmp
     echo " done."
 

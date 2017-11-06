@@ -1,6 +1,6 @@
 package ark;
 
-struct TwistWithCovariance
+struct StepSequenceActionFeedback
 {
   Header header;
   GoalStatus status;

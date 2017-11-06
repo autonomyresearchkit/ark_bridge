@@ -142,15 +142,26 @@ add_dependencies(laserscan_bridge
 )
 
 ###########################################################################
-add_executable(mode_bridge mode_bridge.cpp)
-target_link_libraries( mode_bridge
+add_executable(localizationstatus_bridge localizationstatus_bridge.cpp)
+target_link_libraries( localizationstatus_bridge
    ${LCM_LIBRARY}
    ${catkin_LIBRARIES}
 )
-add_dependencies(mode_bridge
+add_dependencies(localizationstatus_bridge
    ${${PROJECT_NAME}_EXPORTED_TARGETS}
    ${catkin_EXPORTED_TARGETS}
 )
+
+###########################################################################
+#add_executable(mode_bridge mode_bridge.cpp)
+#target_link_libraries( mode_bridge
+#   ${LCM_LIBRARY}
+#   ${catkin_LIBRARIES}
+#)
+#add_dependencies(mode_bridge
+#   ${${PROJECT_NAME}_EXPORTED_TARGETS}
+#   ${catkin_EXPORTED_TARGETS}
+#)
 
 ###########################################################################
 add_executable(occupancygrid_bridge occupancygrid_bridge.cpp)
@@ -197,6 +208,17 @@ add_dependencies(pointcloud2_bridge
 )
 
 ###########################################################################
+add_executable(pose2darray_bridge pose2darray_bridge.cpp)
+target_link_libraries( pose2darray_bridge
+   ${LCM_LIBRARY}
+   ${catkin_LIBRARIES}
+)
+add_dependencies(pose2darray_bridge
+   ${${PROJECT_NAME}_EXPORTED_TARGETS}
+   ${catkin_EXPORTED_TARGETS}
+)
+
+###########################################################################
 add_executable(posearray_bridge posearray_bridge.cpp)
 target_link_libraries( posearray_bridge
    ${LCM_LIBRARY}
@@ -225,6 +247,39 @@ target_link_libraries( posewithcovariancestamped_bridge
    ${catkin_LIBRARIES}
 )
 add_dependencies(posewithcovariancestamped_bridge
+   ${${PROJECT_NAME}_EXPORTED_TARGETS}
+   ${catkin_EXPORTED_TARGETS}
+)
+
+###########################################################################
+add_executable(robotstate_bridge robotstate_bridge.cpp)
+target_link_libraries( robotstate_bridge
+   ${LCM_LIBRARY}
+   ${catkin_LIBRARIES}
+)
+add_dependencies(robotstate_bridge
+   ${${PROJECT_NAME}_EXPORTED_TARGETS}
+   ${catkin_EXPORTED_TARGETS}
+)
+
+###########################################################################
+add_executable(stepsequenceactionfeedback_bridge stepsequenceactionfeedback_bridge.cpp)
+target_link_libraries( stepsequenceactionfeedback_bridge
+   ${LCM_LIBRARY}
+   ${catkin_LIBRARIES}
+)
+add_dependencies(stepsequenceactionfeedback_bridge
+   ${${PROJECT_NAME}_EXPORTED_TARGETS}
+   ${catkin_EXPORTED_TARGETS}
+)
+
+###########################################################################
+add_executable(stepsequenceactionresult_bridge stepsequenceactionresult_bridge.cpp)
+target_link_libraries( stepsequenceactionresult_bridge
+   ${LCM_LIBRARY}
+   ${catkin_LIBRARIES}
+)
+add_dependencies(stepsequenceactionresult_bridge
    ${${PROJECT_NAME}_EXPORTED_TARGETS}
    ${catkin_EXPORTED_TARGETS}
 )
@@ -266,15 +321,15 @@ add_dependencies(string_service
 )
 
 ###########################################################################
-add_executable(setcontrolmode_service setcontrolmode_service.cpp)
-target_link_libraries( setcontrolmode_service
-    ${LCM_LIBRARY}
-    ${catkin_LIBRARIES}
-)
-add_dependencies(setcontrolmode_service
-    ${${PROJECT_NAME}_EXPORTED_TARGETS}
-    ${catkin_EXPORTED_TARGETS}
-)
+#add_executable(setcontrolmode_service setcontrolmode_service.cpp)
+#target_link_libraries( setcontrolmode_service
+#    ${LCM_LIBRARY}
+#    ${catkin_LIBRARIES}
+#)
+#add_dependencies(setcontrolmode_service
+#    ${${PROJECT_NAME}_EXPORTED_TARGETS}
+#    ${catkin_EXPORTED_TARGETS}
+#)
 
 ###########################################################################
 add_executable(setslammode_service setslammode_service.cpp)
