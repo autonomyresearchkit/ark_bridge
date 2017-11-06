@@ -43,6 +43,17 @@ add_dependencies(twist_bridge
 )
 
 ###########################################################################
+add_executable(autonomymode_bridge autonomymode_bridge.cpp)
+target_link_libraries( autonomymode_bridge
+   ${LCM_LIBRARY}
+   ${catkin_LIBRARIES}
+)
+add_dependencies(autonomymode_bridge
+   ${${PROJECT_NAME}_EXPORTED_TARGETS}
+   ${catkin_EXPORTED_TARGETS}
+)
+
+###########################################################################
 add_executable(bool_bridge bool_bridge.cpp)
 target_link_libraries( bool_bridge
    ${LCM_LIBRARY}
@@ -153,17 +164,6 @@ add_dependencies(localizationstatus_bridge
 )
 
 ###########################################################################
-#add_executable(mode_bridge mode_bridge.cpp)
-#target_link_libraries( mode_bridge
-#   ${LCM_LIBRARY}
-#   ${catkin_LIBRARIES}
-#)
-#add_dependencies(mode_bridge
-#   ${${PROJECT_NAME}_EXPORTED_TARGETS}
-#   ${catkin_EXPORTED_TARGETS}
-#)
-
-###########################################################################
 add_executable(occupancygrid_bridge occupancygrid_bridge.cpp)
 target_link_libraries( occupancygrid_bridge
    ${LCM_LIBRARY}
@@ -263,6 +263,17 @@ add_dependencies(robotstate_bridge
 )
 
 ###########################################################################
+add_executable(slammode_bridge slammode_bridge.cpp)
+target_link_libraries( slammode_bridge
+   ${LCM_LIBRARY}
+   ${catkin_LIBRARIES}
+)
+add_dependencies(slammode_bridge
+   ${${PROJECT_NAME}_EXPORTED_TARGETS}
+   ${catkin_EXPORTED_TARGETS}
+)
+
+###########################################################################
 add_executable(stepsequenceactionfeedback_bridge stepsequenceactionfeedback_bridge.cpp)
 target_link_libraries( stepsequenceactionfeedback_bridge
    ${LCM_LIBRARY}
@@ -321,15 +332,15 @@ add_dependencies(string_service
 )
 
 ###########################################################################
-#add_executable(setcontrolmode_service setcontrolmode_service.cpp)
-#target_link_libraries( setcontrolmode_service
-#    ${LCM_LIBRARY}
-#    ${catkin_LIBRARIES}
-#)
-#add_dependencies(setcontrolmode_service
-#    ${${PROJECT_NAME}_EXPORTED_TARGETS}
-#    ${catkin_EXPORTED_TARGETS}
-#)
+add_executable(setcontrolmode_service setcontrolmode_service.cpp)
+target_link_libraries( setcontrolmode_service
+    ${LCM_LIBRARY}
+    ${catkin_LIBRARIES}
+)
+add_dependencies(setcontrolmode_service
+    ${${PROJECT_NAME}_EXPORTED_TARGETS}
+    ${catkin_EXPORTED_TARGETS}
+)
 
 ###########################################################################
 add_executable(setslammode_service setslammode_service.cpp)

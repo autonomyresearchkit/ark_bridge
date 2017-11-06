@@ -1,0 +1,6 @@
+package ark;
+
+struct AutonomyMode
+{
+  int8_t mode;
+}

@@ -25,7 +25,7 @@ ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSI
 #include <ros/ros.h>
 #include <ros/console.h>
 #include <ark_bridge/Status.h>
-#include <ark_bridge/Mode.h>
+#include <ark_bridge/SlamMode.h>
 #include <cpr_slam_msgs/SetMode.h>
 #include <stdlib.h>
 
@@ -33,7 +33,7 @@ ros::Publisher pub;
 ros::ServiceClient serv;
 std::string call_topic, response_topic, service_name;
 
-void rosCallback(const ark_bridge::Mode::ConstPtr& msg)
+void rosCallback(const ark_bridge::SlamMode::ConstPtr& msg)
 {
   cpr_slam_msgs::SetMode srv;
   srv.request.mode.mode = msg->mode;

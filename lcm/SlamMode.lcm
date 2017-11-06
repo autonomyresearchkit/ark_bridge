@@ -1,0 +1,6 @@
+package ark;
+
+struct SlamMode
+{
+  int64_t mode;
+}
