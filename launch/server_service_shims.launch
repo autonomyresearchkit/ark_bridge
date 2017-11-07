@@ -39,7 +39,7 @@ ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSI
     <param name="response_topic" value="/ark_bridge/slam_set_mode_response"/>
     <param name="service_name" value="/slam/set_mode"/>
   </node>
-  <node name="slam_set_initial_pose_servicer" pkg="ark_bridge" type="setpose_service.cpp" output="screen" respawn="true">
+  <node name="slam_set_initial_pose_servicer" pkg="ark_bridge" type="setpose_service" output="screen" respawn="true">
     <param name="call_topic" value="/ark_bridge/slam_set_initial_pose_call"/>
     <param name="response_topic" value="/ark_bridge/slam_set_initial_pose_response"/>
     <param name="service_name" value="/slam/set_initial_pose"/>

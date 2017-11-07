@@ -120,6 +120,17 @@ add_dependencies(distancetogoal_bridge
 )
 
 ###########################################################################
+add_executable(empty_bridge empty_bridge.cpp)
+target_link_libraries( empty_bridge
+   ${LCM_LIBRARY}
+   ${catkin_LIBRARIES}
+)
+add_dependencies(empty_bridge
+   ${${PROJECT_NAME}_EXPORTED_TARGETS}
+   ${catkin_EXPORTED_TARGETS}
+)
+
+###########################################################################
 add_executable(float64_bridge float64_bridge.cpp)
 target_link_libraries( float64_bridge
    ${LCM_LIBRARY}

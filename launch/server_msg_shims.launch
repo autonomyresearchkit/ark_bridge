@@ -87,11 +87,6 @@ ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSI
     <param name="ros_topic" value="/map_data/features/zones/exclusion"/>
     <param name="direction" value="ros2lcm"/>
   </node>
-  <node name="control_selection_current_mode_bridge" pkg="ark_bridge" type="autonomymode_bridge" output="screen" respawn="true">
-    <param name="lcm_topic" value="/ark_bridge/control_selection_current_mode"/>
-    <param name="ros_topic" value="/control_selection/current_mode"/>
-    <param name="direction" value="ros2lcm"/>
-  </node>
   <node name="slam_current_mode_bridge" pkg="ark_bridge" type="slammode_bridge" output="screen" respawn="true">
     <param name="lcm_topic" value="/ark_bridge/slam_current_mode"/>
     <param name="ros_topic" value="/slam/current_mode"/>

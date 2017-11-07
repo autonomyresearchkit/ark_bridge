@@ -1,7 +1,7 @@
 /**
 Software License Agreement (BSD)
 
-\file      loadmapfromdisk_service.cpp
+\file      empty_bridge.cpp
 \authors   Dave Niewinski <dniewinski@clearpathrobotics.com>
 \copyright Copyright (c) 2017, Clearpath Robotics, Inc., All rights reserved.
 
@@ -24,37 +24,49 @@ ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSI
 */
 #include <ros/ros.h>
 #include <ros/console.h>
-#include <ark_bridge/String.h>
-#include <map_data_msgs/LoadMapFromDisk.h>
+#include <ark_bridge/Empty.h>
+#include <std_msgs/Empty.h>
 #include <stdlib.h>
 
 ros::Publisher pub;
-ros::ServiceClient serv;
-std::string call_topic, response_topic, service_name;
+std::string lcm_topic, ros_topic, direction;
 
-void rosCallback(const ark_bridge::String::ConstPtr& msg)
+void rosCallback(const std_msgs::Empty::ConstPtr& msg)
 {
-  map_data_msgs::LoadMapFromDisk srv;
-  srv.request.filename = msg->data;
+  ark_bridge::Empty bridge_message;
 
-  if(serv.call(srv)){
-    ark_bridge::String response_message;
-    response_message.data = srv.response.text;
-    pub.publish(response_message);
-  }
+  pub.publish(bridge_message);
+}
+
+void lcmCallback(const ark_bridge::Empty::ConstPtr& msg)
+{
+  std_msgs::Empty bridge_message;
+
+  pub.publish(bridge_message);
 }
 
 int main(int argc, char **argv) {
-  ros::init(argc, argv, "loadmapfromdisk_servicer");
+  ros::init(argc, argv, "empty_remapper");
   ros::NodeHandle nh("~");
   ros::Subscriber sub;
 
-  if(nh.getParam("call_topic", call_topic) && nh.getParam("service_name", service_name) && nh.getParam("response_topic", response_topic)){
-    ROS_INFO("(%s) --> <%s> --> (%s)", call_topic.c_str(), service_name.c_str(), response_topic.c_str());
+  if(nh.getParam("ros_topic", ros_topic) && nh.getParam("lcm_topic", lcm_topic) && nh.getParam("direction", direction)){
+     if(!direction.compare("ros2lcm")){
+       ROS_INFO("(%s) LCM <-- ROS (%s)", lcm_topic.c_str(), ros_topic.c_str());
+    }
+    else{
+      ROS_INFO("(%s) LCM --> ROS (%s)", lcm_topic.c_str(), ros_topic.c_str());
+    }
 
-    pub = nh.advertise<ark_bridge::String>(response_topic, 1, true);
-    sub = nh.subscribe(call_topic, 10, rosCallback);
-    serv = nh.serviceClient<map_data_msgs::LoadMapFromDisk>(service_name);
+    if(!direction.compare("ros2lcm")){
+      pub = nh.advertise<ark_bridge::Empty>(lcm_topic, 10);
+      sub = nh.subscribe(ros_topic, 10, rosCallback);
+    }
+    else{
+      pub = nh.advertise<std_msgs::Empty>(ros_topic, 10);
+      sub = nh.subscribe(lcm_topic, 10, lcmCallback);
+    }
+
     ros::spin();
   }
   else{
@@ -62,4 +74,5 @@ int main(int argc, char **argv) {
   }
 
   return 0;
+
 }
