@@ -98,6 +98,17 @@ add_dependencies(controlselectionstate_bridge
 )
 
 ###########################################################################
+add_executable(diagnosticarray_bridge diagnosticarray_bridge.cpp)
+target_link_libraries( diagnosticarray_bridge
+   ${LCM_LIBRARY}
+   ${catkin_LIBRARIES}
+)
+add_dependencies(diagnosticarray_bridge
+   ${${PROJECT_NAME}_EXPORTED_TARGETS}
+   ${catkin_EXPORTED_TARGETS}
+)
+
+###########################################################################
 add_executable(distancetogoal_bridge distancetogoal_bridge.cpp)
 target_link_libraries( distancetogoal_bridge
    ${LCM_LIBRARY}
@@ -296,6 +307,17 @@ add_dependencies(stepsequenceactionresult_bridge
 )
 
 ###########################################################################
+add_executable(stringarray_bridge stringarray_bridge.cpp)
+target_link_libraries( stringarray_bridge
+   ${LCM_LIBRARY}
+   ${catkin_LIBRARIES}
+)
+add_dependencies(stringarray_bridge
+   ${${PROJECT_NAME}_EXPORTED_TARGETS}
+   ${catkin_EXPORTED_TARGETS}
+)
+
+###########################################################################
 add_executable(string_bridge string_bridge.cpp)
 target_link_libraries( string_bridge
    ${LCM_LIBRARY}
@@ -332,12 +354,12 @@ add_dependencies(string_service
 )
 
 ###########################################################################
-add_executable(setcontrolmode_service setcontrolmode_service.cpp)
-target_link_libraries( setcontrolmode_service
+add_executable(setautonomymode_service setautonomymode_service.cpp)
+target_link_libraries( setautonomymode_service
     ${LCM_LIBRARY}
     ${catkin_LIBRARIES}
 )
-add_dependencies(setcontrolmode_service
+add_dependencies(setautonomymode_service
     ${${PROJECT_NAME}_EXPORTED_TARGETS}
     ${catkin_EXPORTED_TARGETS}
 )
@@ -450,16 +472,5 @@ target_link_libraries( getcurrentmap_service
 add_dependencies(getcurrentmap_service
     ${${PROJECT_NAME}_EXPORTED_TARGETS}
     ${catkin_EXPORTED_TARGETS}
-)
-
-###########################################################################
-add_executable(diagnosticarray_bridge diagnosticarray_bridge.cpp)
-target_link_libraries( diagnosticarray_bridge
-   ${LCM_LIBRARY}
-   ${catkin_LIBRARIES}
-)
-add_dependencies(diagnosticarray_bridge
-   ${${PROJECT_NAME}_EXPORTED_TARGETS}
-   ${catkin_EXPORTED_TARGETS}
 )
 
