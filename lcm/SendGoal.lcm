@@ -1,0 +1,9 @@
+package ark;
+
+struct SendGoal
+{
+  string id;
+  Pose pose;
+  float position_tolerance;
+  float orientation_tolerance; 
+}
