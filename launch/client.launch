@@ -29,6 +29,7 @@ ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSI
   <arg name="front_laser" default="/front/scan" />
   <arg name="rear_laser" default="/rear/scan" />
   <arg name="stereo_camera" default="/stereo_camera" />
+  <arg name="cmd_vel" default="/platform_control/cmd_vel" />
   <arg name="diagnostics" default="/diagnostics" />
   <arg name="is_sim" default="false" />
 
@@ -40,6 +41,7 @@ ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSI
     <arg name="front_laser" value="$(arg front_laser)" />
     <arg name="rear_laser" value="$(arg rear_laser)" />
     <arg name="stereo_camera" value="$(arg stereo_camera)" />
+    <arg name="cmd_vel" value="$(arg cmd_vel)" />
     <arg name="diagnostics" default="$(arg diagnostics)" />
   </include>
 
