@@ -64,12 +64,12 @@ ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSI
   </node>
   <node name="front_scan_bridge" pkg="ark_bridge" type="laserscan_bridge" output="screen" respawn="true">
     <param name="lcm_topic" value="/ark_bridge/front_scan"/>
-    <param name="ros_topic" value="/front/laser"/>
+    <param name="ros_topic" value="/front/scan"/>
     <param name="direction" value="lcm2ros"/>
   </node>
   <node name="rear_scan_bridge" pkg="ark_bridge" type="laserscan_bridge" output="screen" respawn="true">
     <param name="lcm_topic" value="/ark_bridge/rear_scan"/>
-    <param name="ros_topic" value="/rear/laser"/>
+    <param name="ros_topic" value="/rear/scan"/>
     <param name="direction" value="lcm2ros"/>
   </node>
   <node name="diagnostics_bridge" pkg="ark_bridge" type="diagnosticarray_bridge" output="screen" respawn="true">
@@ -81,11 +81,6 @@ ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSI
   <node name="cancel_goal_bridge" pkg="ark_bridge" type="empty_bridge" output="screen" respawn="true">
     <param name="lcm_topic" value="/ark_bridge/cancel_goal"/>
     <param name="ros_topic" value="/mapper/strategy_manager_proxy/cancel_goal"/>
-    <param name="direction" value="lcm2ros"/>
-  </node>
-  <node name="send_goal_bridge" pkg="ark_bridge" type="string_bridge" output="screen" respawn="true">
-    <param name="lcm_topic" value="/ark_bridge/send_goal"/>
-    <param name="ros_topic" value="/mapper/strategy_manager_proxy/send_goal"/>
     <param name="direction" value="lcm2ros"/>
   </node>
   <node name="platform_control_cmd_vel_bridge" pkg="ark_bridge" type="twist_bridge" output="screen" respawn="true">
