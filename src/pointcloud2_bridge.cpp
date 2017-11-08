@@ -9,7 +9,7 @@ Redistribution and use in source and binary forms, with or without modification,
 the following conditions are met:
  * Redistributions of source code must retain the above copyright notice, this list of conditions and the
    following disclaimer.
- * Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the 
+ * Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the
    following disclaimer in the documentation and/or other materials provided with the distribution.
  * Neither the name of Clearpath Robotics nor the names of its contributors may be used to endorse or promote
    products derived from this software without specific prior written permission.
@@ -49,7 +49,7 @@ void rosCallback(const sensor_msgs::PointCloud2::ConstPtr& msg)
   bridge_message.is_dense = msg->is_dense;
 
   bridge_message.ndata = msg->data.size();
-  for(int i = 0; i < msg->data.size(); i++){ 
+  for(int i = 0; i < msg->data.size(); i++){
     bridge_message.data.push_back(msg->data[i]);
   }
 
@@ -84,7 +84,7 @@ void lcmCallback(const ark_bridge::PointCloud2::ConstPtr& msg)
   bridge_message.row_step = msg->row_step;
   bridge_message.is_dense = msg->is_dense;
 
-  for(int i = 0; i < msg->data.size(); i++){ 
+  for(int i = 0; i < msg->data.size(); i++){
     bridge_message.data.push_back(msg->data[i]);
   }
 
@@ -116,11 +116,11 @@ int main(int argc, char **argv) {
     }
 
     if(!direction.compare("ros2lcm")){
-      pub = nh.advertise<ark_bridge::PointCloud2>(lcm_topic, 10);
+      pub = nh.advertise<ark_bridge::PointCloud2>(lcm_topic, 10, true);
       sub = nh.subscribe(ros_topic, 10, rosCallback);
     }
     else{
-      pub = nh.advertise<sensor_msgs::PointCloud2>(ros_topic, 10);
+      pub = nh.advertise<sensor_msgs::PointCloud2>(ros_topic, 10, true);
       sub = nh.subscribe(lcm_topic, 10, lcmCallback);
     }
 

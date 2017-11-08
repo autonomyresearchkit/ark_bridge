@@ -9,7 +9,7 @@ Redistribution and use in source and binary forms, with or without modification,
 the following conditions are met:
  * Redistributions of source code must retain the above copyright notice, this list of conditions and the
    following disclaimer.
- * Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the 
+ * Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the
    following disclaimer in the documentation and/or other materials provided with the distribution.
  * Neither the name of Clearpath Robotics nor the names of its contributors may be used to endorse or promote
    products derived from this software without specific prior written permission.
@@ -47,7 +47,7 @@ void rosCallback(const diagnostic_msgs::DiagnosticArray::ConstPtr& msg)
   bridge_message.header.stamp = msg->header.stamp;
 
   bridge_message.nstatus = msg->status.size();
-  for(int i = 0; i < msg->status.size(); i++){ 
+  for(int i = 0; i < msg->status.size(); i++){
     ark_bridge::DiagnosticStatus dstatus;
 
     dstatus.level = msg->status[i].level;
@@ -56,7 +56,7 @@ void rosCallback(const diagnostic_msgs::DiagnosticArray::ConstPtr& msg)
     dstatus.hardware_id = msg->status[i].hardware_id;
 
     dstatus.nvalues = msg->status[i].values.size();
-    for(int ii = 0; ii < msg->status[i].values.size(); ii++){ 
+    for(int ii = 0; ii < msg->status[i].values.size(); ii++){
       ark_bridge::KeyValue kvalue;
 
       kvalue.key = msg->status[i].values[ii].key;
@@ -79,7 +79,7 @@ void lcmCallback(const ark_bridge::DiagnosticArray::ConstPtr& msg)
   bridge_message.header.frame_id = msg->header.frame_id;
   bridge_message.header.stamp = msg->header.stamp;
 
-  for(int i = 0; i < msg->status.size(); i++){ 
+  for(int i = 0; i < msg->status.size(); i++){
     diagnostic_msgs::DiagnosticStatus dstatus;
 
     dstatus.level = msg->status[i].level;
@@ -87,8 +87,8 @@ void lcmCallback(const ark_bridge::DiagnosticArray::ConstPtr& msg)
     dstatus.message = msg->status[i].message;
     dstatus.hardware_id = msg->status[i].hardware_id;
 
-    for(int ii = 0; ii < msg->status[i].values.size(); ii++){ 
-      diagnostic_msgs::KeyValue kvalue; 
+    for(int ii = 0; ii < msg->status[i].values.size(); ii++){
+      diagnostic_msgs::KeyValue kvalue;
 
       kvalue.key = msg->status[i].values[ii].key;
       kvalue.value = msg->status[i].values[ii].value;
@@ -116,11 +116,11 @@ int main(int argc, char **argv) {
     }
 
     if(!direction.compare("ros2lcm")){
-      pub = nh.advertise<ark_bridge::DiagnosticArray>(lcm_topic, 10);
+      pub = nh.advertise<ark_bridge::DiagnosticArray>(lcm_topic, 10, true);
       sub = nh.subscribe(ros_topic, 10, rosCallback);
     }
     else{
-      pub = nh.advertise<diagnostic_msgs::DiagnosticArray>(ros_topic, 10);
+      pub = nh.advertise<diagnostic_msgs::DiagnosticArray>(ros_topic, 10, true);
       sub = nh.subscribe(lcm_topic, 10, lcmCallback);
     }
 

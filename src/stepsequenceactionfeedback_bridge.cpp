@@ -232,11 +232,11 @@ int main(int argc, char **argv) {
     }
 
     if(!direction.compare("ros2lcm")){
-      pub = nh.advertise<ark_bridge::StepSequenceActionFeedback>(lcm_topic, 10);
+      pub = nh.advertise<ark_bridge::StepSequenceActionFeedback>(lcm_topic, 10, true);
       sub = nh.subscribe(ros_topic, 10, rosCallback);
     }
     else{
-      pub = nh.advertise<strategy_management_msgs::StepSequenceActionFeedback>(ros_topic, 10);
+      pub = nh.advertise<strategy_management_msgs::StepSequenceActionFeedback>(ros_topic, 10, true);
       sub = nh.subscribe(lcm_topic, 10, lcmCallback);
     }
 
