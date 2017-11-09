@@ -24,6 +24,12 @@ ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCL
 ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
 <launch>
+  <node name="configure_ark_servicer" pkg="ark_bridge" type="arkconfigsettings_service" output="screen" respawn="true">
+    <param name="call_topic" value="/ark_bridge/ark_config_settings_call"/>
+    <param name="response_topic" value="/ark_bridge/ark_config_settings_response"/>
+    <param name="service_name" value="/configure_ark"/>
+  </node>
+
   <node name="map_data_clear_servicer" pkg="ark_bridge" type="empty_service" output="screen" respawn="true">
     <param name="call_topic" value="/ark_bridge/map_data_clear_call"/>
     <param name="response_topic" value="/ark_bridge/map_data_clear_response"/>
