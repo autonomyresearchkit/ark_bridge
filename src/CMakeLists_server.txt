@@ -1,7 +1,6 @@
 ###########################################################################
 add_executable(publish_clock publish_clock.cpp)
 target_link_libraries( publish_clock
-    ${LCM_LIBRARY}
     ${catkin_LIBRARIES}
 )
 add_dependencies(publish_clock
@@ -12,7 +11,6 @@ add_dependencies(publish_clock
 ###########################################################################
 add_executable(tf_bridge tf_bridge.cpp)
 target_link_libraries( tf_bridge
-    ${LCM_LIBRARY}
     ${catkin_LIBRARIES}
 )
 add_dependencies(tf_bridge
@@ -23,7 +21,6 @@ add_dependencies(tf_bridge
 ###########################################################################
 add_executable(odom_bridge odom_bridge.cpp)
 target_link_libraries( odom_bridge
-    ${LCM_LIBRARY}
     ${catkin_LIBRARIES}
 )
 add_dependencies(odom_bridge
@@ -34,7 +31,6 @@ add_dependencies(odom_bridge
 ###########################################################################
 add_executable(twist_bridge twist_bridge.cpp)
 target_link_libraries( twist_bridge
-    ${LCM_LIBRARY}
     ${catkin_LIBRARIES}
 )
 add_dependencies(twist_bridge
@@ -220,7 +216,7 @@ add_dependencies(pausestatus_bridge
 
 ###########################################################################
 add_executable(pointcloud2_bridge pointcloud2_bridge.cpp)
-target_link_libraries( pointcloud2_bridge    
+target_link_libraries( pointcloud2_bridge
    ${LCM_LIBRARY}
    ${catkin_LIBRARIES}
 )
@@ -343,145 +339,131 @@ add_dependencies(string_bridge
 ##########################################################################
 ##########################################################################
 ###########################################################################
-add_executable(empty_service empty_service.cpp)
-target_link_libraries( empty_service
-    ${LCM_LIBRARY}
+add_executable(empty_service_caller empty_service_caller.cpp)
+target_link_libraries( empty_service_caller
     ${catkin_LIBRARIES}
 )
-add_dependencies(empty_service
+add_dependencies(empty_service_caller
     ${${PROJECT_NAME}_EXPORTED_TARGETS}
     ${catkin_EXPORTED_TARGETS}
 )
 
 ###########################################################################
-add_executable(string_service string_service.cpp)
-target_link_libraries( string_service
-    ${LCM_LIBRARY}
+add_executable(string_service_caller string_service_caller.cpp)
+target_link_libraries( string_service_caller
     ${catkin_LIBRARIES}
 )
-add_dependencies(string_service
+add_dependencies(string_service_caller
     ${${PROJECT_NAME}_EXPORTED_TARGETS}
     ${catkin_EXPORTED_TARGETS}
 )
 
 ###########################################################################
-add_executable(setautonomymode_service setautonomymode_service.cpp)
-target_link_libraries( setautonomymode_service
-    ${LCM_LIBRARY}
+add_executable(setautonomymode_service_caller setautonomymode_service_caller.cpp)
+target_link_libraries( setautonomymode_service_caller
     ${catkin_LIBRARIES}
 )
-add_dependencies(setautonomymode_service
+add_dependencies(setautonomymode_service_caller
     ${${PROJECT_NAME}_EXPORTED_TARGETS}
     ${catkin_EXPORTED_TARGETS}
 )
 
 ###########################################################################
-add_executable(setslammode_service setslammode_service.cpp)
-target_link_libraries( setslammode_service
-    ${LCM_LIBRARY}
+add_executable(setslammode_service_caller setslammode_service_caller.cpp)
+target_link_libraries( setslammode_service_caller
     ${catkin_LIBRARIES}
 )
-add_dependencies(setslammode_service
+add_dependencies(setslammode_service_caller
     ${${PROJECT_NAME}_EXPORTED_TARGETS}
     ${catkin_EXPORTED_TARGETS}
 )
 
 ###########################################################################
-add_executable(loadmapfromdisk_service loadmapfromdisk_service.cpp)
-target_link_libraries( loadmapfromdisk_service
-    ${LCM_LIBRARY}
+add_executable(loadmapfromdisk_service_caller loadmapfromdisk_service_caller.cpp)
+target_link_libraries( loadmapfromdisk_service_caller
     ${catkin_LIBRARIES}
 )
-add_dependencies(loadmapfromdisk_service
+add_dependencies(loadmapfromdisk_service_caller
     ${${PROJECT_NAME}_EXPORTED_TARGETS}
     ${catkin_EXPORTED_TARGETS}
 )
 
 ###########################################################################
-add_executable(deletemap_service deletemap_service.cpp)
-target_link_libraries( deletemap_service
-    ${LCM_LIBRARY}
+add_executable(deletemap_service_caller deletemap_service_caller.cpp)
+target_link_libraries( deletemap_service_caller
     ${catkin_LIBRARIES}
 )
-add_dependencies(deletemap_service
+add_dependencies(deletemap_service_caller
     ${${PROJECT_NAME}_EXPORTED_TARGETS}
     ${catkin_EXPORTED_TARGETS}
 )
 
 ###########################################################################
-add_executable(savemaptodisk_service savemaptodisk_service.cpp)
-target_link_libraries( savemaptodisk_service
-    ${LCM_LIBRARY}
+add_executable(savemaptodisk_service_caller savemaptodisk_service_caller.cpp)
+target_link_libraries( savemaptodisk_service_caller
     ${catkin_LIBRARIES}
 )
-add_dependencies(savemaptodisk_service
+add_dependencies(savemaptodisk_service_caller
     ${${PROJECT_NAME}_EXPORTED_TARGETS}
     ${catkin_EXPORTED_TARGETS}
 )
 
 ###########################################################################
-add_executable(listmaps_service listmaps_service.cpp)
-target_link_libraries( listmaps_service
-    ${LCM_LIBRARY}
+add_executable(listmaps_service_caller listmaps_service_caller.cpp)
+target_link_libraries( listmaps_service_caller
     ${catkin_LIBRARIES}
 )
-add_dependencies(listmaps_service
+add_dependencies(listmaps_service_caller
     ${${PROJECT_NAME}_EXPORTED_TARGETS}
     ${catkin_EXPORTED_TARGETS}
 )
 
 ###########################################################################
-add_executable(mapinfo_service mapinfo_service.cpp)
-target_link_libraries( mapinfo_service
-    ${LCM_LIBRARY}
+add_executable(mapinfo_service_caller mapinfo_service_caller.cpp)
+target_link_libraries( mapinfo_service_caller
     ${catkin_LIBRARIES}
 )
-add_dependencies(mapinfo_service
+add_dependencies(mapinfo_service_caller
     ${${PROJECT_NAME}_EXPORTED_TARGETS}
     ${catkin_EXPORTED_TARGETS}
 )
 
 ###########################################################################
-add_executable(pausecontrol_service pausecontrol_service.cpp)
-target_link_libraries( pausecontrol_service
-    ${LCM_LIBRARY}
+add_executable(pausecontrol_service_caller pausecontrol_service_caller.cpp)
+target_link_libraries( pausecontrol_service_caller
     ${catkin_LIBRARIES}
 )
-add_dependencies(pausecontrol_service
+add_dependencies(pausecontrol_service_caller
     ${${PROJECT_NAME}_EXPORTED_TARGETS}
     ${catkin_EXPORTED_TARGETS}
 )
 
 ###########################################################################
-add_executable(arkconfigsettings_service arkconfigsettings_service.cpp)
-target_link_libraries( arkconfigsettings_service
-    ${LCM_LIBRARY}
+add_executable(arkconfigsettings_service_caller arkconfigsettings_service_caller.cpp)
+target_link_libraries( arkconfigsettings_service_caller
     ${catkin_LIBRARIES}
 )
-add_dependencies(arkconfigsettings_service
+add_dependencies(arkconfigsettings_service_caller
     ${${PROJECT_NAME}_EXPORTED_TARGETS}
     ${catkin_EXPORTED_TARGETS}
 )
 
 ###########################################################################
-add_executable(setpose_service setpose_service.cpp)
-target_link_libraries( setpose_service
-    ${LCM_LIBRARY}
+add_executable(setpose_service_caller setpose_service_caller.cpp)
+target_link_libraries( setpose_service_caller
     ${catkin_LIBRARIES}
 )
-add_dependencies(setpose_service
+add_dependencies(setpose_service_caller
     ${${PROJECT_NAME}_EXPORTED_TARGETS}
     ${catkin_EXPORTED_TARGETS}
 )
 
 ###########################################################################
-add_executable(getcurrentmap_service getcurrentmap_service.cpp)
-target_link_libraries( getcurrentmap_service
-    ${LCM_LIBRARY}
+add_executable(getcurrentmap_service_caller getcurrentmap_service_caller.cpp)
+target_link_libraries( getcurrentmap_service_caller
     ${catkin_LIBRARIES}
 )
-add_dependencies(getcurrentmap_service
+add_dependencies(getcurrentmap_service_caller
     ${${PROJECT_NAME}_EXPORTED_TARGETS}
     ${catkin_EXPORTED_TARGETS}
 )
-

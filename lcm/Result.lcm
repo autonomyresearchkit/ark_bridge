@@ -1,0 +1,7 @@
+package ark;
+
+struct Result
+{
+  int16_t result;
+  string text;
+}

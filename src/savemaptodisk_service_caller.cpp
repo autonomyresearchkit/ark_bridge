@@ -1,7 +1,7 @@
 /**
 Software License Agreement (BSD)
 
-\file      mapinfo_service.cpp
+\file      savemaptodisk_service_caller.cpp
 \authors   Dave Niewinski <dniewinski@clearpathrobotics.com>
 \copyright Copyright (c) 2017, Clearpath Robotics, Inc., All rights reserved.
 
@@ -24,42 +24,40 @@ ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSI
 */
 #include <ros/ros.h>
 #include <ros/console.h>
-#include <ark_bridge/String.h>
-#include <ark_bridge/MapInfoResponse.h>
-#include <map_data_msgs/MapInfo.h>
+#include <ark_bridge/Empty.h>
+#include <ark_bridge/SaveMapToDiskCall.h>
+#include <map_data_msgs/SaveMapToDisk.h>
 #include <stdlib.h>
 
 ros::Publisher pub;
 ros::ServiceClient serv;
 std::string call_topic, response_topic, service_name;
 
-void rosCallback(const ark_bridge::String::ConstPtr& msg)
+void rosCallback(const ark_bridge::SaveMapToDiskCall::ConstPtr& msg)
 {
-  map_data_msgs::MapInfo srv;
-
-  srv.request.filename = msg->data;
+  map_data_msgs::SaveMapToDisk srv;
+  srv.request.map_topic = msg->map_topic;
+  srv.request.timeout.sec = msg->timeout.sec;
+  srv.request.timeout.nsec = msg->timeout.nsec;
+  srv.request.filename = msg->filename;
 
   if(serv.call(srv)){
-    ark_bridge::MapInfoResponse response_message;
-    response_message.name = srv.response.name;
-    response_message.md5sum = srv.response.md5sum;
-    response_message.size = srv.response.size;
-
+    ark_bridge::Empty response_message;
     pub.publish(response_message);
   }
 }
 
 int main(int argc, char **argv) {
-  ros::init(argc, argv, "mapinfo_servicer");
+  ros::init(argc, argv, "savemaptodisk_service_caller");
   ros::NodeHandle nh("~");
   ros::Subscriber sub;
 
   if(nh.getParam("call_topic", call_topic) && nh.getParam("service_name", service_name) && nh.getParam("response_topic", response_topic)){
     ROS_INFO("(%s) --> <%s> --> (%s)", call_topic.c_str(), service_name.c_str(), response_topic.c_str());
 
-    pub = nh.advertise<ark_bridge::MapInfoResponse>(response_topic, 1, true);
+    pub = nh.advertise<ark_bridge::Empty>(response_topic, 1, true);
     sub = nh.subscribe(call_topic, 10, rosCallback);
-    serv = nh.serviceClient<map_data_msgs::MapInfo>(service_name);
+    serv = nh.serviceClient<map_data_msgs::SaveMapToDisk>(service_name);
     ros::spin();
   }
   else{

@@ -1,0 +1,142 @@
+<?xml version="1.0"?>
+<!--
+Software License Agreement (BSD)
+
+\file      client_servie_providers.launch
+\authors   Dave Niewinski <dniewinski@clearpathrobotics.com>
+\copyright Copyright (c) 2017, Clearpath Robotics, Inc., All rights reserved.
+
+Redistribution and use in source and binary forms, with or without modification, are permitted provided that
+the following conditions are met:
+ * Redistributions of source code must retain the above copyright notice, this list of conditions and the
+   following disclaimer.
+ * Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the
+   following disclaimer in the documentation and/or other materials provided with the distribution.
+ * Neither the name of Clearpath Robotics nor the names of its contributors may be used to endorse or promote
+   products derived from this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WAR-
+RANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, IN-
+DIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT
+OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
+ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+-->
+<launch>
+  <node name="ark_config_settings_service_provider" pkg="ark_bridge" type="arkconfigsettings_service_provider" output="screen" respawn="true">
+    <param name="call_topic" value="/ark_bridge/ark_config_settings_call"/>
+    <param name="response_topic" value="/ark_bridge/ark_config_settings_response"/>
+    <param name="service_name" value="/ark_bridge/configure_ark"/>
+  </node>
+  <node name="ark_start_service_provider" pkg="ark_bridge" type="empty_service_provider" output="screen" respawn="true">
+    <param name="call_topic" value="/ark_bridge/ark_start_call"/>
+    <param name="response_topic" value="/ark_bridge/ark_start_response"/>
+    <param name="service_name" value="/ark_bridge/start_autonomy"/>
+  </node>
+  <node name="ark_stop_service_provider" pkg="ark_bridge" type="empty_service_provider" output="screen" respawn="true">
+    <param name="call_topic" value="/ark_bridge/ark_stop_call"/>
+    <param name="response_topic" value="/ark_bridge/ark_stop_response"/>
+    <param name="service_name" value="/ark_bridge/stop_autonomy"/>
+  </node>
+  <node name="control_selection_set_mode_service_provider" pkg="ark_bridge" type="setautonomymode_service_provider" output="screen" respawn="true">
+    <param name="call_topic" value="/ark_bridge/control_selection_set_mode_call"/>
+    <param name="response_topic" value="/ark_bridge/control_selection_set_mode_response"/>
+    <param name="service_name" value="/ark_bridge/control_selection_set_mode"/>
+  </node>
+  <node name="slam_set_mode_service_provider" pkg="ark_bridge" type="setslammode_service_provider" output="screen" respawn="true">
+    <param name="call_topic" value="/ark_bridge/slam_set_mode_call"/>
+    <param name="response_topic" value="/ark_bridge/slam_set_mode_response"/>
+    <param name="service_name" value="/ark_bridge/slam_set_mode"/>
+  </node>
+  <node name="slam_set_initial_pose_service_provider" pkg="ark_bridge" type="setpose_service_provider" output="screen" respawn="true">
+    <param name="call_topic" value="/ark_bridge/slam_set_initial_pose_call"/>
+    <param name="response_topic" value="/ark_bridge/slam_set_initial_pose_response"/>
+    <param name="service_name" value="/ark_bridge/slam_set_initial_pose"/>
+  </node>
+  <node name="control_selection_autonomy_clear_all_disabled_service_provider" pkg="ark_bridge" type="empty_service_provider" output="screen" respawn="true">
+    <param name="call_topic" value="/ark_bridge/control_selection_autonomy_clear_all_disabled_call"/>
+    <param name="response_topic" value="/ark_bridge/control_selection_autonomy_clear_all_disabled_response"/>
+    <param name="service_name" value="/ark_bridge/control_selection_autonomy_clear_all_disabled"/>
+  </node>
+  <node name="control_selection_autonomy_clear_all_paused_service_provider" pkg="ark_bridge" type="empty_service_provider" output="screen" respawn="true">
+    <param name="call_topic" value="/ark_bridge/control_selection_autonomy_clear_all_paused_call"/>
+    <param name="response_topic" value="/ark_bridge/control_selection_autonomy_clear_all_paused_response"/>
+    <param name="service_name" value="/ark_bridge/control_selection_autonomy_clear_all_paused"/>
+  </node>
+  <node name="control_selection_autonomy_disable_service_provider" pkg="ark_bridge" type="string_service_provider" output="screen" respawn="true">
+    <param name="call_topic" value="/ark_bridge/control_selection_autonomy_disable_call"/>
+    <param name="response_topic" value="/ark_bridge/control_selection_autonomy_disable_response"/>
+    <param name="service_name" value="/ark_bridge/control_selection_autonomy_disable"/>
+  </node>
+  <node name="control_selection_autonomy_enable_service_provider" pkg="ark_bridge" type="string_service_provider" output="screen" respawn="true">
+    <param name="call_topic" value="/ark_bridge/control_selection_autonomy_enable_call"/>
+    <param name="response_topic" value="/ark_bridge/control_selection_autonomy_enable_response"/>
+    <param name="service_name" value="/ark_bridge/control_selection_autonomy_enable"/>
+  </node>
+  <node name="control_selection_autonomy_pause_service_provider" pkg="ark_bridge" type="string_service_provider" output="screen" respawn="true">
+    <param name="call_topic" value="/ark_bridge/control_selection_autonomy_pause_call"/>
+    <param name="response_topic" value="/ark_bridge/control_selection_autonomy_pause_response"/>
+    <param name="service_name" value="/ark_bridge/control_selection_autonomy_pause"/>
+  </node>
+  <node name="control_selection_autonomy_resume_service_provider" pkg="ark_bridge" type="string_service_provider" output="screen" respawn="true">
+    <param name="call_topic" value="/ark_bridge/control_selection_autonomy_resume_call"/>
+    <param name="response_topic" value="/ark_bridge/control_selection_autonomy_resume_response"/>
+    <param name="service_name" value="/ark_bridge/control_selection_autonomy_resume"/>
+  </node>
+  <node name="control_selection_core_clear_all_disabled_service_provider" pkg="ark_bridge" type="empty_service_provider" output="screen" respawn="true">
+    <param name="call_topic" value="/ark_bridge/control_selection_core_clear_all_disabled_call"/>
+    <param name="response_topic" value="/ark_bridge/control_selection_core_clear_all_disabled_response"/>
+    <param name="service_name" value="/ark_bridge/control_selection_core_clear_all_disabled"/>
+  </node>
+  <node name="control_selection_core_clear_all_paused_service_provider" pkg="ark_bridge" type="empty_service_provider" output="screen" respawn="true">
+    <param name="call_topic" value="/ark_bridge/control_selection_core_clear_all_paused_call"/>
+    <param name="response_topic" value="/ark_bridge/control_selection_core_clear_all_paused_response"/>
+    <param name="service_name" value="/ark_bridge/control_selection_core_clear_all_paused"/>
+  </node>
+  <node name="control_selection_core_disable_service_provider" pkg="ark_bridge" type="string_service_provider" output="screen" respawn="true">
+    <param name="call_topic" value="/ark_bridge/control_selection_core_disable_call"/>
+    <param name="response_topic" value="/ark_bridge/control_selection_core_disable_response"/>
+    <param name="service_name" value="/ark_bridge/control_selection_core_disable"/>
+  </node>
+  <node name="control_selection_core_enable_service_provider" pkg="ark_bridge" type="string_service_provider" output="screen" respawn="true">
+    <param name="call_topic" value="/ark_bridge/control_selection_core_enable_call"/>
+    <param name="response_topic" value="/ark_bridge/control_selection_core_enable_response"/>
+    <param name="service_name" value="/ark_bridge/control_selection_core_enable"/>
+  </node>
+  <node name="control_selection_core_pause_service_provider" pkg="ark_bridge" type="string_service_provider" output="screen" respawn="true">
+    <param name="call_topic" value="/ark_bridge/control_selection_core_pause_call"/>
+    <param name="response_topic" value="/ark_bridge/control_selection_core_pause_response"/>
+    <param name="service_name" value="/ark_bridge/control_selection_core_pause"/>
+  </node>
+  <node name="control_selection_core_resume" pkg="ark_bridge" type="string_service_provider" output="screen" respawn="true">
+    <param name="call_topic" value="/ark_bridge/control_selection_core_resume"/>
+    <param name="response_topic" value="/ark_bridge/control_selection_core_resume"/>
+    <param name="service_name" value="/ark_bridge/control_selection_core_resume"/>
+  </node>
+  <node name="map_data_clear_service_provider" pkg="ark_bridge" type="empty_service_provider" output="screen" respawn="true">
+    <param name="call_topic" value="/ark_bridge/map_data_clear_call"/>
+    <param name="response_topic" value="/ark_bridge/map_data_clear_response"/>
+    <param name="service_name" value="/ark_bridge/map_data_clear"/>
+  </node>
+  <node name="map_data_delete_map_service_provider" pkg="ark_bridge" type="deletemap_service_provider" output="screen" respawn="true">
+    <param name="call_topic" value="/ark_bridge/map_data_delete_map_call"/>
+    <param name="response_topic" value="/ark_bridge/map_data_delete_map_response"/>
+    <param name="service_name" value="/ark_bridge/map_data_delete_map"/>
+  </node>
+  <node name="map_data_list_maps_service_provider" pkg="ark_bridge" type="listmaps_service_provider" output="screen" respawn="true">
+    <param name="call_topic" value="/ark_bridge/map_data_list_maps_call"/>
+    <param name="response_topic" value="/ark_bridge/map_data_list_maps_response"/>
+    <param name="service_name" value="/ark_bridge/map_data_list_maps"/>
+  </node>
+  <node name="map_data_load_map_from_disk_service_provider" pkg="ark_bridge" type="loadmapfromdisk_service_provider" output="screen" respawn="true">
+    <param name="call_topic" value="/ark_bridge/map_data_load_map_from_disk_call"/>
+    <param name="response_topic" value="/ark_bridge/map_data_load_map_from_disk_response"/>
+    <param name="service_name" value="/ark_bridge/map_data_load_map_from_disk"/>
+  </node>
+  <node name="map_data_save_map_to_disk_service_provider" pkg="ark_bridge" type="savemaptodisk_service_provider" output="screen" respawn="true">
+    <param name="call_topic" value="/ark_bridge/map_data_save_map_to_disk_call"/>
+    <param name="response_topic" value="/ark_bridge/map_data_save_map_to_disk_response"/>
+    <param name="service_name" value="/ark_bridge/map_data_save_map_to_disk"/>
+  </node>
+</launch>

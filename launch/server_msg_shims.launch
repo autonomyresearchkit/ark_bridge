@@ -57,6 +57,12 @@ ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSI
     <param name="ros_topic" value="/clock"/>
     <param name="direction" value="lcm2ros"/>
   </node>
+  <node name="slam_map_bridge" pkg="ark_bridge" type="occupancygrid_bridge" output="screen" respawn="true">
+    <param name="lcm_topic" value="/ark_bridge/slam_map"/>
+    <param name="ros_topic" value="/slam/map"/>
+    <param name="direction" value="ros2lcm"/>
+  </node>
+
   <node name="stereo_bridge" pkg="ark_bridge" type="pointcloud2_bridge" output="screen" respawn="true">
     <param name="lcm_topic" value="/ark_bridge/stereo_camera_0"/>
     <param name="ros_topic" value="/stereo/points2_filtered"/>

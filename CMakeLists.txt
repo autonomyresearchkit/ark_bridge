@@ -27,6 +27,20 @@ FOREACH(rosMsg ${rosMsgFiles})
     add_message_files( FILES ${rosMsg})
 ENDFOREACH(rosMsg)
 
+add_service_files(
+  FILES
+  ArkConfigSettings_service.srv
+  Empty_service.srv
+  LoadMapFromDisk_service.srv
+  SetAutonomyMode_service.srv
+  SetSlamMode_service.srv
+  DeleteMap_service.srv
+  ListMaps_service.srv
+  SaveMapToDisk_service.srv
+  SetPose_service.srv
+  String_service.srv
+)
+
 generate_messages(
   DEPENDENCIES
   std_msgs

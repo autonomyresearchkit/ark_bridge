@@ -27,16 +27,9 @@ import time
 import rospy
 import yaml
 import sys
-
-def response_callback(data):
-  global started
-  if started:
-    print data.information
-    rospy.signal_shutdown("Ark Configured")
+from ark_bridge.srv import ArkConfigSettings_service
 
 def configure_ark(yaml_file):
-
-    # Read the yammygang file
     yaml_lib = None
     with open(yaml_file, 'r') as stream:
         try:
@@ -50,15 +43,14 @@ def configure_ark(yaml_file):
         started = False
         print "Starting..."
 
-        rospy.init_node("robot_ark_configurator")
+        rospy.init_node("ark_configuration_parser")
 
-        rospy.Subscriber("/ark_bridge/ark_config_settings_response", ArkConfigSettingsResponse, response_callback)
-        time.sleep(0.3)
-        started = True
+    rospy.wait_for_service('/ark_bridge/configure_ark')
+    try:
+        conf_ark = rospy.ServiceProxy('/ark_bridge/configure_ark', ArkConfigSettings_service)
 
         print "Configuring ARK"
 
-        pub = rospy.Publisher("/ark_bridge/ark_config_settings_call", ArkConfigSettingsCall, latch=True, queue_size=1)
         settingsMsg = ArkConfigSettingsCall()
 
         settingsMsg.max_fwd_linear_speed = yaml_lib["ark_config"]["max_fwd_linear_speed"]
@@ -79,10 +71,14 @@ def configure_ark(yaml_file):
         settingsMsg.camera_3d_memory = yaml_lib["ark_config"]["camera_3d_memory"]
         settingsMsg.drive_direction = yaml_lib["ark_config"]["drive_direction"]
 
-        pub.publish(settingsMsg)
-        rospy.spin()
+        resp = conf_ark(settingsMsg)
+        if resp.ark_service_timeout:
+          print "Service Timed Out.  Configuration Failed"
+	else:
+          print "Ark Configuration <" + resp.res_data.information + ">"
 
-        print "Done"
+    except rospy.ServiceException, e:
+        print "Service call failed: %s"%e
 
 if __name__ == "__main__":
     yaml_file_path = None

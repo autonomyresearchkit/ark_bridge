@@ -1,7 +1,6 @@
 ###########################################################################
 add_executable(publish_clock publish_clock.cpp)
 target_link_libraries( publish_clock
-    ${LCM_LIBRARY}
     ${catkin_LIBRARIES}
 )
 add_dependencies(publish_clock
@@ -12,7 +11,6 @@ add_dependencies(publish_clock
 ###########################################################################
 add_executable(tf_bridge tf_bridge.cpp)
 target_link_libraries( tf_bridge
-    ${LCM_LIBRARY}
     ${catkin_LIBRARIES}
 )
 add_dependencies(tf_bridge
@@ -23,7 +21,6 @@ add_dependencies(tf_bridge
 ###########################################################################
 add_executable(odom_bridge odom_bridge.cpp)
 target_link_libraries( odom_bridge
-    ${LCM_LIBRARY}
     ${catkin_LIBRARIES}
 )
 add_dependencies(odom_bridge
@@ -34,7 +31,6 @@ add_dependencies(odom_bridge
 ###########################################################################
 add_executable(twist_bridge twist_bridge.cpp)
 target_link_libraries( twist_bridge
-    ${LCM_LIBRARY}
     ${catkin_LIBRARIES}
 )
 add_dependencies(twist_bridge
@@ -66,7 +62,7 @@ add_dependencies(laserscan_bridge
 
 ###########################################################################
 add_executable(pointcloud2_bridge pointcloud2_bridge.cpp)
-target_link_libraries( pointcloud2_bridge    
+target_link_libraries( pointcloud2_bridge
    ${LCM_LIBRARY}
    ${catkin_LIBRARIES}
 )
@@ -86,4 +82,117 @@ add_dependencies(diagnosticarray_bridge
    ${catkin_EXPORTED_TARGETS}
 )
 
+###########################################################################
+add_executable(occupancygrid_bridge occupancygrid_bridge.cpp)
+target_link_libraries( occupancygrid_bridge
+   ${LCM_LIBRARY}
+   ${catkin_LIBRARIES}
+)
+add_dependencies(occupancygrid_bridge
+   ${${PROJECT_NAME}_EXPORTED_TARGETS}
+   ${catkin_EXPORTED_TARGETS}
+)
 
+###########################################################################
+###########################################################################
+###########################################################################
+
+###########################################################################
+add_executable(arkconfigsettings_service_provider arkconfigsettings_service_provider.cpp)
+target_link_libraries( arkconfigsettings_service_provider
+    ${catkin_LIBRARIES}
+)
+add_dependencies(arkconfigsettings_service_provider
+    ${${PROJECT_NAME}_EXPORTED_TARGETS}
+    ${catkin_EXPORTED_TARGETS}
+)
+
+###########################################################################
+add_executable(deletemap_service_provider deletemap_service_provider.cpp)
+target_link_libraries( deletemap_service_provider
+    ${catkin_LIBRARIES}
+)
+add_dependencies(deletemap_service_provider
+    ${${PROJECT_NAME}_EXPORTED_TARGETS}
+    ${catkin_EXPORTED_TARGETS}
+)
+
+###########################################################################
+add_executable(empty_service_provider empty_service_provider.cpp)
+target_link_libraries( empty_service_provider
+    ${catkin_LIBRARIES}
+)
+add_dependencies(empty_service_provider
+    ${${PROJECT_NAME}_EXPORTED_TARGETS}
+    ${catkin_EXPORTED_TARGETS}
+)
+
+###########################################################################
+add_executable(listmaps_service_provider listmaps_service_provider.cpp)
+target_link_libraries( listmaps_service_provider
+    ${catkin_LIBRARIES}
+)
+add_dependencies(listmaps_service_provider
+    ${${PROJECT_NAME}_EXPORTED_TARGETS}
+    ${catkin_EXPORTED_TARGETS}
+)
+
+###########################################################################
+add_executable(loadmapfromdisk_service_provider loadmapfromdisk_service_provider.cpp)
+target_link_libraries( loadmapfromdisk_service_provider
+    ${catkin_LIBRARIES}
+)
+add_dependencies(loadmapfromdisk_service_provider
+    ${${PROJECT_NAME}_EXPORTED_TARGETS}
+    ${catkin_EXPORTED_TARGETS}
+)
+
+###########################################################################
+add_executable(savemaptodisk_service_provider savemaptodisk_service_provider.cpp)
+target_link_libraries( savemaptodisk_service_provider
+    ${catkin_LIBRARIES}
+)
+add_dependencies(savemaptodisk_service_provider
+    ${${PROJECT_NAME}_EXPORTED_TARGETS}
+    ${catkin_EXPORTED_TARGETS}
+)
+
+###########################################################################
+add_executable(setautonomymode_service_provider setautonomymode_service_provider.cpp)
+target_link_libraries( setautonomymode_service_provider
+    ${catkin_LIBRARIES}
+)
+add_dependencies(setautonomymode_service_provider
+    ${${PROJECT_NAME}_EXPORTED_TARGETS}
+    ${catkin_EXPORTED_TARGETS}
+)
+
+###########################################################################
+add_executable(setpose_service_provider setpose_service_provider.cpp)
+target_link_libraries( setpose_service_provider
+    ${catkin_LIBRARIES}
+)
+add_dependencies(setpose_service_provider
+    ${${PROJECT_NAME}_EXPORTED_TARGETS}
+    ${catkin_EXPORTED_TARGETS}
+)
+
+###########################################################################
+add_executable(setslammode_service_provider setslammode_service_provider.cpp)
+target_link_libraries( setslammode_service_provider
+    ${catkin_LIBRARIES}
+)
+add_dependencies(setslammode_service_provider
+    ${${PROJECT_NAME}_EXPORTED_TARGETS}
+    ${catkin_EXPORTED_TARGETS}
+)
+
+###########################################################################
+add_executable(string_service_provider string_service_provider.cpp)
+target_link_libraries( string_service_provider
+    ${catkin_LIBRARIES}
+)
+add_dependencies(string_service_provider
+    ${${PROJECT_NAME}_EXPORTED_TARGETS}
+    ${catkin_EXPORTED_TARGETS}
+)

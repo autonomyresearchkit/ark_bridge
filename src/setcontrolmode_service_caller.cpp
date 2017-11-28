@@ -1,7 +1,7 @@
 /**
 Software License Agreement (BSD)
 
-\file      empty_service.cpp
+\file      setcontrolmode_service_caller.cpp
 \authors   Dave Niewinski <dniewinski@clearpathrobotics.com>
 \copyright Copyright (c) 2017, Clearpath Robotics, Inc., All rights reserved.
 
@@ -25,16 +25,18 @@ ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSI
 #include <ros/ros.h>
 #include <ros/console.h>
 #include <ark_bridge/Empty.h>
-#include <std_srvs/Empty.h>
+#include <ark_bridge/AutonomyMode.h>
+#include <autonomy_msgs/SetMode.h>
 #include <stdlib.h>
 
 ros::Publisher pub;
 ros::ServiceClient serv;
 std::string call_topic, response_topic, service_name;
 
-void rosCallback(const ark_bridge::Empty::ConstPtr& msg)
+void rosCallback(const ark_bridge::AutonomyMode::ConstPtr& msg)
 {
-  std_srvs::Empty srv;
+  autonomy_msgs::SetMode srv;
+  srv.request.mode.mode = msg->mode;
 
   if(serv.call(srv)){
     ark_bridge::Empty response_message;
@@ -43,7 +45,7 @@ void rosCallback(const ark_bridge::Empty::ConstPtr& msg)
 }
 
 int main(int argc, char **argv) {
-  ros::init(argc, argv, "empty_servicer");
+  ros::init(argc, argv, "setcontrolmode_service_caller");
   ros::NodeHandle nh("~");
   ros::Subscriber sub;
 
@@ -52,7 +54,7 @@ int main(int argc, char **argv) {
 
     pub = nh.advertise<ark_bridge::Empty>(response_topic, 1, true);
     sub = nh.subscribe(call_topic, 10, rosCallback);
-    serv = nh.serviceClient<std_srvs::Empty>(service_name);
+    serv = nh.serviceClient<autonomy_msgs::SetMode>(service_name);
     ros::spin();
   }
   else{

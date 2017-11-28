@@ -1,7 +1,7 @@
 /**
 Software License Agreement (BSD)
 
-\file      setautonomymode_service.cpp
+\file      getcurrentmap_service_caller.cpp
 \authors   Dave Niewinski <dniewinski@clearpathrobotics.com>
 \copyright Copyright (c) 2017, Clearpath Robotics, Inc., All rights reserved.
 
@@ -24,37 +24,39 @@ ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSI
 */
 #include <ros/ros.h>
 #include <ros/console.h>
+#include <ark_bridge/GetCurrentMapResponse.h>
 #include <ark_bridge/Empty.h>
-#include <ark_bridge/AutonomyMode.h>
-#include <autonomy_msgs/SetMode.h>
+#include <map_data_msgs/GetCurrentMap.h>
 #include <stdlib.h>
 
 ros::Publisher pub;
 ros::ServiceClient serv;
 std::string call_topic, response_topic, service_name;
 
-void rosCallback(const ark_bridge::AutonomyMode::ConstPtr& msg)
+void rosCallback(const ark_bridge::Empty::ConstPtr& msg)
 {
-  autonomy_msgs::SetMode srv;
-  srv.request.mode.mode = msg->mode;
+  map_data_msgs::GetCurrentMap srv;
 
   if(serv.call(srv)){
-    ark_bridge::Empty response_message;
+    ark_bridge::GetCurrentMapResponse response_message;
+    response_message.map.data = srv.response.map.data;
+    response_message.map.ndata = srv.response.map.data.size();
+
     pub.publish(response_message);
   }
 }
 
 int main(int argc, char **argv) {
-  ros::init(argc, argv, "setautonomymode_servicer");
+  ros::init(argc, argv, "getcurrentmap_service_caller");
   ros::NodeHandle nh("~");
   ros::Subscriber sub;
 
   if(nh.getParam("call_topic", call_topic) && nh.getParam("service_name", service_name) && nh.getParam("response_topic", response_topic)){
     ROS_INFO("(%s) --> <%s> --> (%s)", call_topic.c_str(), service_name.c_str(), response_topic.c_str());
 
-    pub = nh.advertise<ark_bridge::Empty>(response_topic, 1, true);
+    pub = nh.advertise<ark_bridge::GetCurrentMapResponse>(response_topic, 1, true);
     sub = nh.subscribe(call_topic, 10, rosCallback);
-    serv = nh.serviceClient<autonomy_msgs::SetMode>(service_name);
+    serv = nh.serviceClient<map_data_msgs::GetCurrentMap>(service_name);
     ros::spin();
   }
   else{
