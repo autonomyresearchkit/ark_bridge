@@ -38,22 +38,19 @@ void rosCallback(const ark_bridge::ArkConfigSettingsCall::ConstPtr& msg)
   ark_configurator::ArkConfigSettings srv;
 
   srv.request.max_fwd_linear_speed = msg->max_fwd_linear_speed;
-	srv.request.max_rev_linear_speed = msg->max_rev_linear_speed;
-	srv.request.min_linear_speed = msg->min_linear_speed;
-	srv.request.max_linear_acceleration = msg->max_linear_acceleration;
-	srv.request.max_linear_deceleration = msg->max_linear_deceleration;
-	srv.request.max_ang_speed = msg->max_ang_speed;
-	srv.request.max_ang_accel = msg->max_ang_accel;
-	srv.request.max_lateral_accel = msg->max_lateral_accel;
-	srv.request.vehicle_length = msg->vehicle_length;
-	srv.request.vehicle_width = msg->vehicle_width;
-	srv.request.stopping_distance_1M = msg->stopping_distance_1M;
-	srv.request.lidar_spacing = msg->lidar_spacing;
-	srv.request.laser_fov = msg->laser_fov;
-	srv.request.goal_tolerance_xy = msg->goal_tolerance_xy;
-	srv.request.goal_tolerance_yaw = msg->goal_tolerance_yaw;
-	srv.request.camera_3d_memory = msg->camera_3d_memory;
-	srv.request.drive_direction = msg->drive_direction;
+  srv.request.max_rev_linear_speed = msg->max_rev_linear_speed;
+  srv.request.min_linear_speed = msg->min_linear_speed;
+  srv.request.max_linear_acceleration = msg->max_linear_acceleration;
+  srv.request.max_linear_deceleration = msg->max_linear_deceleration;
+  srv.request.max_ang_speed = msg->max_ang_speed;
+  srv.request.max_ang_accel = msg->max_ang_accel;
+  srv.request.vehicle_length = msg->vehicle_length;
+  srv.request.vehicle_width = msg->vehicle_width;
+  srv.request.stopping_distance_1M = msg->stopping_distance_1M;
+  srv.request.lidar_spacing = msg->lidar_spacing;
+  srv.request.laser_fov = msg->laser_fov;
+  srv.request.camera_3d_memory = msg->camera_3d_memory;
+  srv.request.drive_direction = msg->drive_direction;
 
   if(serv.call(srv)){
     ark_bridge::ArkConfigSettingsResponse response_message;

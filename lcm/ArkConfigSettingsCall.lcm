@@ -9,14 +9,11 @@ struct ArkConfigSettingsCall
 	double max_linear_deceleration;
 	double max_ang_speed;
 	double max_ang_accel;
-	double max_lateral_accel;
 	double vehicle_length;
 	double vehicle_width;
 	double stopping_distance_1M;
 	double lidar_spacing;
 	double laser_fov;
-	double goal_tolerance_xy;
-	double goal_tolerance_yaw;
 	double camera_3d_memory;
 	int8_t drive_direction;
 }
