@@ -7,7 +7,7 @@ find_package(catkin REQUIRED COMPONENTS
   message_generation
 )
 
-SET(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/${PROJECT_NAME}/cmake)
+SET(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake)
 
 find_package(lcm REQUIRED)
 if (LCM_FOUND)
