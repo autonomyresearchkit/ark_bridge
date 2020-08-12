@@ -7,7 +7,7 @@ find_package(catkin REQUIRED COMPONENTS
   message_generation
 )
 
-SET(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/${PROJECT_NAME}/cmake)
+SET(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake)
 
 find_package(lcm REQUIRED)
 if (LCM_FOUND)
@@ -19,8 +19,8 @@ endif (LCM_FOUND)
 ## Declare ROS messages, services and actions ##
 ################################################
 
-FILE(GLOB rosMsgFiles RELATIVE "${CMAKE_SOURCE_DIR}/${PROJECT_NAME}/msg" 
-    "${CMAKE_SOURCE_DIR}/${PROJECT_NAME}/msg/*.msg")
+FILE(GLOB rosMsgFiles RELATIVE "${CMAKE_SOURCE_DIR}/msg"
+    "${CMAKE_SOURCE_DIR}/msg/*.msg")
 
 FOREACH(rosMsg ${rosMsgFiles})
     MESSAGE( STATUS "Processing message file: ${rosMsg}" )
@@ -63,8 +63,13 @@ catkin_package(
 # include_directories(include)
 include_directories( 
     ${CMAKE_SOURCE_DIR}/${PROJECT_NAME}
+    ${CMAKE_SOURCE_DIR}
     ${catkin_INCLUDE_DIRS} 
 )
+
+if(NOT DEFINED LCM_LIBRARY)
+    set(LCM_LIBRARY lcm)
+endif()
 
 ## Declare a C++ library
 # add_library(ark_bridge
